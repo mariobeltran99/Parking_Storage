@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace ParkingStorage_System
 {
@@ -32,6 +33,21 @@ namespace ParkingStorage_System
         private void close_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        int posX = 0;
+        int posY = 0;
+        private void franja1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button != MouseButtons.Left)
+            {
+                posX = e.X;
+                posY = e.Y;
+            }
+            else
+            {
+                Left = Left + (e.X - posX);
+                Top = Top + (e.Y - posY);
+            }
         }
     }
 }

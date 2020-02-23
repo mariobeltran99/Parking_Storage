@@ -74,6 +74,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrador.resx">
+      <DependentUpon>Administrador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Informacion.resx">
       <DependentUpon>Informacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +111,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dashboard-14-512 %281%29.ico" />
+    <None Include="Resources\Bubble-Preloader-1.gif" />
+    <None Include="Resources\DoubleRing-200px.gif" />
     <None Include="Resources\info.png" />
     <None Include="Resources\enter %281%29.png" />
     <None Include="Resources\enter.png" />

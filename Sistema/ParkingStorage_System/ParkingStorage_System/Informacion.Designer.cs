@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Informacion));
             this.franja1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,8 +42,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.franja1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // franja1
@@ -55,6 +55,7 @@
             this.franja1.Name = "franja1";
             this.franja1.Size = new System.Drawing.Size(590, 34);
             this.franja1.TabIndex = 0;
+            this.franja1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.franja1_MouseMove);
             // 
             // label1
             // 
@@ -66,16 +67,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Parking Storage - Acerca de ";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::ParkingStorage_System.Properties.Resources.info;
-            this.pictureBox2.Location = new System.Drawing.Point(431, 68);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(110, 107);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ParkingStorage_System.Properties.Resources.dashboard_14_512__1_;
@@ -85,6 +76,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ParkingStorage_System.Properties.Resources.info;
+            this.pictureBox2.Location = new System.Drawing.Point(431, 68);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(110, 107);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // linkLabel1
             // 
@@ -185,8 +186,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.franja1.ResumeLayout(false);
             this.franja1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

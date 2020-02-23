@@ -69,6 +69,7 @@
             this.franja1.Name = "franja1";
             this.franja1.Size = new System.Drawing.Size(589, 36);
             this.franja1.TabIndex = 1;
+            this.franja1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.franja1_MouseMove);
             // 
             // close
             // 
