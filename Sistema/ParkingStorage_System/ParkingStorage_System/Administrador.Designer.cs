@@ -30,10 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Administrador));
             this.franja1 = new System.Windows.Forms.Panel();
+            this.close = new System.Windows.Forms.Panel();
+            this.minize = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menu = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.closesesion = new System.Windows.Forms.Button();
             this.seepark = new System.Windows.Forms.Button();
             this.ticket = new System.Windows.Forms.Button();
@@ -42,13 +43,12 @@
             this.space = new System.Windows.Forms.Button();
             this.users = new System.Windows.Forms.Button();
             this.carnet = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Inicio = new System.Windows.Forms.Button();
-            this.close = new System.Windows.Forms.Panel();
-            this.minize = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.franja1.SuspendLayout();
-            this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // franja1
@@ -65,6 +65,28 @@
             this.franja1.TabIndex = 0;
             this.franja1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.franja1_MouseMove);
             // 
+            // close
+            // 
+            this.close.BackgroundImage = global::ParkingStorage_System.Properties.Resources.delete;
+            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.close.Location = new System.Drawing.Point(1160, 4);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(30, 26);
+            this.close.TabIndex = 2;
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
+            // minize
+            // 
+            this.minize.BackgroundImage = global::ParkingStorage_System.Properties.Resources.minimize;
+            this.minize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.minize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minize.Location = new System.Drawing.Point(1124, 4);
+            this.minize.Name = "minize";
+            this.minize.Size = new System.Drawing.Size(30, 26);
+            this.minize.TabIndex = 1;
+            this.minize.Click += new System.EventHandler(this.minize_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -75,6 +97,17 @@
             this.label1.Size = new System.Drawing.Size(267, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Parking Storage - Panel de Control";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ParkingStorage_System.Properties.Resources.dashboard_14_512__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 3);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // menu
             // 
@@ -95,28 +128,6 @@
             this.menu.Size = new System.Drawing.Size(244, 508);
             this.menu.TabIndex = 1;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(67, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Administrador";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(30, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
-            // 
             // closesesion
             // 
             this.closesesion.BackColor = System.Drawing.Color.Transparent;
@@ -135,6 +146,7 @@
             this.closesesion.TabIndex = 9;
             this.closesesion.Text = "Cerrar Sesión";
             this.closesesion.UseVisualStyleBackColor = false;
+            this.closesesion.Click += new System.EventHandler(this.closesesion_Click);
             // 
             // seepark
             // 
@@ -269,6 +281,28 @@
             this.carnet.Text = "Carnets";
             this.carnet.UseVisualStyleBackColor = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(30, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(67, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Administrador";
+            // 
             // Inicio
             // 
             this.Inicio.BackColor = System.Drawing.Color.Transparent;
@@ -288,39 +322,6 @@
             this.Inicio.Text = "Inicio";
             this.Inicio.UseVisualStyleBackColor = false;
             // 
-            // close
-            // 
-            this.close.BackgroundImage = global::ParkingStorage_System.Properties.Resources.delete;
-            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.close.Location = new System.Drawing.Point(1160, 4);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(30, 26);
-            this.close.TabIndex = 2;
-            this.close.Click += new System.EventHandler(this.close_Click);
-            // 
-            // minize
-            // 
-            this.minize.BackgroundImage = global::ParkingStorage_System.Properties.Resources.minimize;
-            this.minize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.minize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minize.Location = new System.Drawing.Point(1124, 4);
-            this.minize.Name = "minize";
-            this.minize.Size = new System.Drawing.Size(30, 26);
-            this.minize.TabIndex = 1;
-            this.minize.Click += new System.EventHandler(this.minize_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParkingStorage_System.Properties.Resources.dashboard_14_512__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 3);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // Administrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -336,11 +337,12 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Administrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "+";
             this.franja1.ResumeLayout(false);
             this.franja1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

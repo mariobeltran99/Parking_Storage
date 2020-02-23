@@ -39,7 +39,35 @@ namespace ParkingStorage_System
 
         private void close_Click(object sender, EventArgs e)
         {
+            DialogResult resultado = new DialogResult();
+            Alerta1 aler = new Alerta1();
+            resultado = aler.ShowDialog();
+            if(resultado == DialogResult.OK)
+            {
+                Login log = new Login();
+                log.Show();
+                this.Hide();             
+            }
+            else
+            {
+              
+            }
+        }
+        private void closesesion_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = new DialogResult();
+            Alerta1 aler = new Alerta1();
+            resultado = aler.ShowDialog();
+            if (resultado == DialogResult.OK)
+            {
+                Login log = new Login();
+                log.Show();
+                this.Hide();
+            }
+            else
+            {
 
+            }
         }
     }
 }
