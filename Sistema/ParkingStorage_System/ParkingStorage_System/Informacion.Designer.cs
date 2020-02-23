@@ -48,7 +48,7 @@
             // 
             // franja1
             // 
-            this.franja1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.franja1.BackColor = System.Drawing.Color.RoyalBlue;
             this.franja1.Controls.Add(this.label1);
             this.franja1.Controls.Add(this.pictureBox1);
             this.franja1.Location = new System.Drawing.Point(0, 0);
@@ -166,6 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(588, 396);
             this.ControlBox = false;
             this.Controls.Add(this.label8);

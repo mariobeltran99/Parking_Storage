@@ -111,6 +111,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dashboard-14-512 %281%29.ico" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\cctv.png" />
+    <None Include="Resources\parking-ticket.png" />
+    <None Include="Resources\wheel-chair.png" />
+    <None Include="Resources\park.png" />
+    <None Include="Resources\garage.png" />
+    <None Include="Resources\parking-card.png" />
+    <None Include="Resources\parking.png" />
+    <None Include="Resources\group.png" />
+    <None Include="Resources\carnet.png" />
+    <None Include="Resources\placeholder.png" />
     <None Include="Resources\Bubble-Preloader-1.gif" />
     <None Include="Resources\DoubleRing-200px.gif" />
     <None Include="Resources\info.png" />
