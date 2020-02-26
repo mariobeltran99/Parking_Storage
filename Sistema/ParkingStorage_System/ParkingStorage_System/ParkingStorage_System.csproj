@@ -48,11 +48,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AAdvertencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AAdvertencia.Designer.cs">
+      <DependentUpon>AAdvertencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrador.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Administrador.Designer.cs">
       <DependentUpon>Administrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AError.Designer.cs">
+      <DependentUpon>AError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AInfo.Designer.cs">
+      <DependentUpon>AInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Alerta1.cs">
       <SubType>Form</SubType>
@@ -80,8 +98,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AAdvertencia.resx">
+      <DependentUpon>AAdvertencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrador.resx">
       <DependentUpon>Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AError.resx">
+      <DependentUpon>AError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AInfo.resx">
+      <DependentUpon>AInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Alerta1.resx">
       <DependentUpon>Alerta1.cs</DependentUpon>
@@ -120,6 +147,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dashboard-14-512 %281%29.ico" />
+    <None Include="Resources\info %281%29.png" />
+    <None Include="Resources\warning.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\tick.png" />
     <None Include="Resources\logout.png" />
