@@ -69,5 +69,42 @@ namespace ParkingStorage_System
 
             }
         }
+        private void AbrirFormenPanel<formulario>() where formulario : Form, new()
+        {
+            Form formulariohijo;
+            formulariohijo = panelcontenedor.Controls.OfType<formulario>().FirstOrDefault();
+            if(formulariohijo == null)
+            {
+                formulariohijo = new formulario();
+                formulariohijo.TopLevel = false;
+                formulariohijo.Dock = DockStyle.Fill;
+                this.panelcontenedor.Controls.Add(formulariohijo);
+                this.panelcontenedor.Tag = formulariohijo;
+                formulariohijo.Show();
+            }
+            else
+            {
+                formulariohijo.BringToFront();
+            }            
+        }
+        private void carnet_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<Carnets>();
+        }
+
+        private void users_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<Usuarios>();
+        }
+
+        private void space_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<Espacios>();
+        }
+
+        private void zone_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<Zonas>();
+        }
     }
 }
