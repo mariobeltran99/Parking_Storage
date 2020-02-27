@@ -1,6 +1,6 @@
 ﻿namespace ParkingStorage_System
 {
-    partial class Zonas
+    partial class TiposEspacios
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(873, 447);
-            this.tabControl1.TabIndex = 5;
+            this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
             // 
@@ -108,7 +108,7 @@
             this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.cone;
+            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.useres;
             this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRegistrar.Location = new System.Drawing.Point(308, 260);
             this.btnRegistrar.Name = "btnRegistrar";
@@ -226,13 +226,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(403, 7);
+            this.label1.Location = new System.Drawing.Point(388, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(198, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Zonas de Estacionamiento";
+            this.label1.Size = new System.Drawing.Size(195, 17);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Tipos de Estacionamiento";
             // 
-            // Zonas
+            // TiposEspacios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -243,8 +243,8 @@
             this.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Zonas";
-            this.Text = "Zonas";
+            this.Name = "TiposEspacios";
+            this.Text = "TiposEspacios";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -262,6 +262,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RichTextBox txtdescripcion;
+        private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
@@ -269,11 +271,9 @@
         private System.Windows.Forms.Button btndesactivar;
         private System.Windows.Forms.Button btneditar;
         private System.Windows.Forms.DataGridView dgvusuarios;
-        private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtnombre;
-        private System.Windows.Forms.RichTextBox txtdescripcion;
     }
 }

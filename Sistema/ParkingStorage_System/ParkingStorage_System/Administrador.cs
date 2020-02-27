@@ -69,6 +69,7 @@ namespace ParkingStorage_System
 
             }
         }
+        //funcion para abrir formularios
         private void AbrirFormenPanel<formulario>() where formulario : Form, new()
         {
             Form formulariohijo;
@@ -105,6 +106,16 @@ namespace ParkingStorage_System
         private void zone_Click(object sender, EventArgs e)
         {
             AbrirFormenPanel<Zonas>();
+        }
+
+        private void types_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<TiposEspacios>();
+        }
+
+        private void ticket_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<Tickets>();
         }
     }
 }

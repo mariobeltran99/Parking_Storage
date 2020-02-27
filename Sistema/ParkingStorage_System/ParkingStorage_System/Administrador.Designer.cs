@@ -193,6 +193,7 @@
             this.ticket.TabIndex = 7;
             this.ticket.Text = "Tickets";
             this.ticket.UseVisualStyleBackColor = false;
+            this.ticket.Click += new System.EventHandler(this.ticket_Click);
             // 
             // types
             // 
@@ -212,6 +213,7 @@
             this.types.TabIndex = 6;
             this.types.Text = "Tipos de Espacios";
             this.types.UseVisualStyleBackColor = false;
+            this.types.Click += new System.EventHandler(this.types_Click);
             // 
             // zone
             // 

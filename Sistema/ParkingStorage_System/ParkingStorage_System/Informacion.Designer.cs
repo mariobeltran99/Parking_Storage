@@ -158,9 +158,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(49, 301);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(175, 18);
+            this.label8.Size = new System.Drawing.Size(184, 18);
             this.label8.TabIndex = 9;
-            this.label8.Text = "Patrik Ernesto Rosales";
+            this.label8.Text = "Patrick Ernesto Rosales";
             // 
             // Informacion
             // 
