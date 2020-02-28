@@ -15,6 +15,7 @@ namespace ParkingStorage_System
         public Administrador()
         {
             InitializeComponent();
+            AbrirFormenPanel<Home>();
         }
         int posX = 0;
         int posY = 0;
@@ -116,6 +117,11 @@ namespace ParkingStorage_System
         private void ticket_Click(object sender, EventArgs e)
         {
             AbrirFormenPanel<Tickets>();
+        }
+
+        private void Inicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<Home>();
         }
     }
 }

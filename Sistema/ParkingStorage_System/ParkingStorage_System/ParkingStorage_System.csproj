@@ -84,11 +84,24 @@
     <Compile Include="Carnets.Designer.cs">
       <DependentUpon>Carnets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Carnet.cs" />
+    <Compile Include="Clases\Conexion.cs" />
+    <Compile Include="Clases\Estacionamiento.cs" />
+    <Compile Include="Clases\Secciones_Estacionamiento.cs" />
+    <Compile Include="Clases\Ticket.cs" />
+    <Compile Include="Clases\Tipo_Estacionamiento.cs" />
+    <Compile Include="Clases\Validaciones.cs" />
     <Compile Include="Espacios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Espacios.Designer.cs">
       <DependentUpon>Espacios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Informacion.cs">
       <SubType>Form</SubType>
@@ -122,6 +135,7 @@
     <Compile Include="TiposEspacios.Designer.cs">
       <DependentUpon>TiposEspacios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Espacios.resx">
       <DependentUpon>Espacios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Informacion.resx">
       <DependentUpon>Informacion.cs</DependentUpon>
@@ -201,6 +218,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dashboard-14-512 %281%29.ico" />
+    <None Include="Resources\timer.png" />
+    <None Include="Resources\tickets.png" />
+    <None Include="Resources\parkcar.png" />
+    <None Include="Resources\toll-road.png" />
+    <None Include="Resources\use.png" />
+    <None Include="Resources\name.png" />
     <None Include="Resources\useres.png" />
     <None Include="Resources\cone.png" />
     <None Include="Resources\car-parking.png" />
@@ -238,5 +261,6 @@
     <None Include="Resources\dashboard-14-512 %281%29.png" />
     <None Include="Resources\Presentacion.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
