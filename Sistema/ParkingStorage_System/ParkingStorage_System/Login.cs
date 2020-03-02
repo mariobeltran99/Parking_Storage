@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace ParkingStorage_System
 {
     public partial class Login : Form
     {
+        DialogResult result = new DialogResult();
+        AAdvertencia advert = new AAdvertencia();
         public Login()
         {
             InitializeComponent();
@@ -47,6 +50,36 @@ namespace ParkingStorage_System
             {
                 Left = Left + (e.X - posX);
                 Top = Top + (e.Y - posY);
+            }
+        }
+        //evento del texbox
+        private void username_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void ISesion_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                advert.label2.Text = "Hay campos vacíos";
+                result = advert.ShowDialog();
+               if(result == DialogResult.OK)
+               {
+
+               }
+            }
+            catch (Exception)
+            {
+
             }
         }
     }
