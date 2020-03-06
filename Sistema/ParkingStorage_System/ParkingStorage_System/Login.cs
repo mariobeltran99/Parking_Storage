@@ -16,6 +16,8 @@ namespace ParkingStorage_System
     {
         DialogResult result = new DialogResult();
         AAdvertencia advert = new AAdvertencia();
+        AError error = new AError();
+        AInfo info = new AInfo();
         public Login()
         {
             InitializeComponent();
@@ -64,22 +66,83 @@ namespace ParkingStorage_System
                 e.Handled = false;
             }
         }
-
         private void ISesion_Click(object sender, EventArgs e)
         {
-
+            Clases.Conexion con = new Clases.Conexion();
+            Usuario users = new Usuario();
+            Usuario aux = new Usuario();      
+            con.inicioConnection();
             try
             {
-                advert.label2.Text = "Hay campos vacíos";
-                result = advert.ShowDialog();
-               if(result == DialogResult.OK)
-               {
+                if(string.IsNullOrEmpty(username.Text) || string.IsNullOrEmpty(pass.Text))
+                {
+                    con.cerrarConnection();
+                    advert.label2.Text = "Hay campos vacíos en el formulario, \npor favor rellene los campos solicitados";
+                    result = advert.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
 
-               }
+                    }                    
+                }
+                else
+                {
+                    if(users.loguear(username.Text, pass.Text) == true)
+                    {
+                        aux = users.ObtenerUsuario(int.Parse(users.Id));
+                        if(aux.Estado == "True")
+                        {
+                            con.cerrarConnection();
+                            info.label2.Text = "Usuario Correcto, Bienvenido " + username.Text;
+                            result = info.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                Administrador admin = new Administrador();                            
+                                
+                                if (users != null)
+                                {
+                                    admin.lbladmin.Text = aux.Nombre;
+                                }
+                                else
+                                {
+                                    admin.lbladmin.Text = "";
+                                }
+                                admin.Show();
+                                this.Hide();
+                            }
+                        }
+                        else
+                        {
+                            con.cerrarConnection();
+                            info.label2.Text = "El usuario está desactivado,\nlo sentimos no puede acceder al sistema.\n Consulte con su Administrador de TI";                      
+                            result = info.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+
+                            }                          
+                        }                       
+                    }
+                    else
+                    {
+                        con.cerrarConnection();
+                        info.label2.Text = "Usuario Incorrecto, inténtelo de nuevo";
+                        result = info.ShowDialog();
+                        if(result == DialogResult.OK)
+                        {
+
+                        }                           
+                    }
+                }
             }
             catch (Exception)
             {
+                con.cerrarConnection();
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
 
+                }
+                
             }
         }
     }

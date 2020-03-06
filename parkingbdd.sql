@@ -11,7 +11,7 @@ create table Usuarios(
 [id] integer identity (1,1) not null,
 [nombre] varchar(150) not null,
 [username] varchar(150) not null unique,
-[password] varchar(150) not null,
+[password] varchar(300) not null,
 [tipo_user] char(1) not null,
 [estado] bit not null,
 constraint [PK_Usuarios] primary key ([id])
@@ -101,3 +101,8 @@ alter table Ticket
 add constraint CK_horas
 check (hora_entrada < hora_salida)
 go
+
+/*Agregar usuario admin por defecto en el sistema*/
+Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
+Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
+Select * from Usuarios;

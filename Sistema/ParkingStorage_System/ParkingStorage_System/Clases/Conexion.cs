@@ -12,7 +12,7 @@ namespace ParkingStorage_System.Clases
     class Conexion
     {
         //cadena de conexion
-        private string cadenaConecxion = ConfigurationManager.ConnectionStrings["conec"].ConnectionString;
+        private string cadenaConecxion = ParkingStorage_System.Properties.Settings.Default.conec;
         public string CadenaConecxion { get => cadenaConecxion; set => cadenaConecxion = value; }
         public static SqlConnection connecSQL;
         //abrir conexion

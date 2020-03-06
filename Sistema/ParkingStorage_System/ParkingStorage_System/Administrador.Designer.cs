@@ -44,7 +44,7 @@
             this.space = new System.Windows.Forms.Button();
             this.users = new System.Windows.Forms.Button();
             this.carnet = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lbladmin = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Inicio = new System.Windows.Forms.Button();
             this.panelcontenedor = new System.Windows.Forms.Panel();
@@ -123,7 +123,7 @@
             this.menu.Controls.Add(this.space);
             this.menu.Controls.Add(this.users);
             this.menu.Controls.Add(this.carnet);
-            this.menu.Controls.Add(this.label3);
+            this.menu.Controls.Add(this.lbladmin);
             this.menu.Controls.Add(this.label2);
             this.menu.Controls.Add(this.Inicio);
             this.menu.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -298,16 +298,16 @@
             this.carnet.UseVisualStyleBackColor = false;
             this.carnet.Click += new System.EventHandler(this.carnet_Click);
             // 
-            // label3
+            // lbladmin
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(24, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.lbladmin.AutoSize = true;
+            this.lbladmin.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbladmin.ForeColor = System.Drawing.Color.White;
+            this.lbladmin.Location = new System.Drawing.Point(24, 52);
+            this.lbladmin.Name = "lbladmin";
+            this.lbladmin.Size = new System.Drawing.Size(53, 17);
+            this.lbladmin.TabIndex = 2;
+            this.lbladmin.Text = "label3";
             // 
             // label2
             // 
@@ -382,7 +382,6 @@
         private System.Windows.Forms.Panel close;
         private System.Windows.Forms.Panel minize;
         private System.Windows.Forms.Panel menu;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Inicio;
         private System.Windows.Forms.Button carnet;
@@ -395,5 +394,6 @@
         private System.Windows.Forms.Button closesesion;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelcontenedor;
+        public System.Windows.Forms.Label lbladmin;
     }
 }
