@@ -91,7 +91,50 @@ namespace ParkingStorage_System
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtusuario.Text) || string.IsNullOrEmpty(txtverificar.Text))
+                {
+                    advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
+                    result = advert.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
 
+                    }
+                }
+                else
+                {
+                    if (edicion)
+                    {
+
+                    }
+                    else
+                    {
+                        if (txtpassword.Text == txtverificar.Text)
+                        {
+
+                        }
+                        else
+                        {
+                            advert.label2.Text = "Las contraseñas no coinciden. \nVuelva a inténtarlo";
+                            result = advert.ShowDialog();
+                            if(result == DialogResult.OK)
+                            {
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }                   
         }
     }
 }

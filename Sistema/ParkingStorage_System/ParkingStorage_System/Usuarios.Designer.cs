@@ -33,6 +33,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mostrar2 = new System.Windows.Forms.PictureBox();
+            this.mostrar1 = new System.Windows.Forms.PictureBox();
+            this.txtverificar = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnRegistrar = new System.Windows.Forms.Button();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.cmbtusuario = new System.Windows.Forms.ComboBox();
             this.txtusuario = new System.Windows.Forms.TextBox();
@@ -42,25 +47,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btndesactivar = new System.Windows.Forms.Button();
+            this.btneditar = new System.Windows.Forms.Button();
             this.dgvusuarios = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtverificar = new System.Windows.Forms.TextBox();
-            this.mostrar2 = new System.Windows.Forms.PictureBox();
-            this.mostrar1 = new System.Windows.Forms.PictureBox();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.btndesactivar = new System.Windows.Forms.Button();
-            this.btneditar = new System.Windows.Forms.Button();
             this.btnbuscar = new System.Windows.Forms.Button();
             this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -116,6 +116,63 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingrese los siguientes datos";
             // 
+            // mostrar2
+            // 
+            this.mostrar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mostrar2.Image = global::ParkingStorage_System.Properties.Resources.powoff;
+            this.mostrar2.Location = new System.Drawing.Point(545, 164);
+            this.mostrar2.Name = "mostrar2";
+            this.mostrar2.Size = new System.Drawing.Size(22, 22);
+            this.mostrar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mostrar2.TabIndex = 12;
+            this.mostrar2.TabStop = false;
+            this.mostrar2.Click += new System.EventHandler(this.mostrar2_Click);
+            // 
+            // mostrar1
+            // 
+            this.mostrar1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mostrar1.Image = global::ParkingStorage_System.Properties.Resources.powoff;
+            this.mostrar1.Location = new System.Drawing.Point(545, 133);
+            this.mostrar1.Name = "mostrar1";
+            this.mostrar1.Size = new System.Drawing.Size(22, 22);
+            this.mostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mostrar1.TabIndex = 11;
+            this.mostrar1.TabStop = false;
+            this.mostrar1.Click += new System.EventHandler(this.mostrar1_Click);
+            // 
+            // txtverificar
+            // 
+            this.txtverificar.Location = new System.Drawing.Point(319, 161);
+            this.txtverificar.Name = "txtverificar";
+            this.txtverificar.PasswordChar = '*';
+            this.txtverificar.Size = new System.Drawing.Size(220, 25);
+            this.txtverificar.TabIndex = 10;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(117, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(158, 17);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Verificar Contraseña:";
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.user;
+            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegistrar.Location = new System.Drawing.Point(332, 259);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
+            this.btnRegistrar.TabIndex = 8;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            // 
             // txtpassword
             // 
             this.txtpassword.Location = new System.Drawing.Point(319, 130);
@@ -126,6 +183,7 @@
             // 
             // cmbtusuario
             // 
+            this.cmbtusuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbtusuario.FormattingEnabled = true;
             this.cmbtusuario.Items.AddRange(new object[] {
             "Administrador",
@@ -203,90 +261,6 @@
             this.tabPage2.Text = "Búsqueda, Edición y Eliminación";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dgvusuarios
-            // 
-            this.dgvusuarios.AllowUserToAddRows = false;
-            this.dgvusuarios.AllowUserToDeleteRows = false;
-            this.dgvusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvusuarios.Location = new System.Drawing.Point(6, 111);
-            this.dgvusuarios.Name = "dgvusuarios";
-            this.dgvusuarios.ReadOnly = true;
-            this.dgvusuarios.Size = new System.Drawing.Size(853, 300);
-            this.dgvusuarios.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(37, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 25);
-            this.textBox1.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(323, 17);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Búsqueda por nombre o nombre de usuario";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(117, 164);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(158, 17);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Verificar Contraseña:";
-            // 
-            // txtverificar
-            // 
-            this.txtverificar.Location = new System.Drawing.Point(319, 161);
-            this.txtverificar.Name = "txtverificar";
-            this.txtverificar.PasswordChar = '*';
-            this.txtverificar.Size = new System.Drawing.Size(220, 25);
-            this.txtverificar.TabIndex = 10;
-            // 
-            // mostrar2
-            // 
-            this.mostrar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mostrar2.Image = global::ParkingStorage_System.Properties.Resources.powoff;
-            this.mostrar2.Location = new System.Drawing.Point(545, 164);
-            this.mostrar2.Name = "mostrar2";
-            this.mostrar2.Size = new System.Drawing.Size(22, 22);
-            this.mostrar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.mostrar2.TabIndex = 12;
-            this.mostrar2.TabStop = false;
-            this.mostrar2.Click += new System.EventHandler(this.mostrar2_Click);
-            // 
-            // mostrar1
-            // 
-            this.mostrar1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mostrar1.Image = global::ParkingStorage_System.Properties.Resources.powoff;
-            this.mostrar1.Location = new System.Drawing.Point(545, 133);
-            this.mostrar1.Name = "mostrar1";
-            this.mostrar1.Size = new System.Drawing.Size(22, 22);
-            this.mostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.mostrar1.TabIndex = 11;
-            this.mostrar1.TabStop = false;
-            this.mostrar1.Click += new System.EventHandler(this.mostrar1_Click);
-            // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.user;
-            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrar.Location = new System.Drawing.Point(332, 259);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
-            this.btnRegistrar.TabIndex = 8;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
             // btndesactivar
             // 
             this.btndesactivar.BackColor = System.Drawing.Color.RoyalBlue;
@@ -316,6 +290,33 @@
             this.btneditar.TabIndex = 11;
             this.btneditar.Text = "Editar";
             this.btneditar.UseVisualStyleBackColor = false;
+            // 
+            // dgvusuarios
+            // 
+            this.dgvusuarios.AllowUserToAddRows = false;
+            this.dgvusuarios.AllowUserToDeleteRows = false;
+            this.dgvusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvusuarios.Location = new System.Drawing.Point(6, 111);
+            this.dgvusuarios.Name = "dgvusuarios";
+            this.dgvusuarios.ReadOnly = true;
+            this.dgvusuarios.Size = new System.Drawing.Size(853, 300);
+            this.dgvusuarios.TabIndex = 10;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(37, 61);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(240, 25);
+            this.textBox1.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(323, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Búsqueda por nombre o nombre de usuario";
             // 
             // btnbuscar
             // 
@@ -358,11 +359,11 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

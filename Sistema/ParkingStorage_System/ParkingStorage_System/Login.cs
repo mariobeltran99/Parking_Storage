@@ -143,8 +143,7 @@ namespace ParkingStorage_System
                 if (result == DialogResult.OK)
                 {
 
-                }
-                
+                }              
             }
         }
         //mostrar contraseña
