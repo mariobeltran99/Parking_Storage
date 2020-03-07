@@ -219,6 +219,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dashboard-14-512 %281%29.ico" />
+    <None Include="Resources\powup.png" />
+    <None Include="Resources\powoff.png" />
     <None Include="Resources\timer.png" />
     <None Include="Resources\tickets.png" />
     <None Include="Resources\parkcar.png" />

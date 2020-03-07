@@ -12,6 +12,7 @@ namespace ParkingStorage_System
 {
     public partial class Administrador : Form
     {
+        Usuario use = new Usuario();
         public Administrador()
         {
             InitializeComponent();
@@ -45,29 +46,23 @@ namespace ParkingStorage_System
             resultado = aler.ShowDialog();
             if(resultado == DialogResult.OK)
             {
+                use.Id = "";
                 Login log = new Login();
                 log.Show();
                 this.Hide();             
             }
-            else
-            {
-              
-            }
         }
         private void closesesion_Click(object sender, EventArgs e)
-        {
+        {          
             DialogResult resultado = new DialogResult();
             Alerta1 aler = new Alerta1();
             resultado = aler.ShowDialog();
             if (resultado == DialogResult.OK)
             {
+                use.Id = "";
                 Login log = new Login();
                 log.Show();
                 this.Hide();
-            }
-            else
-            {
-
             }
         }
         //funcion para abrir formularios

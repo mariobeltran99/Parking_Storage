@@ -28,22 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.franja1 = new System.Windows.Forms.Panel();
-            this.close = new System.Windows.Forms.Panel();
-            this.minimize = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
             this.pass = new System.Windows.Forms.TextBox();
             this.ISesion = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.close = new System.Windows.Forms.Panel();
+            this.minimize = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mostrar1 = new System.Windows.Forms.PictureBox();
+            this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.franja1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -71,28 +75,6 @@
             this.franja1.TabIndex = 1;
             this.franja1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.franja1_MouseMove);
             // 
-            // close
-            // 
-            this.close.BackgroundImage = global::ParkingStorage_System.Properties.Resources.delete;
-            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.close.Location = new System.Drawing.Point(539, 3);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(33, 30);
-            this.close.TabIndex = 5;
-            this.close.Click += new System.EventHandler(this.close_Click);
-            // 
-            // minimize
-            // 
-            this.minimize.BackgroundImage = global::ParkingStorage_System.Properties.Resources.minimize;
-            this.minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minimize.Location = new System.Drawing.Point(500, 3);
-            this.minimize.Name = "minimize";
-            this.minimize.Size = new System.Drawing.Size(33, 30);
-            this.minimize.TabIndex = 4;
-            this.minimize.Click += new System.EventHandler(this.minimize_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -103,16 +85,6 @@
             this.label1.Size = new System.Drawing.Size(243, 18);
             this.label1.TabIndex = 3;
             this.label1.Text = "Parking Storage - Iniciar Sesión";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ParkingStorage_System.Properties.Resources.dashboard_14_512__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -178,6 +150,56 @@
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             // 
+            // close
+            // 
+            this.close.BackgroundImage = global::ParkingStorage_System.Properties.Resources.delete;
+            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.close.Location = new System.Drawing.Point(539, 3);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(33, 30);
+            this.close.TabIndex = 5;
+            this.close.Click += new System.EventHandler(this.close_Click);
+            // 
+            // minimize
+            // 
+            this.minimize.BackgroundImage = global::ParkingStorage_System.Properties.Resources.minimize;
+            this.minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimize.Location = new System.Drawing.Point(500, 3);
+            this.minimize.Name = "minimize";
+            this.minimize.Size = new System.Drawing.Size(33, 30);
+            this.minimize.TabIndex = 4;
+            this.minimize.Click += new System.EventHandler(this.minimize_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ParkingStorage_System.Properties.Resources.dashboard_14_512__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // mostrar1
+            // 
+            this.mostrar1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mostrar1.Image = global::ParkingStorage_System.Properties.Resources.powoff;
+            this.mostrar1.Location = new System.Drawing.Point(456, 246);
+            this.mostrar1.Name = "mostrar1";
+            this.mostrar1.Size = new System.Drawing.Size(22, 22);
+            this.mostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mostrar1.TabIndex = 12;
+            this.mostrar1.TabStop = false;
+            this.mostrar1.Click += new System.EventHandler(this.mostrar1_Click);
+            // 
+            // toolmensaje
+            // 
+            this.toolmensaje.IsBalloon = true;
+            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolmensaje.ToolTipTitle = "Ayuda";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +207,7 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(584, 381);
             this.ControlBox = false;
+            this.Controls.Add(this.mostrar1);
             this.Controls.Add(this.ISesion);
             this.Controls.Add(this.pass);
             this.Controls.Add(this.username);
@@ -199,8 +222,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.franja1.ResumeLayout(false);
             this.franja1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,5 +244,7 @@
         private System.Windows.Forms.Button ISesion;
         private System.Windows.Forms.Panel close;
         private System.Windows.Forms.Panel minimize;
+        private System.Windows.Forms.PictureBox mostrar1;
+        private System.Windows.Forms.ToolTip toolmensaje;
     }
 }

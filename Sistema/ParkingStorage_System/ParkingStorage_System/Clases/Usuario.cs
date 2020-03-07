@@ -24,7 +24,6 @@ namespace ParkingStorage_System
         public string Id { get => id; set => id = value; }
         public string Exid { get => exid; set => exid = value; }
         Clases.Validaciones validar = new Clases.Validaciones();
-
         //Iniciar sesion
         public bool loguear(string user, string contra)
         {
@@ -87,5 +86,6 @@ namespace ParkingStorage_System
                 return null;
             }
         }
+
     }
 }

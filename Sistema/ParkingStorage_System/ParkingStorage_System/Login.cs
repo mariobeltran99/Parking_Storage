@@ -18,9 +18,11 @@ namespace ParkingStorage_System
         AAdvertencia advert = new AAdvertencia();
         AError error = new AError();
         AInfo info = new AInfo();
+        private bool ver = false;
         public Login()
         {
             InitializeComponent();
+            toolmensaje.SetToolTip(mostrar1, "Click para ver la contraseña");
         }
         //minimizar
         private void minimize_Click(object sender, EventArgs e)
@@ -143,6 +145,22 @@ namespace ParkingStorage_System
 
                 }
                 
+            }
+        }
+        //mostrar contraseña
+        private void mostrar1_Click(object sender, EventArgs e)
+        {
+            if (!ver)
+            {
+                ver = true;
+                pass.PasswordChar = '\0';
+                mostrar1.Image = Properties.Resources.powup;
+            }
+            else
+            {
+                ver = false;
+                pass.PasswordChar = '*';
+                mostrar1.Image = Properties.Resources.powoff;
             }
         }
     }

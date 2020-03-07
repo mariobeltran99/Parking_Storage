@@ -102,7 +102,7 @@ add constraint CK_horas
 check (hora_entrada < hora_salida)
 go
 
-/*Agregar usuario admin por defecto en el sistema*/
+/*Agregar usuario admin por defecto en el sistema password = 123456*/ 
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
 Select * from Usuarios;
