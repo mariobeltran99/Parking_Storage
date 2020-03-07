@@ -86,6 +86,60 @@ namespace ParkingStorage_System
                 return null;
             }
         }
-
+        //verificar si existe el usuario
+        public int existeUsuario(string nombre, string username, string pass, string tipoUser)
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "INSERT INTO Usuarios(nombre,username,password,tipo_user,estado) values (@p1,@p2,@p3,@p4,1)";
+            comando.Connection = Clases.Conexion.connecSQL;
+            if (obternerID(username) != 0)
+            {
+                return 0;
+            }
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", nombre);
+                comando.Parameters.AddWithValue("@p2", username);
+                comando.Parameters.AddWithValue("@p3", validar.SHA256(pass));
+                comando.Parameters.AddWithValue("@p4", tipoUser);
+                comando.ExecuteNonQuery();
+                return obternerID(username);
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+        //obtener el id del usuario a buscar
+        public int obternerID(string user)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lectura;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT * FROM Usuarios WHERE username = @p1";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", user);
+                lectura = comando.ExecuteReader();
+                if (lectura.Read())
+                {
+                    int a = Convert.ToInt32(lectura["id"]);
+                    lectura.Close();
+                    return a;
+                }
+                else
+                {
+                    lectura.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }
