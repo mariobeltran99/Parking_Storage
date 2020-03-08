@@ -6,7 +6,7 @@ go
 use parkingbdd;
 
 
-/*añadir tabla usurios*/
+/*aÃ±adir tabla usurios*/
 create table Usuarios(
 [id] integer identity (1,1) not null,
 [nombre] varchar(150) not null,
@@ -18,7 +18,7 @@ constraint [PK_Usuarios] primary key ([id])
 )
 go
 
-/*añadir tabla Carnet_tranajadores*/
+/*aÃ±adir tabla Carnet_tranajadores*/
 create table Carnet_trabajadores(
 [id] integer identity (1,1) not null,
 [nombre] varchar(150) not null,
@@ -34,7 +34,7 @@ constraint [PK_Carnet_trabajadores] primary key([id])
 )
 go
 
-/*añadir tabla tipo estacionamiento*/
+/*aÃ±adir tabla tipo estacionamiento*/
 create table Tipo_estacionamiento(
 [id] integer identity (1,1) not null,
 [nombre] varchar(150) not null,
@@ -43,7 +43,7 @@ constraint [PK_Tipo_estacionamiento] primary key([id])
 )
 go
 
-/*añadir tabla secciones de estacionamiento*/
+/*aÃ±adir tabla secciones de estacionamiento*/
 create table Secciones_estacion(
 [id] integer identity (1,1) not null,
 [nombre] varchar (150) not null,
@@ -52,7 +52,7 @@ constraint [PK_Secciones_estacion] primary key([id])
 )
 go
 
-/*añadir tabla estacionamiento*/
+/*aÃ±adir tabla estacionamiento*/
 create table Estacion(
 [id] integer identity (1,1) not null,
 [correlativo] varchar (50) not null,
@@ -64,7 +64,7 @@ constraint [FK_tipo_estacion] foreign key ([id_tipo_estacion]) references [Tipo_
 )
 go
 
-/*añadir ticket*/
+/*aÃ±adir ticket*/
 create table Ticket(
 [id] integer identity (1,1) not null,
 [cod_QR] varchar(100) not null unique,
@@ -78,7 +78,7 @@ constraint [FK_estacion] foreign key ([id_estacion]) references [Estacion] ([id]
 )
 go
 
-/*añadir tabla ticket_carnet*/
+/*aÃ±adir tabla ticket_carnet*/
 create table Detalle_ticket_trabajador(
 [id] integer identity (1,1) not null,
 [id_trabajador] integer not null,
@@ -105,5 +105,4 @@ go
 /*Agregar usuario admin por defecto en el sistema password = 123456*/ 
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
-Select id,nombre,username,tipo_user,estado from Usuarios where not username = 'admin' AND username like '%jo%' OR nombre like '%car%' ;
 select * from Usuarios;
