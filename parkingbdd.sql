@@ -69,7 +69,7 @@ create table Ticket(
 [id] integer identity (1,1) not null,
 [cod_QR] varchar(100) not null unique,
 [hora_entrada] time(0) not null,
-[hora_salida] time (0) not null,
+[hora_salida] time (0) null,
 [id_estacion] integer not null,
 [estado] bit not null,
 [img_QR] image not null,
@@ -105,4 +105,5 @@ go
 /*Agregar usuario admin por defecto en el sistema password = 123456*/ 
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
-Select * from Usuarios;
+Select id,nombre,username,tipo_user,estado from Usuarios where not username = 'admin' AND username like '%jo%' OR nombre like '%car%' ;
+select * from Usuarios;

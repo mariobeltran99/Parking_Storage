@@ -33,11 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.mostrar2 = new System.Windows.Forms.PictureBox();
-            this.mostrar1 = new System.Windows.Forms.PictureBox();
             this.txtverificar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnRegistrar = new System.Windows.Forms.Button();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.cmbtusuario = new System.Windows.Forms.ComboBox();
             this.txtusuario = new System.Windows.Forms.TextBox();
@@ -47,20 +44,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvusuarios = new System.Windows.Forms.DataGridView();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvactualizacion = new System.Windows.Forms.DataGridView();
+            this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.mostrar2 = new System.Windows.Forms.PictureBox();
+            this.mostrar1 = new System.Windows.Forms.PictureBox();
+            this.btnRegistrar = new System.Windows.Forms.Button();
             this.btndesactivar = new System.Windows.Forms.Button();
             this.btneditar = new System.Windows.Forms.Button();
-            this.dgvusuarios = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnbuscar = new System.Windows.Forms.Button();
-            this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvactualizacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -76,6 +80,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(39, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -116,33 +121,9 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingrese los siguientes datos";
             // 
-            // mostrar2
-            // 
-            this.mostrar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mostrar2.Image = global::ParkingStorage_System.Properties.Resources.powoff;
-            this.mostrar2.Location = new System.Drawing.Point(545, 164);
-            this.mostrar2.Name = "mostrar2";
-            this.mostrar2.Size = new System.Drawing.Size(22, 22);
-            this.mostrar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.mostrar2.TabIndex = 12;
-            this.mostrar2.TabStop = false;
-            this.mostrar2.Click += new System.EventHandler(this.mostrar2_Click);
-            // 
-            // mostrar1
-            // 
-            this.mostrar1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mostrar1.Image = global::ParkingStorage_System.Properties.Resources.powoff;
-            this.mostrar1.Location = new System.Drawing.Point(545, 133);
-            this.mostrar1.Name = "mostrar1";
-            this.mostrar1.Size = new System.Drawing.Size(22, 22);
-            this.mostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.mostrar1.TabIndex = 11;
-            this.mostrar1.TabStop = false;
-            this.mostrar1.Click += new System.EventHandler(this.mostrar1_Click);
-            // 
             // txtverificar
             // 
-            this.txtverificar.Location = new System.Drawing.Point(319, 161);
+            this.txtverificar.Location = new System.Drawing.Point(319, 197);
             this.txtverificar.Name = "txtverificar";
             this.txtverificar.PasswordChar = '*';
             this.txtverificar.Size = new System.Drawing.Size(220, 25);
@@ -151,31 +132,15 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(117, 164);
+            this.label7.Location = new System.Drawing.Point(117, 200);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(158, 17);
             this.label7.TabIndex = 9;
             this.label7.Text = "Verificar Contraseña:";
             // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.user;
-            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrar.Location = new System.Drawing.Point(332, 259);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
-            this.btnRegistrar.TabIndex = 8;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
             // txtpassword
             // 
-            this.txtpassword.Location = new System.Drawing.Point(319, 130);
+            this.txtpassword.Location = new System.Drawing.Point(319, 161);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.PasswordChar = '*';
             this.txtpassword.Size = new System.Drawing.Size(220, 25);
@@ -188,7 +153,7 @@
             this.cmbtusuario.Items.AddRange(new object[] {
             "Administrador",
             "Secretaria"});
-            this.cmbtusuario.Location = new System.Drawing.Point(319, 192);
+            this.cmbtusuario.Location = new System.Drawing.Point(319, 130);
             this.cmbtusuario.Name = "cmbtusuario";
             this.cmbtusuario.Size = new System.Drawing.Size(220, 25);
             this.cmbtusuario.TabIndex = 6;
@@ -212,7 +177,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(146, 195);
+            this.label5.Location = new System.Drawing.Point(146, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 17);
             this.label5.TabIndex = 3;
@@ -221,7 +186,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(183, 133);
+            this.label4.Location = new System.Drawing.Point(183, 164);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 17);
             this.label4.TabIndex = 2;
@@ -250,7 +215,7 @@
             this.tabPage2.Controls.Add(this.btndesactivar);
             this.tabPage2.Controls.Add(this.btneditar);
             this.tabPage2.Controls.Add(this.dgvusuarios);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.txtbuscar);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.btnbuscar);
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
@@ -260,6 +225,105 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Búsqueda, Edición y Eliminación";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgvusuarios
+            // 
+            this.dgvusuarios.AllowUserToAddRows = false;
+            this.dgvusuarios.AllowUserToDeleteRows = false;
+            this.dgvusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvusuarios.Location = new System.Drawing.Point(6, 111);
+            this.dgvusuarios.Name = "dgvusuarios";
+            this.dgvusuarios.ReadOnly = true;
+            this.dgvusuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvusuarios.Size = new System.Drawing.Size(853, 300);
+            this.dgvusuarios.TabIndex = 10;
+            this.dgvusuarios.DoubleClick += new System.EventHandler(this.dgvusuarios_DoubleClick);
+            // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Location = new System.Drawing.Point(37, 61);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(240, 25);
+            this.txtbuscar.TabIndex = 1;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(323, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Búsqueda por nombre o nombre de usuario";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgvactualizacion);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(865, 417);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Ver Últimos Registros";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvactualizacion
+            // 
+            this.dgvactualizacion.AllowUserToAddRows = false;
+            this.dgvactualizacion.AllowUserToDeleteRows = false;
+            this.dgvactualizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvactualizacion.Location = new System.Drawing.Point(13, 78);
+            this.dgvactualizacion.Name = "dgvactualizacion";
+            this.dgvactualizacion.ReadOnly = true;
+            this.dgvactualizacion.Size = new System.Drawing.Size(828, 320);
+            this.dgvactualizacion.TabIndex = 0;
+            // 
+            // toolmensaje
+            // 
+            this.toolmensaje.BackColor = System.Drawing.Color.RoyalBlue;
+            this.toolmensaje.ForeColor = System.Drawing.Color.White;
+            this.toolmensaje.IsBalloon = true;
+            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolmensaje.ToolTipTitle = "Ayuda";
+            // 
+            // mostrar2
+            // 
+            this.mostrar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mostrar2.Image = global::ParkingStorage_System.Properties.Resources.powoff;
+            this.mostrar2.Location = new System.Drawing.Point(545, 200);
+            this.mostrar2.Name = "mostrar2";
+            this.mostrar2.Size = new System.Drawing.Size(22, 22);
+            this.mostrar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mostrar2.TabIndex = 12;
+            this.mostrar2.TabStop = false;
+            this.mostrar2.Click += new System.EventHandler(this.mostrar2_Click);
+            // 
+            // mostrar1
+            // 
+            this.mostrar1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mostrar1.Image = global::ParkingStorage_System.Properties.Resources.powoff;
+            this.mostrar1.Location = new System.Drawing.Point(545, 161);
+            this.mostrar1.Name = "mostrar1";
+            this.mostrar1.Size = new System.Drawing.Size(22, 22);
+            this.mostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mostrar1.TabIndex = 11;
+            this.mostrar1.TabStop = false;
+            this.mostrar1.Click += new System.EventHandler(this.mostrar1_Click);
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.user;
+            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegistrar.Location = new System.Drawing.Point(332, 259);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
+            this.btnRegistrar.TabIndex = 8;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btndesactivar
             // 
@@ -275,6 +339,7 @@
             this.btndesactivar.TabIndex = 12;
             this.btndesactivar.Text = "Desactivar";
             this.btndesactivar.UseVisualStyleBackColor = false;
+            this.btndesactivar.Click += new System.EventHandler(this.btndesactivar_Click);
             // 
             // btneditar
             // 
@@ -290,33 +355,7 @@
             this.btneditar.TabIndex = 11;
             this.btneditar.Text = "Editar";
             this.btneditar.UseVisualStyleBackColor = false;
-            // 
-            // dgvusuarios
-            // 
-            this.dgvusuarios.AllowUserToAddRows = false;
-            this.dgvusuarios.AllowUserToDeleteRows = false;
-            this.dgvusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvusuarios.Location = new System.Drawing.Point(6, 111);
-            this.dgvusuarios.Name = "dgvusuarios";
-            this.dgvusuarios.ReadOnly = true;
-            this.dgvusuarios.Size = new System.Drawing.Size(853, 300);
-            this.dgvusuarios.TabIndex = 10;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(37, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 25);
-            this.textBox1.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 22);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(323, 17);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Búsqueda por nombre o nombre de usuario";
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
             // 
             // btnbuscar
             // 
@@ -332,14 +371,7 @@
             this.btnbuscar.TabIndex = 9;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
-            // 
-            // toolmensaje
-            // 
-            this.toolmensaje.BackColor = System.Drawing.Color.RoyalBlue;
-            this.toolmensaje.ForeColor = System.Drawing.Color.White;
-            this.toolmensaje.IsBalloon = true;
-            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolmensaje.ToolTipTitle = "Ayuda";
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // Usuarios
             // 
@@ -359,11 +391,13 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvactualizacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,12 +423,14 @@
         private System.Windows.Forms.Button btneditar;
         private System.Windows.Forms.DataGridView dgvusuarios;
         private System.Windows.Forms.Button btnbuscar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbuscar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtverificar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox mostrar1;
         private System.Windows.Forms.PictureBox mostrar2;
         private System.Windows.Forms.ToolTip toolmensaje;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dgvactualizacion;
     }
 }
