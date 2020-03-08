@@ -92,9 +92,10 @@ namespace ParkingStorage_System
                     }
                     else
                     {
-                        sec.Nombre = txtnombre.Text.ToUpper();
-                        sec.Descripcion = txtdescripcion.Text;
-                        int bus = sec.existeZona(sec.Nombre, sec.Descripcion);
+                        Clases.Secciones_Estacionamiento secci = new Clases.Secciones_Estacionamiento();
+                        secci.Nombre = txtnombre.Text.ToUpper();
+                        secci.Descripcion = txtdescripcion.Text;
+                        int bus = sec.existeZona(secci.Nombre, secci.Descripcion);
                         if (bus == 0)
                         {
                             info.label2.Text = "Ya existe esta zona, \nIngrese otra zona diferente";
@@ -115,7 +116,7 @@ namespace ParkingStorage_System
                             {
 
                             }
-                            lista_actual.Add(sec);
+                            lista_actual.Add(secci);
                             mostraractualizaciones();
                             actualizarTabla();
                             limpiar();

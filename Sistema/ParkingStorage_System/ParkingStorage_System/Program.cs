@@ -16,7 +16,7 @@ namespace ParkingStorage_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Zonas());
+            Application.Run(new Espacios());
         }
     }
 }

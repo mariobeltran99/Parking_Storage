@@ -111,3 +111,8 @@ select * from Usuarios;
 /*secciones estacion*/
 insert into Secciones_estacion (nombre,descripcion) values ('norte poniente','ubicado en la primera planta del edificio');
 select * from Secciones_estacion;
+
+/*tipos de estacionamiento*/
+
+insert into Tipo_estacionamiento (nombre,descripcion) values('empleados', 'Estacionamiento para los trabajadores');
+select * from Tipo_estacionamiento
