@@ -418,7 +418,7 @@ namespace ParkingStorage_System
                     }
                     edicion = true;
                     btnRegistrar.Text = "Modificar";
-                    tabControl1.TabIndex = 0;
+                    tabControl1.SelectedIndex = 0;
                     con.cerrarConnection();
                 }
                 else if (result == DialogResult.Cancel)
@@ -508,7 +508,7 @@ namespace ParkingStorage_System
             }
             else
             {
-                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la edición del registro";
+                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar el cambio de estado del registro";
                 result = advert.ShowDialog();
                 if (result == DialogResult.OK)
                 {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -37,24 +38,30 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btndesactivar = new System.Windows.Forms.Button();
+            this.btneliminar = new System.Windows.Forms.Button();
             this.btneditar = new System.Windows.Forms.Button();
-            this.dgvusuarios = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dgvzonas = new System.Windows.Forms.DataGridView();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnbuscar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvactual = new System.Windows.Forms.DataGridView();
+            this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvzonas)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvactual)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(39, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -101,6 +108,7 @@
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(220, 25);
             this.txtnombre.TabIndex = 9;
+            this.txtnombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnombre_KeyPress);
             // 
             // btnRegistrar
             // 
@@ -116,6 +124,7 @@
             this.btnRegistrar.TabIndex = 8;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // label5
             // 
@@ -137,10 +146,10 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.btndesactivar);
+            this.tabPage2.Controls.Add(this.btneliminar);
             this.tabPage2.Controls.Add(this.btneditar);
-            this.tabPage2.Controls.Add(this.dgvusuarios);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.dgvzonas);
+            this.tabPage2.Controls.Add(this.txtbuscar);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.btnbuscar);
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
@@ -151,20 +160,21 @@
             this.tabPage2.Text = "Búsqueda, Edición y Eliminación";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // btndesactivar
+            // btneliminar
             // 
-            this.btndesactivar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btndesactivar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btndesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btndesactivar.ForeColor = System.Drawing.Color.White;
-            this.btndesactivar.Image = global::ParkingStorage_System.Properties.Resources.dele;
-            this.btndesactivar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndesactivar.Location = new System.Drawing.Point(664, 50);
-            this.btndesactivar.Name = "btndesactivar";
-            this.btndesactivar.Size = new System.Drawing.Size(179, 45);
-            this.btndesactivar.TabIndex = 12;
-            this.btndesactivar.Text = "Eliminar";
-            this.btndesactivar.UseVisualStyleBackColor = false;
+            this.btneliminar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btneliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneliminar.ForeColor = System.Drawing.Color.White;
+            this.btneliminar.Image = global::ParkingStorage_System.Properties.Resources.dele;
+            this.btneliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btneliminar.Location = new System.Drawing.Point(664, 50);
+            this.btneliminar.Name = "btneliminar";
+            this.btneliminar.Size = new System.Drawing.Size(179, 45);
+            this.btneliminar.TabIndex = 12;
+            this.btneliminar.Text = "Eliminar";
+            this.btneliminar.UseVisualStyleBackColor = false;
+            this.btneliminar.Click += new System.EventHandler(this.btneliminar_Click);
             // 
             // btneditar
             // 
@@ -180,24 +190,28 @@
             this.btneditar.TabIndex = 11;
             this.btneditar.Text = "Editar";
             this.btneditar.UseVisualStyleBackColor = false;
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
             // 
-            // dgvusuarios
+            // dgvzonas
             // 
-            this.dgvusuarios.AllowUserToAddRows = false;
-            this.dgvusuarios.AllowUserToDeleteRows = false;
-            this.dgvusuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvusuarios.Location = new System.Drawing.Point(6, 111);
-            this.dgvusuarios.Name = "dgvusuarios";
-            this.dgvusuarios.ReadOnly = true;
-            this.dgvusuarios.Size = new System.Drawing.Size(853, 300);
-            this.dgvusuarios.TabIndex = 10;
+            this.dgvzonas.AllowUserToAddRows = false;
+            this.dgvzonas.AllowUserToDeleteRows = false;
+            this.dgvzonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvzonas.Location = new System.Drawing.Point(6, 101);
+            this.dgvzonas.Name = "dgvzonas";
+            this.dgvzonas.ReadOnly = true;
+            this.dgvzonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvzonas.Size = new System.Drawing.Size(853, 300);
+            this.dgvzonas.TabIndex = 10;
+            this.dgvzonas.DoubleClick += new System.EventHandler(this.dgvzonas_DoubleClick);
             // 
-            // textBox1
+            // txtbuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 25);
-            this.textBox1.TabIndex = 1;
+            this.txtbuscar.Location = new System.Drawing.Point(37, 61);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(240, 25);
+            this.txtbuscar.TabIndex = 1;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
             // 
             // label6
             // 
@@ -222,6 +236,7 @@
             this.btnbuscar.TabIndex = 9;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // label1
             // 
@@ -231,6 +246,34 @@
             this.label1.Size = new System.Drawing.Size(198, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "Zonas de Estacionamiento";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgvactual);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(865, 417);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Ver Últimos Registros";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvactual
+            // 
+            this.dgvactual.AllowUserToAddRows = false;
+            this.dgvactual.AllowUserToDeleteRows = false;
+            this.dgvactual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvactual.Location = new System.Drawing.Point(19, 108);
+            this.dgvactual.Name = "dgvactual";
+            this.dgvactual.ReadOnly = true;
+            this.dgvactual.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvactual.Size = new System.Drawing.Size(833, 289);
+            this.dgvactual.TabIndex = 0;
+            // 
+            // toolmensaje
+            // 
+            this.toolmensaje.IsBalloon = true;
+            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolmensaje.ToolTipTitle = "Ayuda";
             // 
             // Zonas
             // 
@@ -251,7 +294,9 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvzonas)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvactual)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,14 +311,17 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btndesactivar;
+        private System.Windows.Forms.Button btneliminar;
         private System.Windows.Forms.Button btneditar;
-        private System.Windows.Forms.DataGridView dgvusuarios;
+        private System.Windows.Forms.DataGridView dgvzonas;
         private System.Windows.Forms.Button btnbuscar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbuscar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtnombre;
         private System.Windows.Forms.RichTextBox txtdescripcion;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dgvactual;
+        private System.Windows.Forms.ToolTip toolmensaje;
     }
 }

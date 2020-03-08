@@ -33,8 +33,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.mostrar2 = new System.Windows.Forms.PictureBox();
+            this.mostrar1 = new System.Windows.Forms.PictureBox();
             this.txtverificar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnRegistrar = new System.Windows.Forms.Button();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.cmbtusuario = new System.Windows.Forms.ComboBox();
             this.txtusuario = new System.Windows.Forms.TextBox();
@@ -44,27 +47,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btndesactivar = new System.Windows.Forms.Button();
+            this.btneditar = new System.Windows.Forms.Button();
             this.dgvusuarios = new System.Windows.Forms.DataGridView();
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnbuscar = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvactualizacion = new System.Windows.Forms.DataGridView();
             this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.mostrar2 = new System.Windows.Forms.PictureBox();
-            this.mostrar1 = new System.Windows.Forms.PictureBox();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.btndesactivar = new System.Windows.Forms.Button();
-            this.btneditar = new System.Windows.Forms.Button();
-            this.btnbuscar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvactualizacion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -121,6 +121,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingrese los siguientes datos";
             // 
+            // mostrar2
+            // 
+            this.mostrar2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mostrar2.Image = global::ParkingStorage_System.Properties.Resources.powoff;
+            this.mostrar2.Location = new System.Drawing.Point(545, 200);
+            this.mostrar2.Name = "mostrar2";
+            this.mostrar2.Size = new System.Drawing.Size(22, 22);
+            this.mostrar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mostrar2.TabIndex = 12;
+            this.mostrar2.TabStop = false;
+            this.mostrar2.Click += new System.EventHandler(this.mostrar2_Click);
+            // 
+            // mostrar1
+            // 
+            this.mostrar1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.mostrar1.Image = global::ParkingStorage_System.Properties.Resources.powoff;
+            this.mostrar1.Location = new System.Drawing.Point(545, 161);
+            this.mostrar1.Name = "mostrar1";
+            this.mostrar1.Size = new System.Drawing.Size(22, 22);
+            this.mostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.mostrar1.TabIndex = 11;
+            this.mostrar1.TabStop = false;
+            this.mostrar1.Click += new System.EventHandler(this.mostrar1_Click);
+            // 
             // txtverificar
             // 
             this.txtverificar.Location = new System.Drawing.Point(319, 197);
@@ -137,6 +161,22 @@
             this.label7.Size = new System.Drawing.Size(158, 17);
             this.label7.TabIndex = 9;
             this.label7.Text = "Verificar Contraseña:";
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.user;
+            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegistrar.Location = new System.Drawing.Point(332, 259);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
+            this.btnRegistrar.TabIndex = 8;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtpassword
             // 
@@ -226,6 +266,38 @@
             this.tabPage2.Text = "Búsqueda, Edición y Eliminación";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btndesactivar
+            // 
+            this.btndesactivar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btndesactivar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btndesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btndesactivar.ForeColor = System.Drawing.Color.White;
+            this.btndesactivar.Image = global::ParkingStorage_System.Properties.Resources.download;
+            this.btndesactivar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btndesactivar.Location = new System.Drawing.Point(664, 50);
+            this.btndesactivar.Name = "btndesactivar";
+            this.btndesactivar.Size = new System.Drawing.Size(179, 45);
+            this.btndesactivar.TabIndex = 12;
+            this.btndesactivar.Text = "Estado";
+            this.btndesactivar.UseVisualStyleBackColor = false;
+            this.btndesactivar.Click += new System.EventHandler(this.btndesactivar_Click);
+            // 
+            // btneditar
+            // 
+            this.btneditar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btneditar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btneditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btneditar.ForeColor = System.Drawing.Color.White;
+            this.btneditar.Image = global::ParkingStorage_System.Properties.Resources.pencil;
+            this.btneditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btneditar.Location = new System.Drawing.Point(484, 50);
+            this.btneditar.Name = "btneditar";
+            this.btneditar.Size = new System.Drawing.Size(162, 45);
+            this.btneditar.TabIndex = 11;
+            this.btneditar.Text = "Editar";
+            this.btneditar.UseVisualStyleBackColor = false;
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
+            // 
             // dgvusuarios
             // 
             this.dgvusuarios.AllowUserToAddRows = false;
@@ -256,6 +328,22 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Búsqueda por nombre o nombre de usuario";
             // 
+            // btnbuscar
+            // 
+            this.btnbuscar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnbuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnbuscar.ForeColor = System.Drawing.Color.White;
+            this.btnbuscar.Image = global::ParkingStorage_System.Properties.Resources.loupe;
+            this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnbuscar.Location = new System.Drawing.Point(300, 50);
+            this.btnbuscar.Name = "btnbuscar";
+            this.btnbuscar.Size = new System.Drawing.Size(162, 45);
+            this.btnbuscar.TabIndex = 9;
+            this.btnbuscar.Text = "Buscar";
+            this.btnbuscar.UseVisualStyleBackColor = false;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dgvactualizacion);
@@ -274,6 +362,7 @@
             this.dgvactualizacion.Location = new System.Drawing.Point(13, 78);
             this.dgvactualizacion.Name = "dgvactualizacion";
             this.dgvactualizacion.ReadOnly = true;
+            this.dgvactualizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvactualizacion.Size = new System.Drawing.Size(828, 320);
             this.dgvactualizacion.TabIndex = 0;
             // 
@@ -284,94 +373,6 @@
             this.toolmensaje.IsBalloon = true;
             this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolmensaje.ToolTipTitle = "Ayuda";
-            // 
-            // mostrar2
-            // 
-            this.mostrar2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mostrar2.Image = global::ParkingStorage_System.Properties.Resources.powoff;
-            this.mostrar2.Location = new System.Drawing.Point(545, 200);
-            this.mostrar2.Name = "mostrar2";
-            this.mostrar2.Size = new System.Drawing.Size(22, 22);
-            this.mostrar2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.mostrar2.TabIndex = 12;
-            this.mostrar2.TabStop = false;
-            this.mostrar2.Click += new System.EventHandler(this.mostrar2_Click);
-            // 
-            // mostrar1
-            // 
-            this.mostrar1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.mostrar1.Image = global::ParkingStorage_System.Properties.Resources.powoff;
-            this.mostrar1.Location = new System.Drawing.Point(545, 161);
-            this.mostrar1.Name = "mostrar1";
-            this.mostrar1.Size = new System.Drawing.Size(22, 22);
-            this.mostrar1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.mostrar1.TabIndex = 11;
-            this.mostrar1.TabStop = false;
-            this.mostrar1.Click += new System.EventHandler(this.mostrar1_Click);
-            // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.user;
-            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrar.Location = new System.Drawing.Point(332, 259);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
-            this.btnRegistrar.TabIndex = 8;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
-            // btndesactivar
-            // 
-            this.btndesactivar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btndesactivar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btndesactivar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btndesactivar.ForeColor = System.Drawing.Color.White;
-            this.btndesactivar.Image = global::ParkingStorage_System.Properties.Resources.download;
-            this.btndesactivar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndesactivar.Location = new System.Drawing.Point(664, 50);
-            this.btndesactivar.Name = "btndesactivar";
-            this.btndesactivar.Size = new System.Drawing.Size(179, 45);
-            this.btndesactivar.TabIndex = 12;
-            this.btndesactivar.Text = "Desactivar";
-            this.btndesactivar.UseVisualStyleBackColor = false;
-            this.btndesactivar.Click += new System.EventHandler(this.btndesactivar_Click);
-            // 
-            // btneditar
-            // 
-            this.btneditar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btneditar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btneditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btneditar.ForeColor = System.Drawing.Color.White;
-            this.btneditar.Image = global::ParkingStorage_System.Properties.Resources.pencil;
-            this.btneditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btneditar.Location = new System.Drawing.Point(484, 50);
-            this.btneditar.Name = "btneditar";
-            this.btneditar.Size = new System.Drawing.Size(162, 45);
-            this.btneditar.TabIndex = 11;
-            this.btneditar.Text = "Editar";
-            this.btneditar.UseVisualStyleBackColor = false;
-            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
-            // 
-            // btnbuscar
-            // 
-            this.btnbuscar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnbuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbuscar.ForeColor = System.Drawing.Color.White;
-            this.btnbuscar.Image = global::ParkingStorage_System.Properties.Resources.loupe;
-            this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnbuscar.Location = new System.Drawing.Point(300, 50);
-            this.btnbuscar.Name = "btnbuscar";
-            this.btnbuscar.Size = new System.Drawing.Size(162, 45);
-            this.btnbuscar.TabIndex = 9;
-            this.btnbuscar.Text = "Buscar";
-            this.btnbuscar.UseVisualStyleBackColor = false;
-            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // Usuarios
             // 
@@ -391,13 +392,13 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvusuarios)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvactualizacion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mostrar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

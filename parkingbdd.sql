@@ -58,6 +58,7 @@ create table Estacion(
 [correlativo] varchar (50) not null,
 [id_seccion] integer not null,
 [id_tipo_estacion] integer not null,
+[estado] bit not null,
 constraint [PK_estacion] primary key([id]),
 constraint [FK_seccion] foreign key ([id_seccion]) references [Secciones_estacion] ([id]),
 constraint [FK_tipo_estacion] foreign key ([id_tipo_estacion]) references [Tipo_estacionamiento] ([id])
@@ -106,3 +107,7 @@ go
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
 select * from Usuarios;
+
+/*secciones estacion*/
+insert into Secciones_estacion (nombre,descripcion) values ('norte poniente','ubicado en la primera planta del edificio');
+select * from Secciones_estacion;
