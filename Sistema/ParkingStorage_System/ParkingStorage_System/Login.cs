@@ -17,7 +17,7 @@ namespace ParkingStorage_System
         DialogResult result = new DialogResult();
         AAdvertencia advert = new AAdvertencia();
         AError error = new AError();
-        AInfo info = new AInfo();
+        AInfo info = new AInfo();       
         private bool ver = false;
         public Login()
         {

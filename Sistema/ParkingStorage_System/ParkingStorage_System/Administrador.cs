@@ -78,6 +78,7 @@ namespace ParkingStorage_System
                 this.panelcontenedor.Controls.Add(formulariohijo);
                 this.panelcontenedor.Tag = formulariohijo;
                 formulariohijo.Show();
+                
             }
             else
             {
