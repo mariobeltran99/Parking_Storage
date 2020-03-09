@@ -243,18 +243,19 @@ namespace ParkingStorage_System
                         {
                             if (txtpassword.Text == txtverificar.Text)
                             {
-                                users.Nombre = txtnombre.Text;
-                                users.NombreUsuario = txtusuario.Text;
-                                users.Contra = txtpassword.Text;
+                                Usuario uster = new Usuario();
+                                uster.Nombre = txtnombre.Text;
+                                uster.NombreUsuario = txtusuario.Text;
+                                uster.Contra = txtpassword.Text;
                                 if (cmbtusuario.SelectedIndex == 0)
                                 {
-                                    users.TipoUsuario = "A";
+                                    uster.TipoUsuario = "A";
                                 }
                                 else
                                 {
-                                    users.TipoUsuario = "S";
+                                    uster.TipoUsuario = "S";
                                 }
-                                int busq = users.existeUsuario(users.Nombre, users.NombreUsuario, users.Contra, users.TipoUsuario);
+                                int busq = users.existeUsuario(uster.Nombre, uster.NombreUsuario, uster.Contra, uster.TipoUsuario);
                                 //dato de la consulta
                                 if (busq == 0)
                                 {
@@ -276,16 +277,16 @@ namespace ParkingStorage_System
                                     {
 
                                     }
-                                    if (users.TipoUsuario == "A")
+                                    if (uster.TipoUsuario == "A")
                                     {
-                                        users.TipoUsuario = "Administrador";
+                                        uster.TipoUsuario = "Administrador";
                                     }
                                     else
                                     {
-                                        users.TipoUsuario = "Secretaria";
+                                        uster.TipoUsuario = "Secretaria";
                                     }
-                                    users.Estado = "Activo";
-                                    lista_actual.Add(users);
+                                    uster.Estado = "Activo";
+                                    lista_actual.Add(uster);
                                     mostraractualizaciones();
                                     actualizarTabla();
                                     limpiar();
@@ -418,7 +419,7 @@ namespace ParkingStorage_System
                     }
                     edicion = true;
                     btnRegistrar.Text = "Modificar";
-                    tabControl1.TabIndex = 0;
+                    tabControl1.SelectedIndex = 0;
                     con.cerrarConnection();
                 }
                 else if (result == DialogResult.Cancel)
@@ -508,7 +509,7 @@ namespace ParkingStorage_System
             }
             else
             {
-                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la edición del registro";
+                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar el cambio de estado del registro";
                 result = advert.ShowDialog();
                 if (result == DialogResult.OK)
                 {
