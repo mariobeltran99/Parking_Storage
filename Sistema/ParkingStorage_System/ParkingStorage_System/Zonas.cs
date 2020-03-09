@@ -34,14 +34,7 @@ namespace ParkingStorage_System
 
         private void txtnombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsSeparator(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                e.Handled = false;
-            }
+           
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)

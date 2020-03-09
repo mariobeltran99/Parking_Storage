@@ -24,8 +24,8 @@ create table Carnet_trabajadores(
 [nombre] varchar(150) not null,
 [apellido] varchar(150) not null,
 [dui] varchar(11) not null unique,
-[fecha_registro] date not null,
-[fecha_vencimiento] date not null,
+[fecha_registro] varchar(50) not null,
+[fecha_vencimiento] varchar(50) not null,
 [cod_parqueo] varchar(150) not null unique,
 [tipo_trabajador] varchar(150) not null,
 [estado] bit not null,
@@ -69,8 +69,9 @@ go
 create table Ticket(
 [id] integer identity (1,1) not null,
 [cod_QR] varchar(100) not null unique,
-[hora_entrada] time(0) not null,
-[hora_salida] time (0) null,
+[fecha] varchar(50) not null,
+[hora_entrada] varchar(50) not null,
+[hora_salida] varchar(50) null,
 [id_estacion] integer not null,
 [estado] bit not null,
 [img_QR] image not null,
@@ -120,8 +121,8 @@ select * from Tipo_estacionamiento
 
 /*Estacion*/
 select * from Estacion;
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0001P','2','2',1);
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0002P','2','2',1);
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0003P','2','2',1);
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0004P','2','2',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0001P','1','1',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0002P','1','1',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0003P','1','1',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0004P','1','1',1);
 select es.id,es.correlativo, sec.nombre as 'Seccion', est.nombre as 'Tipo',es.estado as 'Estado' From Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id
