@@ -215,7 +215,7 @@ namespace ParkingStorage_System
                 {
                     us.Exid = Convert.ToString(us.obternerID(us.Nombre.ToString()));
                     us.eliminar(us.Exid);
-                    info.label2.Text = "Tipo de Estacionamiento \nElimanada Correctamente";
+                    info.label2.Text = "Tipo de Estacionamiento \nEliminada Correctamente";
                     info.pictureBox2.Image = Properties.Resources.check;
                     result = info.ShowDialog();
                     if (result == DialogResult.OK)
