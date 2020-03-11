@@ -126,3 +126,5 @@ insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0
 insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0003P','1','1',1);
 insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0004P','1','1',1);
 select es.id,es.correlativo, sec.nombre as 'Seccion', est.nombre as 'Tipo',es.estado as 'Estado' From Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id
+
+select * from Carnet_trabajadores

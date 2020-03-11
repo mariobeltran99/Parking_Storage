@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using ZXing;
 
 namespace ParkingStorage_System.Clases
 {
@@ -20,6 +24,7 @@ namespace ParkingStorage_System.Clases
         private string tipoTrabajador;
         private string estado;
         private byte[] imagen;
+        private string exid;
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
@@ -31,6 +36,8 @@ namespace ParkingStorage_System.Clases
         public string TipoTrabajador { get => tipoTrabajador; set => tipoTrabajador = value; }
         public string Estado { get => estado; set => estado = value; }
         public byte[] Imagen { get => imagen; set => imagen = value; }
+        public string Exid { get => exid; set => exid = value; }
+
         //existe este carnet trabajador
         public int existeCarnet(string name, string ape, string duis,string fechaR,string fechaVe,string codpar,string tipot, byte[] img)
         {
@@ -88,6 +95,103 @@ namespace ParkingStorage_System.Clases
             catch (Exception)
             {
                 return 0;
+            }
+        }
+        //generar codigo de carnet
+        public string CodCarnet(string nomb, string ape, string tipo)
+        {
+            string PrimerCarac = nomb.Substring(0, 1).ToUpper();
+            string SegundCarac = ape.Substring(0, 1).ToUpper();
+            string TercerCarac = tipo.Substring(0, 1).ToUpper();
+            Random numer = new Random();
+            int correlat = numer.Next(100000, 999999);
+            string codigo = PrimerCarac + SegundCarac + TercerCarac + Convert.ToString(correlat);
+            return codigo;
+        }
+        //generar la img con el cod
+        public bool CrearImg(string codec)
+        {
+            try
+            {
+                BarcodeWriter br = new BarcodeWriter();
+                br.Format = BarcodeFormat.QR_CODE;
+                Bitmap bm = new Bitmap(br.Write(codec), 300, 300);
+                string dir = @"C:\Parking_Storage\CarnetQR\";
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                string dirimagen = @"C:\Parking_Storage\CarnetQR\" + codec + ".png";
+                if (!File.Exists(dirimagen))
+                {
+                    bm.Save(dirimagen);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }          
+        }
+        //pasar la imagen a bytes
+        public byte[] Imgreg(string codtr)
+        {
+            string dirimagen = @"C:\Parking_Storage\CarnetQR\" + codtr + ".png";
+            byte[] imgbyte = File.ReadAllBytes(dirimagen);
+            return imgbyte;           
+        }
+        //obtener fecha vencimiento
+        public string feVenc()
+        {
+            string dia = DateTime.Now.Day.ToString();
+            string mes = DateTime.Now.Month.ToString();
+            string year = Convert.ToString((DateTime.Now.Year) + 1);
+            return dia + "/" + mes + "/" + year;
+        }
+        //mostrar datos
+        public List<Clases.Carnet> read()
+        {
+            List<Clases.Carnet> lista = new List<Clases.Carnet>();
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT id,nombre,apellido,dui,fecha_registro,fecha_vencimiento,cod_parqueo,tipo_trabajador,estado FROM Carnet_trabajadores";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                lector = comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Clases.Carnet aux = new Clases.Carnet();
+                    aux.exid = lector["id"].ToString();
+                    aux.nombre = lector["nombre"].ToString();
+                    aux.apellido = lector["apellido"].ToString();
+                    aux.dui = lector["dui"].ToString();
+                    aux.fechaRegistro = lector["fecha_registro"].ToString();
+                    aux.fechaVencimiento = lector["fecha_vencimiento"].ToString();
+                    aux.codigoParqueo = lector["cod_parqueo"].ToString();
+                    aux.tipoTrabajador = lector["tipo_trabajador"].ToString();
+                    if (lector["estado"].ToString() == "True")
+                    {
+                        aux.estado = "Activo";
+                    }
+                    else
+                    {
+                        aux.estado = "Inactivo";
+                    }
+                    lista.Add(aux);
+                }
+                lector.Close();
+                return lista;
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
             }
         }
     }
