@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -44,15 +45,20 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btndescactivar = new System.Windows.Forms.Button();
             this.btneditar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.dgvcarnet = new System.Windows.Forms.DataGridView();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnbuscar = new System.Windows.Forms.Button();
+            this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvactual = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcarnet)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvactual)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,6 +75,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(38, 29);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -119,6 +126,7 @@
             this.btnRegistrar.TabIndex = 8;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtdui
             // 
@@ -126,9 +134,11 @@
             this.txtdui.Name = "txtdui";
             this.txtdui.Size = new System.Drawing.Size(220, 25);
             this.txtdui.TabIndex = 7;
+            this.txtdui.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtdui_KeyPress);
             // 
             // cmbttrabajador
             // 
+            this.cmbttrabajador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbttrabajador.FormattingEnabled = true;
             this.cmbttrabajador.Items.AddRange(new object[] {
             "Empleado",
@@ -144,6 +154,7 @@
             this.txtapellido.Name = "txtapellido";
             this.txtapellido.Size = new System.Drawing.Size(220, 25);
             this.txtapellido.TabIndex = 5;
+            this.txtapellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtapellido_KeyPress);
             // 
             // txtnombre
             // 
@@ -151,6 +162,7 @@
             this.txtnombre.Name = "txtnombre";
             this.txtnombre.Size = new System.Drawing.Size(220, 25);
             this.txtnombre.TabIndex = 4;
+            this.txtnombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnombre_KeyPress);
             // 
             // label5
             // 
@@ -192,8 +204,8 @@
             // 
             this.tabPage2.Controls.Add(this.btndescactivar);
             this.tabPage2.Controls.Add(this.btneditar);
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Controls.Add(this.textBox1);
+            this.tabPage2.Controls.Add(this.dgvcarnet);
+            this.tabPage2.Controls.Add(this.txtbuscar);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.btnbuscar);
             this.tabPage2.Cursor = System.Windows.Forms.Cursors.Default;
@@ -217,7 +229,7 @@
             this.btndescactivar.Name = "btndescactivar";
             this.btndescactivar.Size = new System.Drawing.Size(179, 45);
             this.btndescactivar.TabIndex = 12;
-            this.btndescactivar.Text = "Desactivar";
+            this.btndescactivar.Text = "Estado";
             this.btndescactivar.UseVisualStyleBackColor = false;
             // 
             // btneditar
@@ -235,23 +247,24 @@
             this.btneditar.Text = "Editar";
             this.btneditar.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvcarnet
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 111);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(853, 300);
-            this.dataGridView1.TabIndex = 10;
+            this.dgvcarnet.AllowUserToAddRows = false;
+            this.dgvcarnet.AllowUserToDeleteRows = false;
+            this.dgvcarnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvcarnet.Location = new System.Drawing.Point(6, 111);
+            this.dgvcarnet.Name = "dgvcarnet";
+            this.dgvcarnet.ReadOnly = true;
+            this.dgvcarnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvcarnet.Size = new System.Drawing.Size(853, 300);
+            this.dgvcarnet.TabIndex = 10;
             // 
-            // textBox1
+            // txtbuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 25);
-            this.textBox1.TabIndex = 1;
+            this.txtbuscar.Location = new System.Drawing.Point(37, 61);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(240, 25);
+            this.txtbuscar.TabIndex = 1;
             // 
             // label6
             // 
@@ -277,6 +290,34 @@
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
             // 
+            // toolmensaje
+            // 
+            this.toolmensaje.IsBalloon = true;
+            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolmensaje.ToolTipTitle = "Ayuda";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgvactual);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(865, 417);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Ver Últimos Registros";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvactual
+            // 
+            this.dgvactual.AllowUserToAddRows = false;
+            this.dgvactual.AllowUserToDeleteRows = false;
+            this.dgvactual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvactual.Location = new System.Drawing.Point(17, 92);
+            this.dgvactual.Name = "dgvactual";
+            this.dgvactual.ReadOnly = true;
+            this.dgvactual.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvactual.Size = new System.Drawing.Size(831, 311);
+            this.dgvactual.TabIndex = 0;
+            // 
             // Carnets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -296,7 +337,9 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvcarnet)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvactual)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,10 +362,13 @@
         private System.Windows.Forms.TextBox txtdui;
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtbuscar;
+        private System.Windows.Forms.DataGridView dgvcarnet;
         private System.Windows.Forms.Button btndescactivar;
         private System.Windows.Forms.Button btneditar;
         private System.Windows.Forms.Button btnbuscar;
+        private System.Windows.Forms.ToolTip toolmensaje;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dgvactual;
     }
 }
