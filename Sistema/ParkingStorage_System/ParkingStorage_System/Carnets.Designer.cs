@@ -52,6 +52,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvactual = new System.Windows.Forms.DataGridView();
             this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.btngenerar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -202,6 +203,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btngenerar);
             this.tabPage2.Controls.Add(this.btndescactivar);
             this.tabPage2.Controls.Add(this.btneditar);
             this.tabPage2.Controls.Add(this.dgvcarnet);
@@ -225,12 +227,13 @@
             this.btndescactivar.ForeColor = System.Drawing.Color.White;
             this.btndescactivar.Image = global::ParkingStorage_System.Properties.Resources.download;
             this.btndescactivar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndescactivar.Location = new System.Drawing.Point(664, 50);
+            this.btndescactivar.Location = new System.Drawing.Point(661, 90);
             this.btndescactivar.Name = "btndescactivar";
             this.btndescactivar.Size = new System.Drawing.Size(179, 45);
             this.btndescactivar.TabIndex = 12;
             this.btndescactivar.Text = "Estado";
             this.btndescactivar.UseVisualStyleBackColor = false;
+            this.btndescactivar.Click += new System.EventHandler(this.btndescactivar_Click);
             // 
             // btneditar
             // 
@@ -240,7 +243,7 @@
             this.btneditar.ForeColor = System.Drawing.Color.White;
             this.btneditar.Image = global::ParkingStorage_System.Properties.Resources.pencil;
             this.btneditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btneditar.Location = new System.Drawing.Point(484, 50);
+            this.btneditar.Location = new System.Drawing.Point(483, 90);
             this.btneditar.Name = "btneditar";
             this.btneditar.Size = new System.Drawing.Size(162, 45);
             this.btneditar.TabIndex = 11;
@@ -253,25 +256,26 @@
             this.dgvcarnet.AllowUserToAddRows = false;
             this.dgvcarnet.AllowUserToDeleteRows = false;
             this.dgvcarnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvcarnet.Location = new System.Drawing.Point(6, 111);
+            this.dgvcarnet.Location = new System.Drawing.Point(6, 150);
             this.dgvcarnet.Name = "dgvcarnet";
             this.dgvcarnet.ReadOnly = true;
             this.dgvcarnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvcarnet.Size = new System.Drawing.Size(853, 300);
+            this.dgvcarnet.Size = new System.Drawing.Size(853, 261);
             this.dgvcarnet.TabIndex = 10;
             this.dgvcarnet.DoubleClick += new System.EventHandler(this.dgvcarnet_DoubleClick);
             // 
             // txtbuscar
             // 
-            this.txtbuscar.Location = new System.Drawing.Point(37, 61);
+            this.txtbuscar.Location = new System.Drawing.Point(37, 101);
             this.txtbuscar.Name = "txtbuscar";
             this.txtbuscar.Size = new System.Drawing.Size(240, 25);
             this.txtbuscar.TabIndex = 1;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 22);
+            this.label6.Location = new System.Drawing.Point(34, 42);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(378, 17);
             this.label6.TabIndex = 0;
@@ -285,12 +289,13 @@
             this.btnbuscar.ForeColor = System.Drawing.Color.White;
             this.btnbuscar.Image = global::ParkingStorage_System.Properties.Resources.loupe;
             this.btnbuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnbuscar.Location = new System.Drawing.Point(300, 50);
+            this.btnbuscar.Location = new System.Drawing.Point(300, 90);
             this.btnbuscar.Name = "btnbuscar";
             this.btnbuscar.Size = new System.Drawing.Size(162, 45);
             this.btnbuscar.TabIndex = 9;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // tabPage3
             // 
@@ -319,6 +324,21 @@
             this.toolmensaje.IsBalloon = true;
             this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolmensaje.ToolTipTitle = "Ayuda";
+            // 
+            // btngenerar
+            // 
+            this.btngenerar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btngenerar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btngenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btngenerar.ForeColor = System.Drawing.Color.White;
+            this.btngenerar.Image = global::ParkingStorage_System.Properties.Resources.download;
+            this.btngenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btngenerar.Location = new System.Drawing.Point(483, 28);
+            this.btngenerar.Name = "btngenerar";
+            this.btngenerar.Size = new System.Drawing.Size(357, 45);
+            this.btngenerar.TabIndex = 13;
+            this.btngenerar.Text = "Generar Carnet";
+            this.btngenerar.UseVisualStyleBackColor = false;
             // 
             // Carnets
             // 
@@ -372,5 +392,6 @@
         private System.Windows.Forms.ToolTip toolmensaje;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView dgvactual;
+        private System.Windows.Forms.Button btngenerar;
     }
 }

@@ -29,6 +29,7 @@ namespace ParkingStorage_System
             InitializeComponent();
             cmbttrabajador.SelectedIndex = 0;
             toolmensaje.SetToolTip(btneditar, "Haga doble click para seleccionar un registro y poder realizar las acciones");
+            toolmensaje.SetToolTip(btngenerar, "Haga doble click para seleccionar un registro y poder realizar las acciones");
             toolmensaje.SetToolTip(btndescactivar, "Haga doble click para seleccionar un registro y poder realizar las acciones");
             actualizarTabla();
         }
@@ -323,6 +324,150 @@ namespace ParkingStorage_System
             DataGridViewRow seleccion = dgvcarnet.SelectedRows[0];
             posicion = dgvcarnet.Rows.IndexOf(seleccion);
             editar_indice = posicion;
+        }
+
+        private void btndescactivar_Click(object sender, EventArgs e)
+        {
+
+            if (posicion != -1 && editar_indice != -1)
+            {
+                Clases.Carnet us = lista_carnet[posicion];
+                con.inicioConnection();
+                if (us.Estado == "Activo")
+                {
+                    aler.label2.Text = "¿Deseas desactivar este carnet?\nTen en cuenta que no se podrá usar en el sistema.";
+                    aler.pictureBox2.Image = Properties.Resources.question;
+                    result = aler.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        us.Exid = Convert.ToString(us.obternerID(us.Dui.ToString()));
+                        us.baja(us.Exid, false);
+                        info.label2.Text = "Carnet Desactivado Correctamente";
+                        info.pictureBox2.Image = Properties.Resources.check;
+                        result = info.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+
+                        }
+                        actualizarTabla();
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        editar_indice = -1;
+                        posicion = -1;
+                    }
+                }
+                else
+                {
+                    aler.label2.Text = "¿Deseas activar este carnet?";
+                    aler.pictureBox2.Image = Properties.Resources.question;
+                    result = aler.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        us.Exid = Convert.ToString(us.obternerID(us.Dui.ToString()));
+                        us.baja(us.Exid, true);
+                        info.label2.Text = "Carnet Activado Correctamente";
+                        info.pictureBox2.Image = Properties.Resources.check;
+                        result = info.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+
+                        }
+                        actualizarTabla();
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        editar_indice = -1;
+                        posicion = -1;
+                    }
+                }
+                con.cerrarConnection();
+            }
+            else
+            {
+                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar el cambio de estado del registro";
+                result = advert.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+
+        private void txtbuscar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtbuscar.Text == "")
+            {
+                actualizarTabla();
+            }
+        }
+
+        private void btnbuscar_Click(object sender, EventArgs e)
+        {
+            con.inicioConnection();
+            try
+            {
+                if (string.IsNullOrEmpty(txtbuscar.Text))
+                {
+                    advert.label2.Text = "Hay campos vacíos en la búsqueda";
+                    result = advert.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                    actualizarTabla();
+                }
+                else
+                {
+                    if (cart.buscar(txtbuscar.Text.ToString()) != null)
+                    {
+                        Clases.Carnet sat = new Clases.Carnet();
+                        dgvcarnet.DataSource = null;
+                        lista_carnet = sat.buscar(txtbuscar.Text);
+                        dgvcarnet.DataSource = lista_carnet;
+                        dgvcarnet.Columns["Exid"].Visible = false;
+                        dgvcarnet.Columns["Id"].Visible = false;
+                        dgvcarnet.Columns["Imagen"].Visible = false;
+                        dgvcarnet.Columns[1].HeaderText = "Nombre";
+                        dgvcarnet.Columns[2].HeaderText = "Apellido";
+                        dgvcarnet.Columns[3].HeaderText = "DUI";
+                        dgvcarnet.Columns[4].HeaderText = "Fecha de Registro";
+                        dgvcarnet.Columns[5].HeaderText = "Fecha de Vencimiento";
+                        dgvcarnet.Columns[6].HeaderText = "Código de Carnet";
+                        dgvcarnet.Columns[7].HeaderText = "Tipo de Trabajador";
+                        dgvcarnet.Columns[8].HeaderText = "Estado";
+                        dgvcarnet.Columns[1].Width = 230;
+                        dgvcarnet.Columns[2].Width = 230;
+                        dgvcarnet.Columns[3].Width = 230;
+                        dgvcarnet.Columns[4].Width = 230;
+                        dgvcarnet.Columns[5].Width = 230;
+                        dgvcarnet.Columns[6].Width = 230;
+                        dgvcarnet.Columns[7].Width = 230;
+                        dgvcarnet.Columns[8].Width = 230;
+                    }
+                    else
+                    {
+                        info.label2.Text = "No hay registros de su búsqueda";
+                        info.pictureBox2.Image = Properties.Resources.info__1_;
+                        result = info.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+
+                        }
+                        actualizarTabla();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+            con.cerrarConnection();
         }
     }
 }
