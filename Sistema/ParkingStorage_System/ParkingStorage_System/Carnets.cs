@@ -89,7 +89,32 @@ namespace ParkingStorage_System
                 {
                     if (edicion)
                     {
+                        Clases.Carnet st = lista_carnet[posicion];
+                        st.Exid = Convert.ToString(st.obternerID(st.Dui.ToString()));
+                        if (cart.actualizar(txtnombre.Text,txtapellido.Text,cmbttrabajador.SelectedItem.ToString(), st.Exid))
+                        {
+                            info.label2.Text = "Carnet Modificado Correctamente";
+                            info.pictureBox2.Image = Properties.Resources.check;
+                            result = info.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
 
+                            }
+                            btnRegistrar.Text = "Registrar";
+                            edicion = false;
+                            devolver();
+                            actualizarTabla();
+                            limpiar();
+                        }
+                        else
+                        {
+                            error.label2.Text = "Se generó un error en\nla ejecución de la consulta";
+                            result = error.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+
+                            }
+                        }
                     }
                     else
                     {
@@ -239,6 +264,65 @@ namespace ParkingStorage_System
             dgvactual.Columns[6].Width = 230;
             dgvactual.Columns[7].Width = 230;
             dgvactual.Columns[8].Width = 230;
+        }
+
+        private void btneditar_Click(object sender, EventArgs e)
+        {
+            if (posicion != -1 && editar_indice != -1)
+            {
+                Clases.Carnet sta = lista_carnet[posicion];
+                con.inicioConnection();
+                aler.label2.Text = "¿Deseas editar este registro?";
+                aler.pictureBox2.Image = Properties.Resources.question;
+                result = aler.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    txtnombre.Text = sta.Nombre.ToString();
+                    txtapellido.Text = sta.Apellido.ToString();
+                    if(sta.TipoTrabajador.ToString() == "Empleado")
+                    {
+                        cmbttrabajador.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbttrabajador.SelectedIndex = 1;
+                    }
+                    txtdui.Visible = false;
+                    label4.Visible = false;
+                    edicion = true;
+                    btnRegistrar.Text = "Modificar";
+                    tabControl1.SelectedIndex = 0;
+                }
+                else if (result == DialogResult.Cancel)
+                {
+                    editar_indice = -1;
+                    posicion = -1;
+                }
+                con.cerrarConnection();
+            }
+            else
+            {
+                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la edición del registro";
+                result = advert.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+        private void devolver()
+        {
+            posicion = -1;
+            editar_indice = -1;
+            label4.Visible = true;
+            txtdui.Visible = true;
+        }
+
+        private void dgvcarnet_DoubleClick(object sender, EventArgs e)
+        {
+            DataGridViewRow seleccion = dgvcarnet.SelectedRows[0];
+            posicion = dgvcarnet.Rows.IndexOf(seleccion);
+            editar_indice = posicion;
         }
     }
 }

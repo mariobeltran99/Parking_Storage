@@ -49,9 +49,9 @@
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnbuscar = new System.Windows.Forms.Button();
-            this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvactual = new System.Windows.Forms.DataGridView();
+            this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -130,7 +130,7 @@
             // 
             // txtdui
             // 
-            this.txtdui.Location = new System.Drawing.Point(254, 156);
+            this.txtdui.Location = new System.Drawing.Point(254, 187);
             this.txtdui.Name = "txtdui";
             this.txtdui.Size = new System.Drawing.Size(220, 25);
             this.txtdui.TabIndex = 7;
@@ -143,7 +143,7 @@
             this.cmbttrabajador.Items.AddRange(new object[] {
             "Empleado",
             "Gerente"});
-            this.cmbttrabajador.Location = new System.Drawing.Point(254, 187);
+            this.cmbttrabajador.Location = new System.Drawing.Point(254, 156);
             this.cmbttrabajador.Name = "cmbttrabajador";
             this.cmbttrabajador.Size = new System.Drawing.Size(220, 25);
             this.cmbttrabajador.TabIndex = 6;
@@ -167,7 +167,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(77, 190);
+            this.label5.Location = new System.Drawing.Point(77, 159);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(149, 17);
             this.label5.TabIndex = 3;
@@ -176,7 +176,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(186, 159);
+            this.label4.Location = new System.Drawing.Point(186, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 17);
             this.label4.TabIndex = 2;
@@ -246,6 +246,7 @@
             this.btneditar.TabIndex = 11;
             this.btneditar.Text = "Editar";
             this.btneditar.UseVisualStyleBackColor = false;
+            this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
             // 
             // dgvcarnet
             // 
@@ -258,6 +259,7 @@
             this.dgvcarnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvcarnet.Size = new System.Drawing.Size(853, 300);
             this.dgvcarnet.TabIndex = 10;
+            this.dgvcarnet.DoubleClick += new System.EventHandler(this.dgvcarnet_DoubleClick);
             // 
             // txtbuscar
             // 
@@ -290,12 +292,6 @@
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
             // 
-            // toolmensaje
-            // 
-            this.toolmensaje.IsBalloon = true;
-            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolmensaje.ToolTipTitle = "Ayuda";
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dgvactual);
@@ -317,6 +313,12 @@
             this.dgvactual.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvactual.Size = new System.Drawing.Size(831, 311);
             this.dgvactual.TabIndex = 0;
+            // 
+            // toolmensaje
+            // 
+            this.toolmensaje.IsBalloon = true;
+            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolmensaje.ToolTipTitle = "Ayuda";
             // 
             // Carnets
             // 

@@ -194,5 +194,28 @@ namespace ParkingStorage_System.Clases
                 throw;
             }
         }
+        //actualizar el carnet
+        public bool actualizar(string nomb, string ape, string tipo, string idx)
+        {
+                String query = "UPDATE Carnet_trabajadores SET nombre = @p1, apellido = @p2, tipo_trabajador = @p3 WHERE id = @p4";
+                SqlCommand comando = new SqlCommand();
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = query;
+                comando.Connection = Clases.Conexion.connecSQL;
+                try
+                {
+                    comando.Parameters.AddWithValue("@p1", nomb);
+                    comando.Parameters.AddWithValue("@p2", ape);
+                    comando.Parameters.AddWithValue("@p3", tipo);
+                    comando.Parameters.AddWithValue("@p4", idx);
+                    comando.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                    throw;
+                }
+        }
     }
 }
