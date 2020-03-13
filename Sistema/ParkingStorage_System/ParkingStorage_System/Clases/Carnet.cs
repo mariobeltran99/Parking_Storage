@@ -194,5 +194,97 @@ namespace ParkingStorage_System.Clases
                 throw;
             }
         }
+        //actualizar el carnet
+        public bool actualizar(string nomb, string ape, string tipo, string idx)
+        {
+                String query = "UPDATE Carnet_trabajadores SET nombre = @p1, apellido = @p2, tipo_trabajador = @p3 WHERE id = @p4";
+                SqlCommand comando = new SqlCommand();
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText = query;
+                comando.Connection = Clases.Conexion.connecSQL;
+                try
+                {
+                    comando.Parameters.AddWithValue("@p1", nomb);
+                    comando.Parameters.AddWithValue("@p2", ape);
+                    comando.Parameters.AddWithValue("@p3", tipo);
+                    comando.Parameters.AddWithValue("@p4", idx);
+                    comando.ExecuteNonQuery();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                    throw;
+                }
+        }
+        //activar o desactivar carnet
+        public int baja(string idx, bool activar)
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "UPDATE Carnet_trabajadores SET estado = @p1 WHERE id = @p2";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", activar);
+                comando.Parameters.AddWithValue("@p2", idx);
+                return comando.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+        //buscar datos
+        public List<Clases.Carnet> buscar(string datos)
+        {
+            List<Clases.Carnet> lista = new List<Clases.Carnet>();
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT id,nombre,apellido,dui,fecha_registro,fecha_vencimiento,cod_parqueo,tipo_trabajador,estado FROM Carnet_trabajadores WHERE nombre LIKE '%' + @p1 + '%' OR apellido LIKE '%' + @p1 + '%' OR cod_parqueo LIKE '%' + @p1 + '%'";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", datos);
+                lector = comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Clases.Carnet aux = new Clases.Carnet();
+                    aux.exid = lector["id"].ToString();
+                    aux.nombre = lector["nombre"].ToString();
+                    aux.apellido = lector["apellido"].ToString();
+                    aux.dui = lector["dui"].ToString();
+                    aux.fechaRegistro = lector["fecha_registro"].ToString();
+                    aux.fechaVencimiento = lector["fecha_vencimiento"].ToString();
+                    aux.codigoParqueo = lector["cod_parqueo"].ToString();
+                    aux.tipoTrabajador = lector["tipo_trabajador"].ToString();
+                    if (lector["estado"].ToString() == "True")
+                    {
+                        aux.estado = "Activo";
+                    }
+                    else
+                    {
+                        aux.estado = "Inactivo";
+                    }
+                    lista.Add(aux);
+                }
+                lector.Close();
+                if (lista.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return lista;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+        }
     }
 }
