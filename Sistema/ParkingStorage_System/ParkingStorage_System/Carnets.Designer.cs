@@ -33,7 +33,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnRegistrar = new System.Windows.Forms.Button();
             this.txtdui = new System.Windows.Forms.TextBox();
             this.cmbttrabajador = new System.Windows.Forms.ComboBox();
             this.txtapellido = new System.Windows.Forms.TextBox();
@@ -43,16 +42,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btndescactivar = new System.Windows.Forms.Button();
-            this.btneditar = new System.Windows.Forms.Button();
             this.dgvcarnet = new System.Windows.Forms.DataGridView();
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnbuscar = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvactual = new System.Windows.Forms.DataGridView();
             this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRegistrar = new System.Windows.Forms.Button();
             this.btngenerar = new System.Windows.Forms.Button();
+            this.btndescactivar = new System.Windows.Forms.Button();
+            this.btneditar = new System.Windows.Forms.Button();
+            this.btnbuscar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -112,22 +112,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingrese los siguientes datos";
-            // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.id_card;
-            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrar.Location = new System.Drawing.Point(274, 250);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
-            this.btnRegistrar.TabIndex = 8;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // txtdui
             // 
@@ -219,6 +203,96 @@
             this.tabPage2.Text = "Búsqueda, Edición y Eliminación";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dgvcarnet
+            // 
+            this.dgvcarnet.AllowUserToAddRows = false;
+            this.dgvcarnet.AllowUserToDeleteRows = false;
+            this.dgvcarnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvcarnet.Location = new System.Drawing.Point(6, 150);
+            this.dgvcarnet.Name = "dgvcarnet";
+            this.dgvcarnet.ReadOnly = true;
+            this.dgvcarnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvcarnet.Size = new System.Drawing.Size(853, 261);
+            this.dgvcarnet.TabIndex = 10;
+            this.dgvcarnet.DoubleClick += new System.EventHandler(this.dgvcarnet_DoubleClick);
+            // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Location = new System.Drawing.Point(37, 101);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(240, 25);
+            this.txtbuscar.TabIndex = 1;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(34, 42);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(378, 17);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Búsqueda por nombre, apellido o código de carnet";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgvactual);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(865, 417);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Ver Últimos Registros";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgvactual
+            // 
+            this.dgvactual.AllowUserToAddRows = false;
+            this.dgvactual.AllowUserToDeleteRows = false;
+            this.dgvactual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvactual.Location = new System.Drawing.Point(17, 92);
+            this.dgvactual.Name = "dgvactual";
+            this.dgvactual.ReadOnly = true;
+            this.dgvactual.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvactual.Size = new System.Drawing.Size(831, 311);
+            this.dgvactual.TabIndex = 0;
+            // 
+            // toolmensaje
+            // 
+            this.toolmensaje.IsBalloon = true;
+            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolmensaje.ToolTipTitle = "Ayuda";
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.Image = global::ParkingStorage_System.Properties.Resources.id_card;
+            this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegistrar.Location = new System.Drawing.Point(274, 250);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(177, 45);
+            this.btnRegistrar.TabIndex = 8;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            // 
+            // btngenerar
+            // 
+            this.btngenerar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btngenerar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btngenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btngenerar.ForeColor = System.Drawing.Color.White;
+            this.btngenerar.Image = global::ParkingStorage_System.Properties.Resources.pass;
+            this.btngenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btngenerar.Location = new System.Drawing.Point(483, 28);
+            this.btngenerar.Name = "btngenerar";
+            this.btngenerar.Size = new System.Drawing.Size(357, 45);
+            this.btngenerar.TabIndex = 13;
+            this.btngenerar.Text = "Generar Carnet";
+            this.btngenerar.UseVisualStyleBackColor = false;
+            this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
+            // 
             // btndescactivar
             // 
             this.btndescactivar.BackColor = System.Drawing.Color.RoyalBlue;
@@ -251,36 +325,6 @@
             this.btneditar.UseVisualStyleBackColor = false;
             this.btneditar.Click += new System.EventHandler(this.btneditar_Click);
             // 
-            // dgvcarnet
-            // 
-            this.dgvcarnet.AllowUserToAddRows = false;
-            this.dgvcarnet.AllowUserToDeleteRows = false;
-            this.dgvcarnet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvcarnet.Location = new System.Drawing.Point(6, 150);
-            this.dgvcarnet.Name = "dgvcarnet";
-            this.dgvcarnet.ReadOnly = true;
-            this.dgvcarnet.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvcarnet.Size = new System.Drawing.Size(853, 261);
-            this.dgvcarnet.TabIndex = 10;
-            this.dgvcarnet.DoubleClick += new System.EventHandler(this.dgvcarnet_DoubleClick);
-            // 
-            // txtbuscar
-            // 
-            this.txtbuscar.Location = new System.Drawing.Point(37, 101);
-            this.txtbuscar.Name = "txtbuscar";
-            this.txtbuscar.Size = new System.Drawing.Size(240, 25);
-            this.txtbuscar.TabIndex = 1;
-            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 42);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(378, 17);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Búsqueda por nombre, apellido o código de carnet";
-            // 
             // btnbuscar
             // 
             this.btnbuscar.BackColor = System.Drawing.Color.RoyalBlue;
@@ -296,49 +340,6 @@
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
             this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.dgvactual);
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(865, 417);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Ver Últimos Registros";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // dgvactual
-            // 
-            this.dgvactual.AllowUserToAddRows = false;
-            this.dgvactual.AllowUserToDeleteRows = false;
-            this.dgvactual.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvactual.Location = new System.Drawing.Point(17, 92);
-            this.dgvactual.Name = "dgvactual";
-            this.dgvactual.ReadOnly = true;
-            this.dgvactual.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvactual.Size = new System.Drawing.Size(831, 311);
-            this.dgvactual.TabIndex = 0;
-            // 
-            // toolmensaje
-            // 
-            this.toolmensaje.IsBalloon = true;
-            this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolmensaje.ToolTipTitle = "Ayuda";
-            // 
-            // btngenerar
-            // 
-            this.btngenerar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btngenerar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btngenerar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btngenerar.ForeColor = System.Drawing.Color.White;
-            this.btngenerar.Image = global::ParkingStorage_System.Properties.Resources.download;
-            this.btngenerar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btngenerar.Location = new System.Drawing.Point(483, 28);
-            this.btngenerar.Name = "btngenerar";
-            this.btngenerar.Size = new System.Drawing.Size(357, 45);
-            this.btngenerar.TabIndex = 13;
-            this.btngenerar.Text = "Generar Carnet";
-            this.btngenerar.UseVisualStyleBackColor = false;
             // 
             // Carnets
             // 
