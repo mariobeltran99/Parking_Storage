@@ -37,7 +37,6 @@ namespace ParkingStorage_System
             toolmensaje.SetToolTip(btndesactivar, "Haga doble click para seleccionar un registro y poder realizar las acciones");
             cmbtusuario.SelectedIndex = 0;
             actualizarTabla();
-
         }
 
         private void txtnombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -107,9 +106,10 @@ namespace ParkingStorage_System
         }
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            con.inicioConnection();
+            
             try
             {
+                con.inicioConnection();
                 if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtusuario.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
@@ -307,6 +307,66 @@ namespace ParkingStorage_System
                         }                      
                     }
                 }
+                con.cerrarConnection();
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }       
+        }
+        private void mostraractualizaciones()
+        {
+            try
+            {
+                dgvactualizacion.DataSource = null;
+                dgvactualizacion.DataSource = lista_actual;
+                dgvactualizacion.Columns["Contra"].Visible = false;
+                dgvactualizacion.Columns["Exid"].Visible = false;
+                dgvactualizacion.Columns["Id"].Visible = false;
+                dgvactualizacion.Columns[0].HeaderText = "Nombre";
+                dgvactualizacion.Columns[1].HeaderText = "Nombre de Usuario";
+                dgvactualizacion.Columns[3].HeaderText = "Tipo de Usuario";
+                dgvactualizacion.Columns[4].HeaderText = "Estado";
+                dgvactualizacion.Columns[0].Width = 230;
+                dgvactualizacion.Columns[1].Width = 230;
+                dgvactualizacion.Columns[3].Width = 230;
+                dgvactualizacion.Columns[4].Width = 230;
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }          
+        }
+        private void actualizarTabla()
+        {
+            try
+            {
+                dgvusuarios.DataSource = null;
+                con.inicioConnection();
+                lista_usuario = users.read();
+                dgvusuarios.DataSource = lista_usuario;
+                dgvusuarios.Columns["Contra"].Visible = false;
+                dgvusuarios.Columns["Exid"].Visible = false;
+                dgvusuarios.Columns["Id"].Visible = false;
+                dgvusuarios.Columns[0].HeaderText = "Nombre";
+                dgvusuarios.Columns[1].HeaderText = "Nombre de Usuario";
+                dgvusuarios.Columns[3].HeaderText = "Tipo de Usuario";
+                dgvusuarios.Columns[4].HeaderText = "Estado";
+                dgvusuarios.Columns[0].Width = 230;
+                dgvusuarios.Columns[1].Width = 230;
+                dgvusuarios.Columns[3].Width = 230;
+                dgvusuarios.Columns[4].Width = 230;
+                con.cerrarConnection();
             }
             catch (Exception)
             {
@@ -317,42 +377,7 @@ namespace ParkingStorage_System
 
                 }
             }
-            con.cerrarConnection();
-        }
-        private void mostraractualizaciones()
-        {
-            dgvactualizacion.DataSource = null;
-            dgvactualizacion.DataSource = lista_actual;
-            dgvactualizacion.Columns["Contra"].Visible = false;
-            dgvactualizacion.Columns["Exid"].Visible = false;
-            dgvactualizacion.Columns["Id"].Visible = false;
-            dgvactualizacion.Columns[0].HeaderText = "Nombre";
-            dgvactualizacion.Columns[1].HeaderText = "Nombre de Usuario";
-            dgvactualizacion.Columns[3].HeaderText = "Tipo de Usuario";
-            dgvactualizacion.Columns[4].HeaderText = "Estado";
-            dgvactualizacion.Columns[0].Width = 230;
-            dgvactualizacion.Columns[1].Width = 230;
-            dgvactualizacion.Columns[3].Width = 230;
-            dgvactualizacion.Columns[4].Width = 230;
-        }
-        private void actualizarTabla()
-        {
-            dgvusuarios.DataSource = null;
-            con.inicioConnection();
-            lista_usuario = users.read();
-            dgvusuarios.DataSource = lista_usuario;
-            dgvusuarios.Columns["Contra"].Visible = false;
-            dgvusuarios.Columns["Exid"].Visible = false;
-            dgvusuarios.Columns["Id"].Visible = false;
-            dgvusuarios.Columns[0].HeaderText = "Nombre";
-            dgvusuarios.Columns[1].HeaderText = "Nombre de Usuario";
-            dgvusuarios.Columns[3].HeaderText = "Tipo de Usuario";
-            dgvusuarios.Columns[4].HeaderText = "Estado";
-            dgvusuarios.Columns[0].Width = 230;
-            dgvusuarios.Columns[1].Width = 230;
-            dgvusuarios.Columns[3].Width = 230;
-            dgvusuarios.Columns[4].Width = 230;
-            con.cerrarConnection();
+            
         }
         
         private void dgvusuarios_DoubleClick(object sender, EventArgs e)
@@ -364,79 +389,91 @@ namespace ParkingStorage_System
 
         private void btneditar_Click(object sender, EventArgs e)
         {
-            if(posicion !=-1 && editar_indice != -1)
+            try
             {
-                Usuario us = lista_usuario[posicion];
-                con.inicioConnection();
-                aler.label2.Text = "¿Deseas editar este registro?";
-                aler.pictureBox2.Image = Properties.Resources.question;
-                result = aler.ShowDialog();
-                if (result == DialogResult.OK)
+                if (posicion != -1 && editar_indice != -1)
                 {
-                    aler.label2.Text = "¿Deseas cambia la contraseña?";
+                    Usuario us = lista_usuario[posicion];
+                    con.inicioConnection();
+                    aler.label2.Text = "¿Deseas editar este registro?";
                     aler.pictureBox2.Image = Properties.Resources.question;
                     result = aler.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        txtnombre.Text = us.Nombre.ToString();
-                        txtusuario.Text = us.NombreUsuario.ToString();
-                        switch (us.TipoUsuario)
+                        aler.label2.Text = "¿Deseas cambia la contraseña?";
+                        aler.pictureBox2.Image = Properties.Resources.question;
+                        result = aler.ShowDialog();
+                        if (result == DialogResult.OK)
                         {
-                            case "Administrador":
-                                cmbtusuario.SelectedIndex = 0;
-                                break;
-                            case "Secretaria":
-                                cmbtusuario.SelectedIndex = 1;
-                                break;
-                            default:
-                                break;
-                        }
+                            txtnombre.Text = us.Nombre.ToString();
+                            txtusuario.Text = us.NombreUsuario.ToString();
+                            switch (us.TipoUsuario)
+                            {
+                                case "Administrador":
+                                    cmbtusuario.SelectedIndex = 0;
+                                    break;
+                                case "Secretaria":
+                                    cmbtusuario.SelectedIndex = 1;
+                                    break;
+                                default:
+                                    break;
+                            }
 
-                        passw = true;
+                            passw = true;
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            label4.Visible = false;
+                            label7.Visible = false;
+                            txtpassword.Visible = false;
+                            txtverificar.Visible = false;
+                            mostrar1.Visible = false;
+                            mostrar2.Visible = false;
+                            txtnombre.Text = us.Nombre.ToString();
+                            txtusuario.Text = us.NombreUsuario.ToString();
+                            switch (us.TipoUsuario)
+                            {
+                                case "Administrador":
+                                    cmbtusuario.SelectedIndex = 0;
+                                    break;
+                                case "Secretaria":
+                                    cmbtusuario.SelectedIndex = 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            passw = false;
+                        }
+                        edicion = true;
+                        btnRegistrar.Text = "Modificar";
+                        tabControl1.SelectedIndex = 0;
+                        con.cerrarConnection();
                     }
                     else if (result == DialogResult.Cancel)
                     {
-                        label4.Visible = false;
-                        label7.Visible = false;
-                        txtpassword.Visible = false;
-                        txtverificar.Visible = false;
-                        mostrar1.Visible = false;
-                        mostrar2.Visible = false;
-                        txtnombre.Text = us.Nombre.ToString();
-                        txtusuario.Text = us.NombreUsuario.ToString();
-                        switch (us.TipoUsuario)
-                        {
-                            case "Administrador":
-                                cmbtusuario.SelectedIndex = 0;
-                                break;
-                            case "Secretaria":
-                                cmbtusuario.SelectedIndex = 1;
-                                break;
-                            default:
-                                break;
-                        }
-                        passw = false;
+                        editar_indice = -1;
+                        posicion = -1;
                     }
-                    edicion = true;
-                    btnRegistrar.Text = "Modificar";
-                    tabControl1.SelectedIndex = 0;
-                    con.cerrarConnection();
                 }
-                else if (result == DialogResult.Cancel)
+                else
                 {
-                    editar_indice = -1;
-                    posicion = -1;
+                    advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la edición del registro";
+                    result = advert.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
                 }
             }
-            else
+            catch (Exception)
             {
-                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la edición del registro";
-                result = advert.ShowDialog();
-                if(result == DialogResult.OK)
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
                 {
 
                 }
-            }           
+            }                
         }
         private void devolver()
         {
@@ -453,76 +490,89 @@ namespace ParkingStorage_System
 
         private void btndesactivar_Click(object sender, EventArgs e)
         {
-            if(posicion !=-1 && editar_indice != -1)
+            try
             {
-                Usuario us = lista_usuario[posicion];
-                con.inicioConnection();
-                if(us.Estado == "Activo")
+                if (posicion != -1 && editar_indice != -1)
                 {
-                    aler.label2.Text = "¿Deseas desactivar este usuario?\nTen en cuenta que la siguiente sesión no se\npodrá acceder al sistema este usuario.";
-                    aler.pictureBox2.Image = Properties.Resources.question;
-                    result = aler.ShowDialog();
-                    if (result == DialogResult.OK)
+                    Usuario us = lista_usuario[posicion];
+                    con.inicioConnection();
+                    if (us.Estado == "Activo")
                     {
-                        us.Exid = Convert.ToString(us.obternerID(us.NombreUsuario.ToString()));
-                        us.baja(us.Exid, false);
-                        info.label2.Text = "Usuario Desactivado Correctamente";
-                        info.pictureBox2.Image = Properties.Resources.check;
-                        result = info.ShowDialog();
+                        aler.label2.Text = "¿Deseas desactivar este usuario?\nTen en cuenta que la siguiente sesión no se\npodrá acceder al sistema este usuario.";
+                        aler.pictureBox2.Image = Properties.Resources.question;
+                        result = aler.ShowDialog();
                         if (result == DialogResult.OK)
                         {
+                            us.Exid = Convert.ToString(us.obternerID(us.NombreUsuario.ToString()));
+                            us.baja(us.Exid, false);
+                            info.label2.Text = "Usuario Desactivado Correctamente";
+                            info.pictureBox2.Image = Properties.Resources.check;
+                            result = info.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
 
+                            }
+                            actualizarTabla();
                         }
-                        actualizarTabla();
+                        else if (result == DialogResult.Cancel)
+                        {
+                            editar_indice = -1;
+                            posicion = -1;
+                        }
                     }
-                    else if (result == DialogResult.Cancel)
+                    else
                     {
-                        editar_indice = -1;
-                        posicion = -1;
+                        aler.label2.Text = "¿Deseas activar este usuario?\nTen en cuenta que la siguiente sesión se\npodrá acceder al sistema este usuario.";
+                        aler.pictureBox2.Image = Properties.Resources.question;
+                        result = aler.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            us.Exid = Convert.ToString(us.obternerID(us.NombreUsuario.ToString()));
+                            us.baja(us.Exid, true);
+                            info.label2.Text = "Usuario Activado Correctamente";
+                            info.pictureBox2.Image = Properties.Resources.check;
+                            result = info.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+
+                            }
+                            actualizarTabla();
+                        }
+                        else if (result == DialogResult.Cancel)
+                        {
+                            editar_indice = -1;
+                            posicion = -1;
+                        }
                     }
+                    con.cerrarConnection();
                 }
                 else
                 {
-                    aler.label2.Text = "¿Deseas activar este usuario?\nTen en cuenta que la siguiente sesión se\npodrá acceder al sistema este usuario.";
-                    aler.pictureBox2.Image = Properties.Resources.question;
-                    result = aler.ShowDialog();
+                    advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar el cambio de estado del registro";
+                    result = advert.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        us.Exid = Convert.ToString(us.obternerID(us.NombreUsuario.ToString()));
-                        us.baja(us.Exid, true);
-                        info.label2.Text = "Usuario Activado Correctamente";
-                        info.pictureBox2.Image = Properties.Resources.check;
-                        result = info.ShowDialog();
-                        if (result == DialogResult.OK)
-                        {
 
-                        }
-                        actualizarTabla();
-                    }
-                    else if (result == DialogResult.Cancel)
-                    {
-                        editar_indice = -1;
-                        posicion = -1;
                     }
                 }
-                con.cerrarConnection();                                
             }
-            else
+            catch (Exception)
             {
-                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar el cambio de estado del registro";
-                result = advert.ShowDialog();
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
                 if (result == DialogResult.OK)
                 {
 
                 }
-            }
+            }         
         }
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            con.inicioConnection();
+            
             try
             {
+                con.inicioConnection();
                 if (string.IsNullOrEmpty(txtbuscar.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en la búsqueda";
@@ -564,6 +614,7 @@ namespace ParkingStorage_System
                         actualizarTabla();
                     }
                 }
+                con.cerrarConnection();
             }
             catch (Exception)
             {
@@ -573,8 +624,7 @@ namespace ParkingStorage_System
                 {
 
                 }
-            }
-            con.cerrarConnection();
+            }    
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)

@@ -12,6 +12,8 @@ namespace ParkingStorage_System
 {
     public partial class repoCarnet : Form
     {
+        DialogResult result = new DialogResult();
+        AError error = new AError();
         carnets objcarts = new carnets();
         public repoCarnet()
         {
@@ -50,9 +52,22 @@ namespace ParkingStorage_System
         }
 
         private void repoCarnet_Load(object sender, EventArgs e)
-        {           
-            objcarts.SetParameterValue("@numer",idcarnet);
-            crystalReportViewer1.ReportSource = objcarts;
+        {
+            try
+            {
+                objcarts.SetParameterValue("@numer", idcarnet);
+                crystalReportViewer1.ReportSource = objcarts;
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+            
         }
     }
 }

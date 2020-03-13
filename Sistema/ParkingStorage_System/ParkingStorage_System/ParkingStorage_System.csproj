@@ -102,6 +102,12 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="CarnetSecre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarnetSecre.Designer.cs">
+      <DependentUpon>CarnetSecre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clases\Carnet.cs" />
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Estacionamiento.cs" />
@@ -146,6 +152,12 @@
     </Compile>
     <Compile Include="repoCarnet.Designer.cs">
       <DependentUpon>repoCarnet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Secretaria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Secretaria.Designer.cs">
+      <DependentUpon>Secretaria.cs</DependentUpon>
     </Compile>
     <Compile Include="Tickets.cs">
       <SubType>Form</SubType>
@@ -195,6 +207,9 @@
       <LastGenOutput>carnets1.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="CarnetSecre.resx">
+      <DependentUpon>CarnetSecre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Espacios.resx">
       <DependentUpon>Espacios.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +237,9 @@
     </Compile>
     <EmbeddedResource Include="repoCarnet.resx">
       <DependentUpon>repoCarnet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Secretaria.resx">
+      <DependentUpon>Secretaria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tickets.resx">
       <DependentUpon>Tickets.cs</DependentUpon>

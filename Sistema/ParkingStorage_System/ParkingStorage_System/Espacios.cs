@@ -34,10 +34,22 @@ namespace ParkingStorage_System
         }
         private void cargarcombos()
         {
-            con.inicioConnection();
-            estacion.cargarTEstacion(cmbtespacio);
-            estacion.cargarSeccion(cmbseccion);
-            con.cerrarConnection();
+            try
+            {
+                con.inicioConnection();
+                estacion.cargarTEstacion(cmbtespacio);
+                estacion.cargarSeccion(cmbseccion);
+                con.cerrarConnection();
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }    
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -147,36 +159,60 @@ namespace ParkingStorage_System
         }
         private void actualizarTabla()
         {
-            con.inicioConnection();
-            dgvespacios.DataSource = null;
-            lista_estacion = estacion.read();
-            dgvespacios.DataSource = lista_estacion;
-            dgvespacios.Columns["Exid"].Visible = false;
-            dgvespacios.Columns["Id"].Visible = false;
-            dgvespacios.Columns[1].HeaderText = "Correlativo";
-            dgvespacios.Columns[2].HeaderText = "Sección de Estacionamiento";
-            dgvespacios.Columns[3].HeaderText = "Tipo de Estacionamiento";
-            dgvespacios.Columns[4].HeaderText = "Estado";
-            dgvespacios.Columns[1].Width = 230;
-            dgvespacios.Columns[2].Width = 230;
-            dgvespacios.Columns[3].Width = 230;
-            dgvespacios.Columns[4].Width = 230;
-            con.cerrarConnection();
+            try
+            {
+                con.inicioConnection();
+                dgvespacios.DataSource = null;
+                lista_estacion = estacion.read();
+                dgvespacios.DataSource = lista_estacion;
+                dgvespacios.Columns["Exid"].Visible = false;
+                dgvespacios.Columns["Id"].Visible = false;
+                dgvespacios.Columns[1].HeaderText = "Correlativo";
+                dgvespacios.Columns[2].HeaderText = "Sección de Estacionamiento";
+                dgvespacios.Columns[3].HeaderText = "Tipo de Estacionamiento";
+                dgvespacios.Columns[4].HeaderText = "Estado";
+                dgvespacios.Columns[1].Width = 230;
+                dgvespacios.Columns[2].Width = 230;
+                dgvespacios.Columns[3].Width = 230;
+                dgvespacios.Columns[4].Width = 230;
+                con.cerrarConnection();
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }    
         }
         private void mostraractualizaciones()
         {
-            dgvactual.DataSource = null;
-            dgvactual.DataSource = lista_actual;
-            dgvactual.Columns["Exid"].Visible = false;
-            dgvactual.Columns["Id"].Visible = false;
-            dgvactual.Columns[1].HeaderText = "Correlativo";
-            dgvactual.Columns[2].HeaderText = "Sección de Estacionamiento";
-            dgvactual.Columns[3].HeaderText = "Tipo de Estacionamiento";
-            dgvactual.Columns[4].HeaderText = "Estado";
-            dgvactual.Columns[1].Width = 230;
-            dgvactual.Columns[2].Width = 230;
-            dgvactual.Columns[3].Width = 230;
-            dgvactual.Columns[4].Width = 230;
+            try
+            {
+                dgvactual.DataSource = null;
+                dgvactual.DataSource = lista_actual;
+                dgvactual.Columns["Exid"].Visible = false;
+                dgvactual.Columns["Id"].Visible = false;
+                dgvactual.Columns[1].HeaderText = "Correlativo";
+                dgvactual.Columns[2].HeaderText = "Sección de Estacionamiento";
+                dgvactual.Columns[3].HeaderText = "Tipo de Estacionamiento";
+                dgvactual.Columns[4].HeaderText = "Estado";
+                dgvactual.Columns[1].Width = 230;
+                dgvactual.Columns[2].Width = 230;
+                dgvactual.Columns[3].Width = 230;
+                dgvactual.Columns[4].Width = 230;
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }    
         }
         private void devolver()
         {
@@ -197,40 +233,47 @@ namespace ParkingStorage_System
 
         private void btneditar_Click(object sender, EventArgs e)
         {
-            if (posicion != -1 && editar_indice != -1)
+            try
             {
-                Clases.Estacionamiento sta = lista_estacion[posicion];
-                con.inicioConnection();
-                aler.label2.Text = "¿Deseas editar este registro?";
-                aler.pictureBox2.Image = Properties.Resources.question;
-                result = aler.ShowDialog();
-                if (result == DialogResult.OK)
+                if (posicion != -1 && editar_indice != -1)
                 {
-                    txtcorrelativo.Text = sta.Correlativo.ToString();
-                    edicion = true;
-                    label5.Visible = false;
-                    label2.Visible = false;
-                    cmbseccion.Visible = false;
-                    cmbtespacio.Visible = false;
-                    btnRegistrar.Text = "Modificar";
-                    tabControl1.SelectedIndex = 0;
+                    Clases.Estacionamiento sta = lista_estacion[posicion];
+                    con.inicioConnection();
+                    aler.label2.Text = "¿Deseas editar este registro?";
+                    aler.pictureBox2.Image = Properties.Resources.question;
+                    result = aler.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        txtcorrelativo.Text = sta.Correlativo.ToString();
+                        edicion = true;
+                        label5.Visible = false;
+                        label2.Visible = false;
+                        cmbseccion.Visible = false;
+                        cmbtespacio.Visible = false;
+                        btnRegistrar.Text = "Modificar";
+                        tabControl1.SelectedIndex = 0;
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        editar_indice = -1;
+                        posicion = -1;
+                    }
+                    con.cerrarConnection();
                 }
-                else if (result == DialogResult.Cancel)
+                else
                 {
-                    editar_indice = -1;
-                    posicion = -1;
-                }
-                con.cerrarConnection();
-            }
-            else
-            {
-                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la edición del registro";
-                result = advert.ShowDialog();
-                if (result == DialogResult.OK)
-                {
+                    advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la edición del registro";
+                    result = advert.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
 
+                    }
                 }
             }
+            catch (Exception)
+            {
+
+            }       
         }
 
         private void txtbuscar_TextChanged(object sender, EventArgs e)
@@ -243,9 +286,10 @@ namespace ParkingStorage_System
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            con.inicioConnection();
+            
             try
             {
+                con.inicioConnection();
                 if (string.IsNullOrEmpty(txtbuscar.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en la búsqueda";
@@ -287,6 +331,7 @@ namespace ParkingStorage_System
                         actualizarTabla();
                     }
                 }
+                con.cerrarConnection();
             }
             catch (Exception)
             {
@@ -297,48 +342,60 @@ namespace ParkingStorage_System
 
                 }
             }
-            con.cerrarConnection();
+            
         }
 
         private void btneliminar_Click(object sender, EventArgs e)
         {
-            if (posicion != -1 && editar_indice != -1)
+            try
             {
-                Clases.Estacionamiento us = lista_estacion[posicion];
-                con.inicioConnection();
-                aler.label2.Text = "¿Deseas eliminar este registro?\nTen en cuenta que no se podrá recuperar.";
-                aler.pictureBox2.Image = Properties.Resources.question;
-                result = aler.ShowDialog();
-                if (result == DialogResult.OK)
+                if (posicion != -1 && editar_indice != -1)
                 {
-                    us.Exid = Convert.ToString(us.obternerID(us.Correlativo.ToString()));
-                    us.eliminar(us.Exid);
-                    info.label2.Text = " Estacionamiento Eliminado Correctamente";
-                    info.pictureBox2.Image = Properties.Resources.check;
-                    result = info.ShowDialog();
+                    Clases.Estacionamiento us = lista_estacion[posicion];
+                    con.inicioConnection();
+                    aler.label2.Text = "¿Deseas eliminar este registro?\nTen en cuenta que no se podrá recuperar.";
+                    aler.pictureBox2.Image = Properties.Resources.question;
+                    result = aler.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        us.Exid = Convert.ToString(us.obternerID(us.Correlativo.ToString()));
+                        us.eliminar(us.Exid);
+                        info.label2.Text = " Estacionamiento Eliminado Correctamente";
+                        info.pictureBox2.Image = Properties.Resources.check;
+                        result = info.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+
+                        }
+                        actualizarTabla();
+                        devolver();
+                    }
+                    else if (result == DialogResult.Cancel)
+                    {
+                        editar_indice = -1;
+                        posicion = -1;
+                    }
+                    con.cerrarConnection();
+                }
+                else
+                {
+                    advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la eliminación del registro";
+                    result = advert.ShowDialog();
                     if (result == DialogResult.OK)
                     {
 
                     }
-                    actualizarTabla();
-                    devolver();
                 }
-                else if (result == DialogResult.Cancel)
-                {
-                    editar_indice = -1;
-                    posicion = -1;
-                }
-                con.cerrarConnection();
             }
-            else
+            catch (Exception)
             {
-                advert.label2.Text = "Seleccione una fila con doble click.\nPara realizar la eliminación del registro";
-                result = advert.ShowDialog();
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
                 if (result == DialogResult.OK)
                 {
 
                 }
-            }
+            }     
         }
     }
 }

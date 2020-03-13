@@ -72,11 +72,11 @@ namespace ParkingStorage_System
         {
             Clases.Conexion con = new Clases.Conexion();
             Usuario users = new Usuario();
-            Usuario aux = new Usuario();      
-            con.inicioConnection();
+            Usuario aux = new Usuario();                
             try
             {
-                if(string.IsNullOrEmpty(username.Text) || string.IsNullOrEmpty(pass.Text))
+                con.inicioConnection();
+                if (string.IsNullOrEmpty(username.Text) || string.IsNullOrEmpty(pass.Text))
                 {
                     con.cerrarConnection();
                     advert.label2.Text = "Hay campos vacíos en el formulario, \npor favor rellene los campos solicitados";
@@ -93,28 +93,49 @@ namespace ParkingStorage_System
                         aux = users.ObtenerUsuario(int.Parse(users.Id));
                         if(aux.Estado == "True")
                         {
-                            con.cerrarConnection();
-                            info.label2.Text = "Usuario Correcto, Bienvenido " + username.Text;
-                            result = info.ShowDialog();
-                            if (result == DialogResult.OK)
+                            if(aux.TipoUsuario == "A")
                             {
-                                Administrador admin = new Administrador();                            
-                                
-                                if (users != null)
+                                info.label2.Text = "Usuario Correcto, Bienvenido " + username.Text;
+                                result = info.ShowDialog();
+                                if (result == DialogResult.OK)
                                 {
-                                    admin.lbladmin.Text = aux.Nombre;
+                                    Administrador admin = new Administrador();
+
+                                    if (users != null)
+                                    {
+                                        admin.lbladmin.Text = aux.Nombre;
+                                    }
+                                    else
+                                    {
+                                        admin.lbladmin.Text = "";
+                                    }
+                                    admin.Show();
+                                    this.Hide();
                                 }
-                                else
-                                {
-                                    admin.lbladmin.Text = "";
-                                }
-                                admin.Show();
-                                this.Hide();
                             }
+                            else
+                            {
+                                info.label2.Text = "Usuario Correcto, Bienvenido " + username.Text;
+                                result = info.ShowDialog();
+                                if (result == DialogResult.OK)
+                                {
+                                    Secretaria secre = new Secretaria();
+
+                                    if (users != null)
+                                    {
+                                        secre.lbladmin.Text = aux.Nombre;
+                                    }
+                                    else
+                                    {
+                                        secre.lbladmin.Text = "";
+                                    }
+                                    secre.Show();
+                                    this.Hide();
+                                }
+                            }     
                         }
                         else
                         {
-                            con.cerrarConnection();
                             info.label2.Text = "El usuario está desactivado,\nlo sentimos no puede acceder al sistema.\n Consulte con su Administrador de TI";                      
                             result = info.ShowDialog();
                             if (result == DialogResult.OK)
@@ -125,7 +146,7 @@ namespace ParkingStorage_System
                     }
                     else
                     {
-                        con.cerrarConnection();
+                        
                         info.label2.Text = "Usuario Incorrecto, inténtelo de nuevo";
                         result = info.ShowDialog();
                         if(result == DialogResult.OK)
@@ -134,10 +155,10 @@ namespace ParkingStorage_System
                         }                           
                     }
                 }
+                con.cerrarConnection();
             }
             catch (Exception)
             {
-                con.cerrarConnection();
                 error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
                 result = error.ShowDialog();
                 if (result == DialogResult.OK)
