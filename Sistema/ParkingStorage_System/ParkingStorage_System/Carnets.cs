@@ -78,9 +78,10 @@ namespace ParkingStorage_System
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            con.inicioConnection();
+            
             try
             {
+                con.inicioConnection();
                 if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtapellido.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
@@ -159,6 +160,10 @@ namespace ParkingStorage_System
                                         {
 
                                         }
+                                        if(File.Exists(@"C:\Parking_Storage\CarnetQR\" + carn.CodigoParqueo + ".png"))
+                                        {
+                                            File.Delete(@"C:\Parking_Storage\CarnetQR\" + carn.CodigoParqueo + ".png");
+                                        }
                                         txtdui.Clear();
                                         txtdui.Focus();
                                     }
@@ -199,6 +204,7 @@ namespace ParkingStorage_System
                         }
                     }
                 }
+                con.cerrarConnection();
             }
             catch (Exception)
             {
@@ -209,7 +215,7 @@ namespace ParkingStorage_System
                     devolver();
                 }
             }
-            con.cerrarConnection();
+            
         }
         private void limpiar()
         {
