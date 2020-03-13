@@ -316,5 +316,33 @@ namespace ParkingStorage_System.Clases
                 throw;
             }
         }
+        //conteo de datos
+        public int conteoEs()
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lectura;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT COUNT(correlativo) as dato FROM Estacion";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                lectura = comando.ExecuteReader();
+                if (lectura.Read())
+                {
+                    int a = Convert.ToInt32(lectura["dato"]);
+                    lectura.Close();
+                    return a;
+                }
+                else
+                {
+                    lectura.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

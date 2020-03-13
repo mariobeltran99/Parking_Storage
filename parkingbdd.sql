@@ -1,3 +1,4 @@
+
 use master;
 go
 /*crear base de datos*/
@@ -135,6 +136,11 @@ AS
 select CONCAT(ct.nombre,' ',ct.apellido) as nombre_completo, ct.dui,ct.fecha_vencimiento,ct.cod_parqueo,ct.tipo_trabajador,ct.imagen_cod from Carnet_trabajadores ct where ct.id = @numer
 go
 /*select CONCAT(nombre,' ',apellido) as nombre_completo, dui,fecha_vencimiento,cod_parqueo,tipo_trabajador,imagen_cod from Carnet_trabajadores ct where id = 1*/
+select COUNT(nombre) as dato from Carnet_trabajadores
 
-use parkingbdd
-create login adminpark with password = '123456'
+select COUNT(username) as dato from Usuarios
+
+
+select COUNT(nombre) as dato from Secciones_estacion
+
+select COUNT(correlativo) as dato from Estacion

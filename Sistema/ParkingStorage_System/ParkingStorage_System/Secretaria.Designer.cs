@@ -30,20 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Secretaria));
             this.franja1 = new System.Windows.Forms.Panel();
+            this.close = new System.Windows.Forms.Panel();
+            this.minize = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menu = new System.Windows.Forms.Panel();
+            this.panelcontenedor = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.closesesion = new System.Windows.Forms.Button();
             this.carnet = new System.Windows.Forms.Button();
             this.lbladmin = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.close = new System.Windows.Forms.Panel();
-            this.minize = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelcontenedor = new System.Windows.Forms.Panel();
+            this.panelcontenerdor2 = new System.Windows.Forms.Panel();
+            this.Inicio = new System.Windows.Forms.Button();
             this.franja1.SuspendLayout();
-            this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // franja1
@@ -59,90 +61,6 @@
             this.franja1.Size = new System.Drawing.Size(1676, 33);
             this.franja1.TabIndex = 1;
             this.franja1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.franja1_MouseMove);
-            // 
-            // menu
-            // 
-            this.menu.BackColor = System.Drawing.Color.MidnightBlue;
-            this.menu.Controls.Add(this.panelcontenedor);
-            this.menu.Controls.Add(this.panel1);
-            this.menu.Controls.Add(this.closesesion);
-            this.menu.Controls.Add(this.carnet);
-            this.menu.Controls.Add(this.lbladmin);
-            this.menu.Controls.Add(this.label2);
-            this.menu.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.menu.Location = new System.Drawing.Point(0, 32);
-            this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(244, 508);
-            this.menu.TabIndex = 3;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(244, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(957, 502);
-            this.panel1.TabIndex = 2;
-            // 
-            // closesesion
-            // 
-            this.closesesion.BackColor = System.Drawing.Color.Transparent;
-            this.closesesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closesesion.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.closesesion.FlatAppearance.BorderSize = 0;
-            this.closesesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.closesesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closesesion.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closesesion.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.closesesion.Image = global::ParkingStorage_System.Properties.Resources.logout;
-            this.closesesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.closesesion.Location = new System.Drawing.Point(0, 442);
-            this.closesesion.Name = "closesesion";
-            this.closesesion.Size = new System.Drawing.Size(244, 35);
-            this.closesesion.TabIndex = 9;
-            this.closesesion.Text = "Cerrar Sesión";
-            this.closesesion.UseVisualStyleBackColor = false;
-            this.closesesion.Click += new System.EventHandler(this.closesesion_Click);
-            // 
-            // carnet
-            // 
-            this.carnet.BackColor = System.Drawing.Color.Transparent;
-            this.carnet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.carnet.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.carnet.FlatAppearance.BorderSize = 0;
-            this.carnet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.carnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.carnet.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.carnet.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.carnet.Image = global::ParkingStorage_System.Properties.Resources.parking_card;
-            this.carnet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.carnet.Location = new System.Drawing.Point(0, 139);
-            this.carnet.Name = "carnet";
-            this.carnet.Size = new System.Drawing.Size(244, 35);
-            this.carnet.TabIndex = 3;
-            this.carnet.Text = "Carnets";
-            this.carnet.UseVisualStyleBackColor = false;
-            this.carnet.Click += new System.EventHandler(this.carnet_Click);
-            // 
-            // lbladmin
-            // 
-            this.lbladmin.AutoSize = true;
-            this.lbladmin.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbladmin.ForeColor = System.Drawing.Color.White;
-            this.lbladmin.Location = new System.Drawing.Point(24, 52);
-            this.lbladmin.Name = "lbladmin";
-            this.lbladmin.Size = new System.Drawing.Size(53, 17);
-            this.lbladmin.TabIndex = 2;
-            this.lbladmin.Text = "label3";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(67, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Secretaria";
             // 
             // close
             // 
@@ -188,6 +106,22 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // menu
+            // 
+            this.menu.BackColor = System.Drawing.Color.MidnightBlue;
+            this.menu.Controls.Add(this.Inicio);
+            this.menu.Controls.Add(this.panelcontenedor);
+            this.menu.Controls.Add(this.panel1);
+            this.menu.Controls.Add(this.closesesion);
+            this.menu.Controls.Add(this.carnet);
+            this.menu.Controls.Add(this.lbladmin);
+            this.menu.Controls.Add(this.label2);
+            this.menu.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.menu.Location = new System.Drawing.Point(0, 32);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(244, 508);
+            this.menu.TabIndex = 3;
+            // 
             // panelcontenedor
             // 
             this.panelcontenedor.BackColor = System.Drawing.Color.White;
@@ -196,12 +130,110 @@
             this.panelcontenedor.Size = new System.Drawing.Size(957, 508);
             this.panelcontenedor.TabIndex = 4;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(244, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(957, 502);
+            this.panel1.TabIndex = 2;
+            // 
+            // closesesion
+            // 
+            this.closesesion.BackColor = System.Drawing.Color.Transparent;
+            this.closesesion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closesesion.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.closesesion.FlatAppearance.BorderSize = 0;
+            this.closesesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.closesesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closesesion.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closesesion.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.closesesion.Image = global::ParkingStorage_System.Properties.Resources.logout;
+            this.closesesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.closesesion.Location = new System.Drawing.Point(0, 442);
+            this.closesesion.Name = "closesesion";
+            this.closesesion.Size = new System.Drawing.Size(244, 35);
+            this.closesesion.TabIndex = 9;
+            this.closesesion.Text = "Cerrar Sesión";
+            this.closesesion.UseVisualStyleBackColor = false;
+            this.closesesion.Click += new System.EventHandler(this.closesesion_Click);
+            // 
+            // carnet
+            // 
+            this.carnet.BackColor = System.Drawing.Color.Transparent;
+            this.carnet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.carnet.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.carnet.FlatAppearance.BorderSize = 0;
+            this.carnet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.carnet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.carnet.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.carnet.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.carnet.Image = global::ParkingStorage_System.Properties.Resources.parking_card;
+            this.carnet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.carnet.Location = new System.Drawing.Point(0, 178);
+            this.carnet.Name = "carnet";
+            this.carnet.Size = new System.Drawing.Size(244, 35);
+            this.carnet.TabIndex = 3;
+            this.carnet.Text = "Carnets";
+            this.carnet.UseVisualStyleBackColor = false;
+            this.carnet.Click += new System.EventHandler(this.carnet_Click);
+            // 
+            // lbladmin
+            // 
+            this.lbladmin.AutoSize = true;
+            this.lbladmin.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbladmin.ForeColor = System.Drawing.Color.White;
+            this.lbladmin.Location = new System.Drawing.Point(24, 52);
+            this.lbladmin.Name = "lbladmin";
+            this.lbladmin.Size = new System.Drawing.Size(53, 17);
+            this.lbladmin.TabIndex = 2;
+            this.lbladmin.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(67, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Secretaria";
+            // 
+            // panelcontenerdor2
+            // 
+            this.panelcontenerdor2.BackColor = System.Drawing.Color.White;
+            this.panelcontenerdor2.Location = new System.Drawing.Point(244, 32);
+            this.panelcontenerdor2.Name = "panelcontenerdor2";
+            this.panelcontenerdor2.Size = new System.Drawing.Size(957, 508);
+            this.panelcontenerdor2.TabIndex = 4;
+            // 
+            // Inicio
+            // 
+            this.Inicio.BackColor = System.Drawing.Color.Transparent;
+            this.Inicio.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Inicio.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Inicio.FlatAppearance.BorderSize = 0;
+            this.Inicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.Inicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Inicio.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Inicio.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Inicio.Image = global::ParkingStorage_System.Properties.Resources.garage;
+            this.Inicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Inicio.Location = new System.Drawing.Point(0, 137);
+            this.Inicio.Name = "Inicio";
+            this.Inicio.Size = new System.Drawing.Size(244, 35);
+            this.Inicio.TabIndex = 3;
+            this.Inicio.Text = "Inicio";
+            this.Inicio.UseVisualStyleBackColor = false;
+            this.Inicio.Click += new System.EventHandler(this.Inicio_Click);
+            // 
             // Secretaria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 538);
             this.ControlBox = false;
+            this.Controls.Add(this.panelcontenerdor2);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.franja1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -211,9 +243,9 @@
             this.Text = "Secretaria";
             this.franja1.ResumeLayout(false);
             this.franja1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,5 +264,7 @@
         public System.Windows.Forms.Label lbladmin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelcontenedor;
+        private System.Windows.Forms.Panel panelcontenerdor2;
+        private System.Windows.Forms.Button Inicio;
     }
 }

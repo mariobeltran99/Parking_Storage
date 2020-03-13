@@ -16,7 +16,7 @@ namespace ParkingStorage_System
         public Secretaria()
         {
             InitializeComponent();
-            AbrirFormenPanel<CarnetSecre>();
+            AbrirFormenPanel<Home2>();
         }
         int posX = 0;
         int posY = 0;
@@ -70,14 +70,14 @@ namespace ParkingStorage_System
         private void AbrirFormenPanel<formulario>() where formulario : Form, new()
         {
             Form formulariohijo;
-            formulariohijo = panelcontenedor.Controls.OfType<formulario>().FirstOrDefault();
+            formulariohijo = panelcontenerdor2.Controls.OfType<formulario>().FirstOrDefault();
             if (formulariohijo == null)
             {
                 formulariohijo = new formulario();
                 formulariohijo.TopLevel = false;
                 formulariohijo.Dock = DockStyle.Fill;
-                this.panelcontenedor.Controls.Add(formulariohijo);
-                this.panelcontenedor.Tag = formulariohijo;
+                this.panelcontenerdor2.Controls.Add(formulariohijo);
+                this.panelcontenerdor2.Tag = formulariohijo;
                 formulariohijo.Show();
 
             }
@@ -89,7 +89,12 @@ namespace ParkingStorage_System
 
         private void carnet_Click(object sender, EventArgs e)
         {
+            AbrirFormenPanel<CarnetSecre>();
+        }
 
+        private void Inicio_Click(object sender, EventArgs e)
+        {
+            AbrirFormenPanel<Home2>();
         }
     }
 }
