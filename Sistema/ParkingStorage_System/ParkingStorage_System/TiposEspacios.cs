@@ -38,7 +38,7 @@ namespace ParkingStorage_System
             try
             {
                 con.inicioConnection();
-                if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtdescripcion.Text))
+                if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtdescripcion.Text) || string.IsNullOrWhiteSpace(txtnombre.Text) || string.IsNullOrWhiteSpace(txtdescripcion.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
                     result = advert.ShowDialog();
@@ -309,7 +309,7 @@ namespace ParkingStorage_System
             try
             {
                 con.inicioConnection();
-                if (string.IsNullOrEmpty(txtbuscar.Text))
+                if (string.IsNullOrEmpty(txtbuscar.Text) || string.IsNullOrWhiteSpace(txtbuscar.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en la búsqueda";
                     result = advert.ShowDialog();

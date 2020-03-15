@@ -118,10 +118,11 @@ select * from Secciones_estacion;
 /*tipos de estacionamiento*/
 delete from Tipo_estacionamiento;
 insert into Tipo_estacionamiento (nombre,descripcion) values('EMPLEADOS', 'Estacionamiento para los trabajadores');
-select * from Tipo_estacionamiento
+insert into Tipo_estacionamiento (nombre,descripcion) values('CLIENTES', 'Estacionamiento para los clientes o visitantes');
+select * from Tipo_estacionamiento where not nombre = 'empleados'
 
 /*Estacion*/
-select * from Estacion;
+select id from Estacion;
 insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0001P','1','1',1);
 insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0002P','1','1',1);
 insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0003P','1','1',1);
@@ -144,3 +145,4 @@ select COUNT(username) as dato from Usuarios
 select COUNT(nombre) as dato from Secciones_estacion
 
 select COUNT(correlativo) as dato from Estacion
+

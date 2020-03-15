@@ -17,8 +17,6 @@ namespace ParkingStorage_System.Clases
         private string idEstacion;  
         private string estado;
         private string exid;
-
-
         public string Id { get => id; set => id = value; }
         public string Correlativo { get => correlativo; set => correlativo = value; }
         public string IdSeccion { get => idSeccion; set => idSeccion = value; }

@@ -78,7 +78,7 @@ namespace ParkingStorage_System.Clases
             SqlCommand comando = new SqlCommand();
             SqlDataReader lector;
             comando.CommandType = System.Data.CommandType.Text;
-            comando.CommandText = "SELECT * FROM Tipo_estacionamiento";
+            comando.CommandText = "SELECT * FROM Tipo_estacionamiento WHERE NOT nombre = 'EMPLEADOS'";
             comando.Connection = Clases.Conexion.connecSQL;
             try
             {
@@ -185,7 +185,7 @@ namespace ParkingStorage_System.Clases
             SqlCommand comando = new SqlCommand();
             SqlDataReader lector;
             comando.CommandType = System.Data.CommandType.Text;
-            comando.CommandText = "SELECT * FROM Tipo_estacionamiento WHERE nombre LIKE '%' + @p1 + '%'";
+            comando.CommandText = "SELECT * FROM Tipo_estacionamiento WHERE NOT nombre = 'EMPLEADOS' AND nombre LIKE '%' + @p1 + '%'";
             comando.Connection = Clases.Conexion.connecSQL;
             try
             {
