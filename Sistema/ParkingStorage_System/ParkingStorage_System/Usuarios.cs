@@ -110,7 +110,7 @@ namespace ParkingStorage_System
             try
             {
                 con.inicioConnection();
-                if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtusuario.Text))
+                if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtusuario.Text) || string.IsNullOrWhiteSpace(txtnombre.Text) || string.IsNullOrWhiteSpace(txtusuario.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
                     result = advert.ShowDialog();
@@ -125,7 +125,7 @@ namespace ParkingStorage_System
                     {
                         if (passw)
                         {
-                            if(string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtverificar.Text))
+                            if(string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtverificar.Text) || string.IsNullOrWhiteSpace(txtpassword.Text) || string.IsNullOrWhiteSpace(txtverificar.Text))
                             {
                                 advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
                                 result = advert.ShowDialog();
@@ -230,7 +230,7 @@ namespace ParkingStorage_System
                     }
                     else
                     {
-                        if (string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtverificar.Text))
+                        if (string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtverificar.Text) || string.IsNullOrWhiteSpace(txtpassword.Text)|| string.IsNullOrWhiteSpace(txtverificar.Text))
                         {
                             advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
                             result = advert.ShowDialog();
@@ -573,7 +573,7 @@ namespace ParkingStorage_System
             try
             {
                 con.inicioConnection();
-                if (string.IsNullOrEmpty(txtbuscar.Text))
+                if (string.IsNullOrEmpty(txtbuscar.Text) || string.IsNullOrWhiteSpace(txtbuscar.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en la búsqueda";
                     result = advert.ShowDialog();

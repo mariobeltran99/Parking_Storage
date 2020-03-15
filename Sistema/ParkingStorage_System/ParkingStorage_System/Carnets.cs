@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
 
 namespace ParkingStorage_System
 {
@@ -40,7 +38,7 @@ namespace ParkingStorage_System
 
         private void txtnombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar) && char.IsDigit(e.KeyChar))
+            if (char.IsNumber(e.KeyChar) || char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -82,7 +80,7 @@ namespace ParkingStorage_System
             try
             {
                 con.inicioConnection();
-                if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtapellido.Text))
+                if (string.IsNullOrEmpty(txtnombre.Text) || string.IsNullOrEmpty(txtapellido.Text) || string.IsNullOrWhiteSpace(txtnombre.Text) || string.IsNullOrWhiteSpace(txtapellido.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
                     result = advert.ShowDialog();
@@ -126,7 +124,7 @@ namespace ParkingStorage_System
                     {
                         Clases.Validaciones val = new Clases.Validaciones();
                         Clases.Carnet carn = new Clases.Carnet();
-                        if (string.IsNullOrEmpty(txtdui.Text))
+                        if (string.IsNullOrEmpty(txtdui.Text) || string.IsNullOrWhiteSpace(txtdui.Text))
                         {
                             advert.label2.Text = "Hay campos vacíos en el formulario,\npor favor rellene los campos";
                             result = advert.ShowDialog();
@@ -465,10 +463,11 @@ namespace ParkingStorage_System
 
         private void btnbuscar_Click(object sender, EventArgs e)
         {
-            con.inicioConnection();
+            
             try
             {
-                if (string.IsNullOrEmpty(txtbuscar.Text))
+                con.inicioConnection();
+                if (string.IsNullOrEmpty(txtbuscar.Text) || string.IsNullOrWhiteSpace(txtbuscar.Text))
                 {
                     advert.label2.Text = "Hay campos vacíos en la búsqueda";
                     result = advert.ShowDialog();
@@ -518,6 +517,7 @@ namespace ParkingStorage_System
                         actualizarTabla();
                     }
                 }
+                con.cerrarConnection();
             }
             catch (Exception)
             {
@@ -527,8 +527,7 @@ namespace ParkingStorage_System
                 {
 
                 }
-            }
-            con.cerrarConnection();
+            }        
         }
 
         private void btngenerar_Click(object sender, EventArgs e)

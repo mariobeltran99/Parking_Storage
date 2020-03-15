@@ -14,7 +14,6 @@ namespace ParkingStorage_System
     {
         DialogResult result = new DialogResult();
         AError error = new AError();
-        carnets objcarts = new carnets();
         public repoCarnet()
         {
             InitializeComponent();
@@ -44,10 +43,12 @@ namespace ParkingStorage_System
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            carnets objcarts = new carnets();
+            objcarts.SetParameterValue("@numer", idcarnet);
             string user = Environment.UserName.ToString();
             string dir = @"C:\Users\" + user + @"\Documents\Parking_Storage\Carnets\";
             objcarts.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, dir+codpark+".pdf");
+            this.DialogResult = DialogResult.OK;
             this.Hide();
         }
 
@@ -55,6 +56,7 @@ namespace ParkingStorage_System
         {
             try
             {
+                carnets objcarts = new carnets();
                 objcarts.SetParameterValue("@numer", idcarnet);
                 crystalReportViewer1.ReportSource = objcarts;
             }

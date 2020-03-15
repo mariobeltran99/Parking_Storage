@@ -17,8 +17,6 @@ namespace ParkingStorage_System.Clases
         private string idEstacion;  
         private string estado;
         private string exid;
-
-
         public string Id { get => id; set => id = value; }
         public string Correlativo { get => correlativo; set => correlativo = value; }
         public string IdSeccion { get => idSeccion; set => idSeccion = value; }
@@ -314,6 +312,34 @@ namespace ParkingStorage_System.Clases
             {
                 return 0;
                 throw;
+            }
+        }
+        //conteo de datos
+        public int conteoEs()
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lectura;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT COUNT(correlativo) as dato FROM Estacion";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                lectura = comando.ExecuteReader();
+                if (lectura.Read())
+                {
+                    int a = Convert.ToInt32(lectura["dato"]);
+                    lectura.Close();
+                    return a;
+                }
+                else
+                {
+                    lectura.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
             }
         }
     }

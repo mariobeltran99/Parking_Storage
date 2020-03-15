@@ -353,5 +353,33 @@ namespace ParkingStorage_System
                 throw;
             }
         }
+        //conteo de datos
+        public int conteoUs()
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lectura;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT COUNT(username) as dato FROM Usuarios";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                lectura = comando.ExecuteReader();
+                if (lectura.Read())
+                {
+                    int a = Convert.ToInt32(lectura["dato"]);
+                    lectura.Close();
+                    return a;
+                }
+                else
+                {
+                    lectura.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

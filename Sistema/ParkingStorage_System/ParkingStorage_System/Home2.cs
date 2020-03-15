@@ -10,40 +10,34 @@ using System.Windows.Forms;
 
 namespace ParkingStorage_System
 {
-    public partial class Home : Form
+    public partial class Home2 : Form
     {
         Clases.Conexion con = new Clases.Conexion();
-        public Home()
+        public Home2()
         {
             InitializeComponent();
-            conteo();
+            conteoCarnet();
         }
-        //fecha y hora
-        private void horario_Tick(object sender, EventArgs e)
+
+        private void hora_Tick(object sender, EventArgs e)
         {
             label15.Text = DateTime.Now.ToString("HH:mm:ss");
             label16.Text = DateTime.Now.ToLongDateString();
-            conteo();
+            conteoCarnet();
         }
-        private void conteo()
+        private void conteoCarnet()
         {
             try
             {
                 con.inicioConnection();
                 Clases.Carnet car = new Clases.Carnet();
-                Clases.Estacionamiento est = new Clases.Estacionamiento();
-                Clases.Secciones_Estacionamiento sec = new Clases.Secciones_Estacionamiento();
-                Usuario user = new Usuario();
                 label7.Text = car.conteoCar().ToString();
-                label8.Text = user.conteoUs().ToString();
-                label9.Text = sec.conteoZon().ToString();
-                label10.Text = est.conteoEs().ToString();
                 con.cerrarConnection();
             }
             catch (Exception)
             {
 
-            }
-        }
+            }          
+        } 
     }
 }
