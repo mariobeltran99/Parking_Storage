@@ -105,6 +105,18 @@ add constraint CK_horas
 check (hora_entrada < hora_salida)
 go
 
+CREATE PROCEDURE carnet
+@numer int 
+AS
+select CONCAT(ct.nombre,' ',ct.apellido) as nombre_completo, ct.dui,ct.fecha_vencimiento,ct.cod_parqueo,ct.tipo_trabajador,ct.imagen_cod from Carnet_trabajadores ct where ct.id = @numer
+go
+
+CREATE PROCEDURE tickets
+@num int 
+AS
+select ti.img_QR as Imagen, es.correlativo as Espacio, sec.nombre as Seccion,est.nombre as Tipo from Ticket ti INNER JOIN Estacion es ON es.id = ti.id_estacion INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id where ti.id = @num
+go
+
 /*Agregar usuario admin por defecto en el sistema password = 123456*/ 
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
 Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
@@ -131,11 +143,7 @@ select es.id,es.correlativo, sec.nombre as 'Seccion', est.nombre as 'Tipo',es.es
 
 select * from Carnet_trabajadores
 
-CREATE PROCEDURE carnet
-@numer int 
-AS
-select CONCAT(ct.nombre,' ',ct.apellido) as nombre_completo, ct.dui,ct.fecha_vencimiento,ct.cod_parqueo,ct.tipo_trabajador,ct.imagen_cod from Carnet_trabajadores ct where ct.id = @numer
-go
+
 /*select CONCAT(nombre,' ',apellido) as nombre_completo, dui,fecha_vencimiento,cod_parqueo,tipo_trabajador,imagen_cod from Carnet_trabajadores ct where id = 1*/
 select COUNT(nombre) as dato from Carnet_trabajadores
 
@@ -146,3 +154,9 @@ select COUNT(nombre) as dato from Secciones_estacion
 
 select COUNT(correlativo) as dato from Estacion
 
+SELECT TOP (1)  sec.nombre as 'seccion' FROM Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id WHERE est.nombre = 'CLIENTES' AND es.estado = 1
+SELECT TOP (1)  es.correlativo FROM Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id WHERE est.nombre = 'CLIENTES' AND es.estado = 1 AND sec.nombre = 'EDIFICIO OESTE' AND es.id = 6
+
+select * from Estacion
+select * from Ticket
+select ti.img_QR, es.correlativo, sec.nombre,est.nombre from Ticket ti INNER JOIN Estacion es ON es.id = ti.id_estacion INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id where ti.id = 1

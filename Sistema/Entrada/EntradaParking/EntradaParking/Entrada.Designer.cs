@@ -42,10 +42,8 @@
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
             this.label1.Location = new System.Drawing.Point(68, 508);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 18);
+            this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            this.label1.Visible = false;
             // 
             // cmbselect
             // 
