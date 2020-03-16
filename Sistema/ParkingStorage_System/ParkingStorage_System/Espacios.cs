@@ -244,14 +244,27 @@ namespace ParkingStorage_System
                     result = aler.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        txtcorrelativo.Text = sta.Correlativo.ToString();
-                        edicion = true;
-                        label5.Visible = false;
-                        label2.Visible = false;
-                        cmbseccion.Visible = false;
-                        cmbtespacio.Visible = false;
-                        btnRegistrar.Text = "Modificar";
-                        tabControl1.SelectedIndex = 0;
+                        if(sta.Estado == "Ocupado")
+                        {
+                            advert.label2.Text = "No se puede editar el registro\nDebido a que está en uso el estacionamiento";
+                            result = advert.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+
+                            }
+                            devolver();
+                        }
+                        else
+                        {
+                            txtcorrelativo.Text = sta.Correlativo.ToString();
+                            edicion = true;
+                            label5.Visible = false;
+                            label2.Visible = false;
+                            cmbseccion.Visible = false;
+                            cmbtespacio.Visible = false;
+                            btnRegistrar.Text = "Modificar";
+                            tabControl1.SelectedIndex = 0;
+                        }            
                     }
                     else if (result == DialogResult.Cancel)
                     {
@@ -358,17 +371,31 @@ namespace ParkingStorage_System
                     result = aler.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        us.Exid = Convert.ToString(us.obternerID(us.Correlativo.ToString()));
-                        us.eliminar(us.Exid);
-                        info.label2.Text = " Estacionamiento Eliminado Correctamente";
-                        info.pictureBox2.Image = Properties.Resources.check;
-                        result = info.ShowDialog();
-                        if (result == DialogResult.OK)
+                        if(us.Estado == "Ocupado")
                         {
+                            advert.label2.Text = "No se puede eliminar el registro\nDebido a que está en uso el estacionamiento";
+                            result = advert.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
 
+                            }
+                            devolver();
                         }
-                        actualizarTabla();
-                        devolver();
+                        else
+                        {
+                            us.Exid = Convert.ToString(us.obternerID(us.Correlativo.ToString()));
+                            us.eliminar(us.Exid);
+                            info.label2.Text = " Estacionamiento Eliminado Correctamente";
+                            info.pictureBox2.Image = Properties.Resources.check;
+                            result = info.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+
+                            }
+                            actualizarTabla();
+                            devolver();
+                        }
+                       
                     }
                     else if (result == DialogResult.Cancel)
                     {
@@ -396,6 +423,11 @@ namespace ParkingStorage_System
 
                 }
             }     
+        }
+
+        private void conteos_Tick(object sender, EventArgs e)
+        {
+            cargarcombos();
         }
     }
 }

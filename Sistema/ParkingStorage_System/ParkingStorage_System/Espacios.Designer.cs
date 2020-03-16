@@ -50,6 +50,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvactual = new System.Windows.Forms.DataGridView();
             this.toolmensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.conteos = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -296,6 +297,12 @@
             this.toolmensaje.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolmensaje.ToolTipTitle = "Ayuda";
             // 
+            // conteos
+            // 
+            this.conteos.Enabled = true;
+            this.conteos.Interval = 30000;
+            this.conteos.Tick += new System.EventHandler(this.conteos_Tick);
+            // 
             // Espacios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
@@ -347,5 +354,6 @@
         private System.Windows.Forms.TextBox txtcorrelativo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolTip toolmensaje;
+        private System.Windows.Forms.Timer conteos;
     }
 }

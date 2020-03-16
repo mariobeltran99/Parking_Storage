@@ -86,7 +86,6 @@ create table Detalle_ticket_trabajador(
 [id] integer identity (1,1) not null,
 [id_trabajador] integer not null,
 [id_ticket] integer not null,
-[fecha] date not null,
 constraint[PK_Detalle_ticket_trabajador] primary key([id]),
 constraint [FK_trabajador] foreign key ([id_trabajador]) references [Carnet_trabajadores] ([id]),
 constraint [FK_ticket] foreign key ([id_ticket]) references [Ticket] ([id])
@@ -105,44 +104,75 @@ add constraint CK_horas
 check (hora_entrada < hora_salida)
 go
 
-/*Agregar usuario admin por defecto en el sistema password = 123456*/ 
-Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
-Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
-select * from Usuarios;
-
-/*secciones estacion*/
-delete from Secciones_estacion;
-insert into Secciones_estacion (nombre,descripcion) values ('EDIFICIO ESTE','ubicado en la primera planta del edificio');
-select * from Secciones_estacion;
-
-/*tipos de estacionamiento*/
-delete from Tipo_estacionamiento;
-insert into Tipo_estacionamiento (nombre,descripcion) values('EMPLEADOS', 'Estacionamiento para los trabajadores');
-insert into Tipo_estacionamiento (nombre,descripcion) values('CLIENTES', 'Estacionamiento para los clientes o visitantes');
-select * from Tipo_estacionamiento where not nombre = 'empleados'
-
-/*Estacion*/
-select id from Estacion;
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0001P','1','1',1);
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0002P','1','1',1);
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0003P','1','1',1);
-insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0004P','1','1',1);
-select es.id,es.correlativo, sec.nombre as 'Seccion', est.nombre as 'Tipo',es.estado as 'Estado' From Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id
-
-select * from Carnet_trabajadores
-
 CREATE PROCEDURE carnet
 @numer int 
 AS
 select CONCAT(ct.nombre,' ',ct.apellido) as nombre_completo, ct.dui,ct.fecha_vencimiento,ct.cod_parqueo,ct.tipo_trabajador,ct.imagen_cod from Carnet_trabajadores ct where ct.id = @numer
 go
+
+CREATE PROCEDURE tickets
+@num int 
+AS
+select ti.img_QR as Imagen, es.correlativo as Espacio, sec.nombre as Seccion,est.nombre as Tipo from Ticket ti INNER JOIN Estacion es ON es.id = ti.id_estacion INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id where ti.id = @num
+go
+
+/*Agregar usuario admin por defecto en el sistema password = 123456*/ 
+Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Master','admin','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','1');
+Insert Into Usuarios (nombre,username,password,tipo_user,estado) Values ('Carlos','carlitos','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92','A','0');
+--select * from Usuarios;
+
+/*secciones estacion*/
+--delete from Secciones_estacion;
+insert into Secciones_estacion (nombre,descripcion) values ('PLAZA ESTE','ubicado en la primera planta del edificio');
+insert into Secciones_estacion (nombre,descripcion) values ('AVENIDA OESTE','ubicado en la primera planta del edificio');
+insert into Secciones_estacion (nombre,descripcion) values ('PABELLÓN CENTRAL','ubicado en la segunda planta del edificio');
+--select * from Secciones_estacion;
+
+/*tipos de estacionamiento*/
+--delete from Tipo_estacionamiento;
+insert into Tipo_estacionamiento (nombre,descripcion) values('CLIENTES', 'Estacionamiento para los clientes o visitantes');
+insert into Tipo_estacionamiento (nombre,descripcion) values('ESPECIALES', 'Estacionamiento para personas con condiciones físicas especiales');
+insert into Tipo_estacionamiento (nombre,descripcion) values('EMPLEADOS', 'Estacionamiento para los trabajadores');
+--select * from Tipo_estacionamiento where not nombre = 'empleados'
+
+/*Estacion*/
+--select id from Estacion;
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0001P','1','1',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0002P','1','1',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0003P','1','1',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0004P','1','1',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0005P','2','2',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0006P','2','2',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0007P','2','2',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0008P','2','2',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0009P','3','3',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0010P','3','3',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0011P','3','3',1);
+insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0012P','3','3',1);
+--select es.id,es.correlativo, sec.nombre as 'Seccion', est.nombre as 'Tipo',es.estado as 'Estado' From Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id
+
+--select * from Carnet_trabajadores
+
+
 /*select CONCAT(nombre,' ',apellido) as nombre_completo, dui,fecha_vencimiento,cod_parqueo,tipo_trabajador,imagen_cod from Carnet_trabajadores ct where id = 1*/
-select COUNT(nombre) as dato from Carnet_trabajadores
+--select COUNT(nombre) as dato from Carnet_trabajadores
 
-select COUNT(username) as dato from Usuarios
+--select COUNT(username) as dato from Usuarios
 
 
-select COUNT(nombre) as dato from Secciones_estacion
+--select COUNT(nombre) as dato from Secciones_estacion
 
-select COUNT(correlativo) as dato from Estacion
+--select COUNT(correlativo) as dato from Estacion
 
+--SELECT TOP (1)  sec.nombre as 'seccion' FROM Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id WHERE est.nombre = 'CLIENTES' AND es.estado = 1
+--SELECT TOP (1)  es.correlativo FROM Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id WHERE est.nombre = 'CLIENTES' AND es.estado = 1 AND sec.nombre = 'EDIFICIO OESTE' AND es.id = 6
+
+--select * from Estacion
+--select * from Ticket
+--select ti.img_QR, es.correlativo, sec.nombre,est.nombre from Ticket ti INNER JOIN Estacion es ON es.id = ti.id_estacion INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id where ti.id = 1
+
+select * from Detalle_ticket_trabajador
+select * from Ticket
+SELECT id FROM Carnet_trabajadores WHERE cod_parqueo = 'MBG808466' AND estado = 1
+
+SELECT COUNT(cod_QR) as dato FROM Ticket
