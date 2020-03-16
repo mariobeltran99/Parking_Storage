@@ -33,11 +33,13 @@ namespace ParkingStorage_System
                 Clases.Carnet car = new Clases.Carnet();
                 Clases.Estacionamiento est = new Clases.Estacionamiento();
                 Clases.Secciones_Estacionamiento sec = new Clases.Secciones_Estacionamiento();
+                Clases.Ticket tic = new Clases.Ticket();
                 Usuario user = new Usuario();
                 label7.Text = car.conteoCar().ToString();
                 label8.Text = user.conteoUs().ToString();
                 label9.Text = sec.conteoZon().ToString();
                 label10.Text = est.conteoEs().ToString();
+                label11.Text = tic.conteoTic().ToString();
                 con.cerrarConnection();
             }
             catch (Exception)

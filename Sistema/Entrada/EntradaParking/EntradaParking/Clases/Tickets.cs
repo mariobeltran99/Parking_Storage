@@ -283,5 +283,117 @@ namespace EntradaParking.Clases
                 return 0;
             }
         }
+        //obtener id del empleado
+        public string ObtenerIDEmple(string code)
+        {
+
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT id FROM Carnet_trabajadores WHERE cod_parqueo = @p1";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", code);
+                lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    string dato;
+                    dato = lector["id"].ToString();
+                    lector.Close();
+                    return dato;
+                }
+                else
+                {
+                    lector.Close();
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+        }
+        //ingresar detalle_ticket_trabajador
+        public int crearDetalle(string idempl, string idticke)
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "INSERT INTO Detalle_ticket_trabajador (id_trabajador,id_ticket) values (@p1,@p2)";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", idempl);
+                comando.Parameters.AddWithValue("@p2", idticke);
+                return comando.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+        public int ObtenerComp1(string code)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT id FROM Carnet_trabajadores WHERE cod_parqueo = @p1 AND estado = 0";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", code);
+                lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    int dato;
+                    dato = Convert.ToInt32(lector["id"]);
+                    lector.Close();
+                    return dato;
+                }
+                else
+                {
+                    lector.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+        public int ObtenerComp2(string code)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT id FROM Carnet_trabajadores WHERE cod_parqueo = @p1 AND estado = 1";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", code);
+                lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    int dato;
+                    dato = Convert.ToInt32(lector["id"]);
+                    lector.Close();
+                    return dato;
+                }
+                else
+                {
+                    lector.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
     }
 }
