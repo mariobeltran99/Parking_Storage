@@ -40,6 +40,7 @@ namespace ParkingStorage_System
                 label9.Text = sec.conteoZon().ToString();
                 label10.Text = est.conteoEs().ToString();
                 label11.Text = tic.conteoTic().ToString();
+                label12.Text = tic.conteoTicexpi().ToString();
                 con.cerrarConnection();
             }
             catch (Exception)

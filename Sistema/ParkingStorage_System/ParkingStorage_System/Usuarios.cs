@@ -503,8 +503,8 @@ namespace ParkingStorage_System
                         result = aler.ShowDialog();
                         if (result == DialogResult.OK)
                         {
-                            us.Exid = Convert.ToString(us.obternerID(us.NombreUsuario.ToString()));
-                            us.baja(us.Exid, false);
+                            us.Id = Convert.ToString(users.obternerID(us.NombreUsuario.ToString()));
+                            users.baja(us.Id, false);
                             info.label2.Text = "Usuario Desactivado Correctamente";
                             info.pictureBox2.Image = Properties.Resources.check;
                             result = info.ShowDialog();
@@ -527,8 +527,8 @@ namespace ParkingStorage_System
                         result = aler.ShowDialog();
                         if (result == DialogResult.OK)
                         {
-                            us.Exid = Convert.ToString(us.obternerID(us.NombreUsuario.ToString()));
-                            us.baja(us.Exid, true);
+                            us.Id = Convert.ToString(users.obternerID(us.NombreUsuario.ToString()));
+                            users.baja(us.Id, true);
                             info.label2.Text = "Usuario Activado Correctamente";
                             info.pictureBox2.Image = Properties.Resources.check;
                             result = info.ShowDialog();

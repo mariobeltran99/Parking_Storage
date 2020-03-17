@@ -251,15 +251,16 @@ namespace ParkingStorage_System
             {
                 if (posicion != -1 && editar_indice != -1)
                 {
-                    Clases.Secciones_Estacionamiento us = lista_secciones[posicion];
-                    con.inicioConnection();
+                    Clases.Secciones_Estacionamiento us = lista_secciones[posicion];                   
                     aler.label2.Text = "¿Deseas eliminar este registro?\nTen en cuenta que no se podrá recuperar.";
                     aler.pictureBox2.Image = Properties.Resources.question;
                     result = aler.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        us.Exid = Convert.ToString(us.obternerID(us.Nombre.ToString()));
-                        us.eliminar(us.Exid);
+                        con.inicioConnection();
+                        us.Exid = Convert.ToString(sec.obternerID(us.Nombre));
+                        sec.eliminar(us.Exid);
+                        con.cerrarConnection();
                         info.label2.Text = "Zona Eliminada Correctamente";
                         info.pictureBox2.Image = Properties.Resources.check;
                         result = info.ShowDialog();
@@ -275,7 +276,6 @@ namespace ParkingStorage_System
                         editar_indice = -1;
                         posicion = -1;
                     }
-                    con.cerrarConnection();
                 }
                 else
                 {

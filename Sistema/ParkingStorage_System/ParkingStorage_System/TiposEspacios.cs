@@ -249,14 +249,16 @@ namespace ParkingStorage_System
                 if (posicion != -1 && editar_indice != -1)
                 {
                     Clases.Tipo_Estacionamiento us = lista_tipos[posicion];
-                    con.inicioConnection();
+                    
                     aler.label2.Text = "¿Deseas eliminar este registro?\nTen en cuenta que no se podrá recuperar.";
                     aler.pictureBox2.Image = Properties.Resources.question;
                     result = aler.ShowDialog();
                     if (result == DialogResult.OK)
                     {
-                        us.Exid = Convert.ToString(us.obternerID(us.Nombre.ToString()));
-                        us.eliminar(us.Exid);
+                        con.inicioConnection();
+                        us.Exid = Convert.ToString(type.obternerID(us.Nombre));
+                        type.eliminar(us.Exid);
+                        con.cerrarConnection();
                         info.label2.Text = "Tipo de Estacionamiento \nEliminada Correctamente";
                         info.pictureBox2.Image = Properties.Resources.check;
                         result = info.ShowDialog();
@@ -271,8 +273,7 @@ namespace ParkingStorage_System
                     {
                         editar_indice = -1;
                         posicion = -1;
-                    }
-                    con.cerrarConnection();
+                    }            
                 }
                 else
                 {

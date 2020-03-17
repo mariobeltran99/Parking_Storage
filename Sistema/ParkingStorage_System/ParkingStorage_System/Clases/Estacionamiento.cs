@@ -131,7 +131,7 @@ namespace ParkingStorage_System.Clases
             SqlCommand comando = new SqlCommand();
             SqlDataReader lectura;
             comando.CommandType = System.Data.CommandType.Text;
-            comando.CommandText = "SELECT * FROM Estacion WHERE correlativo = @p1";
+            comando.CommandText = "SELECT id FROM Estacion WHERE correlativo = @p1";
             comando.Connection = Clases.Conexion.connecSQL;
             try
             {
@@ -148,6 +148,7 @@ namespace ParkingStorage_System.Clases
                     lectura.Close();
                     return 0;
                 }
+             
             }
             catch (Exception)
             {
@@ -340,6 +341,36 @@ namespace ParkingStorage_System.Clases
             catch (Exception)
             {
                 return 0;
+            }
+        }
+        // obtener id de eliminacion
+        public string idsx(string name)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lectura;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT id FROM Estacion WHERE correlativo = @p1";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", name);
+                lectura = comando.ExecuteReader();
+                if (lectura.Read())
+                {
+                    string a = lectura["id"].ToString();
+                    lectura.Close();
+                    return a;
+                }
+                else
+                {
+                    lectura.Close();
+                    return null;
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
     }

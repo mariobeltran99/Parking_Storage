@@ -74,7 +74,7 @@ namespace ParkingStorage_System.Clases
             SqlCommand comando = new SqlCommand();
             SqlDataReader lectura;
             comando.CommandType = System.Data.CommandType.Text;
-            comando.CommandText = "SELECT * FROM Carnet_trabajadores WHERE dui = @p1";
+            comando.CommandText = "SELECT id FROM Carnet_trabajadores WHERE dui = @p1";
             comando.Connection = Clases.Conexion.connecSQL;
             try
             {

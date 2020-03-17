@@ -364,8 +364,7 @@ namespace ParkingStorage_System
             {
                 if (posicion != -1 && editar_indice != -1)
                 {
-                    Clases.Estacionamiento us = lista_estacion[posicion];
-                    con.inicioConnection();
+                    Clases.Estacionamiento us = lista_estacion[posicion];                  
                     aler.label2.Text = "¿Deseas eliminar este registro?\nTen en cuenta que no se podrá recuperar.";
                     aler.pictureBox2.Image = Properties.Resources.question;
                     result = aler.ShowDialog();
@@ -383,8 +382,11 @@ namespace ParkingStorage_System
                         }
                         else
                         {
-                            us.Exid = Convert.ToString(us.obternerID(us.Correlativo.ToString()));
-                            us.eliminar(us.Exid);
+                            Clases.Estacionamiento gh = new Clases.Estacionamiento();
+                            con.inicioConnection();
+                            gh.Id = estacion.idsx(us.Correlativo);
+                            estacion.eliminar(gh.Id);
+                            con.cerrarConnection();
                             info.label2.Text = " Estacionamiento Eliminado Correctamente";
                             info.pictureBox2.Image = Properties.Resources.check;
                             result = info.ShowDialog();
@@ -402,7 +404,6 @@ namespace ParkingStorage_System
                         editar_indice = -1;
                         posicion = -1;
                     }
-                    con.cerrarConnection();
                 }
                 else
                 {

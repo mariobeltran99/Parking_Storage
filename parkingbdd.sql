@@ -170,9 +170,13 @@ insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0
 --select * from Estacion
 --select * from Ticket
 --select ti.img_QR, es.correlativo, sec.nombre,est.nombre from Ticket ti INNER JOIN Estacion es ON es.id = ti.id_estacion INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id where ti.id = 1
+--select * from Detalle_ticket_trabajador
+--select * from Ticket
+--SELECT id FROM Carnet_trabajadores WHERE cod_parqueo = 'MBG808466' AND estado = 1
+--SELECT COUNT(cod_QR) as dato FROM Ticket
+--SELECT ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id WHERE ti.estado = 1
+--SELECT CONCAT(cart.nombre,' ',cart.apellido) as nombrecompleto,cart.cod_parqueo,ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1
 
-select * from Detalle_ticket_trabajador
-select * from Ticket
-SELECT id FROM Carnet_trabajadores WHERE cod_parqueo = 'MBG808466' AND estado = 1
+--SELECT ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id WHERE ty.nombre LIKE '%emple%' OR sec.nombre LIKE '%pabe%' OR ti.fecha like '' OR ti.cod_QR like ''
 
-SELECT COUNT(cod_QR) as dato FROM Ticket
+select id from Estacion where correlativo = '0012P'

@@ -34,7 +34,7 @@
             this.btnbuscar = new System.Windows.Forms.Button();
             this.dgvtickets = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtbuscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtickets)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,6 +86,7 @@
             this.btnbuscar.TabIndex = 10;
             this.btnbuscar.Text = "Buscar";
             this.btnbuscar.UseVisualStyleBackColor = false;
+            this.btnbuscar.Click += new System.EventHandler(this.btnbuscar_Click);
             // 
             // dgvtickets
             // 
@@ -108,19 +109,20 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "label3";
             // 
-            // textBox1
+            // txtbuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(403, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(294, 25);
-            this.textBox1.TabIndex = 13;
+            this.txtbuscar.Location = new System.Drawing.Point(403, 91);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(294, 25);
+            this.txtbuscar.TabIndex = 13;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
             // 
             // Tickets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 500);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtbuscar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvtickets);
             this.Controls.Add(this.btnbuscar);
@@ -146,6 +148,6 @@
         private System.Windows.Forms.Button btnbuscar;
         private System.Windows.Forms.DataGridView dgvtickets;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtbuscar;
     }
 }
