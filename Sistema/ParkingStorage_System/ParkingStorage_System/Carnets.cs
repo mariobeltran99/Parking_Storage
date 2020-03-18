@@ -378,8 +378,9 @@ namespace ParkingStorage_System
             {
                 if (posicion != -1 && editar_indice != -1)
                 {
+                    
+                    
                     Clases.Carnet us = lista_carnet[posicion];
-                    con.inicioConnection();
                     if (us.Estado == "Activo")
                     {
                         aler.label2.Text = "¿Deseas desactivar este carnet?\nTen en cuenta que no se podrá usar en el sistema.";
@@ -387,8 +388,10 @@ namespace ParkingStorage_System
                         result = aler.ShowDialog();
                         if (result == DialogResult.OK)
                         {
-                            us.Exid = Convert.ToString(us.obternerID(us.Dui.ToString()));
-                            us.baja(us.Exid, false);
+                            con.inicioConnection();
+                            us.Id = cart.obternerID(us.Dui);
+                            cart.baja(Convert.ToString(us.Id), false);
+                            con.cerrarConnection();
                             info.label2.Text = "Carnet Desactivado Correctamente";
                             info.pictureBox2.Image = Properties.Resources.check;
                             result = info.ShowDialog();
@@ -411,8 +414,10 @@ namespace ParkingStorage_System
                         result = aler.ShowDialog();
                         if (result == DialogResult.OK)
                         {
+                            con.inicioConnection();
                             us.Exid = Convert.ToString(us.obternerID(us.Dui.ToString()));
                             us.baja(us.Exid, true);
+                            con.cerrarConnection();
                             info.label2.Text = "Carnet Activado Correctamente";
                             info.pictureBox2.Image = Properties.Resources.check;
                             result = info.ShowDialog();
@@ -427,8 +432,7 @@ namespace ParkingStorage_System
                             editar_indice = -1;
                             posicion = -1;
                         }
-                    }
-                    con.cerrarConnection();
+                    }                  
                 }
                 else
                 {

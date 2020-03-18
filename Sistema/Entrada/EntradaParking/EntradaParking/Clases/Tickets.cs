@@ -395,5 +395,35 @@ namespace EntradaParking.Clases
                 throw;
             }
         }
+        public int ObtenerComp3(string code)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT COUNT(ti.cod_QR) as dato from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1 AND cart.cod_parqueo = @p1";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", code);
+                lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    int dato;
+                    dato = Convert.ToInt32(lector["dato"]);
+                    lector.Close();
+                    return dato;
+                }
+                else
+                {
+                    lector.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
     }
 }
