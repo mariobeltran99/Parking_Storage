@@ -494,8 +494,7 @@ namespace ParkingStorage_System
             {
                 if (posicion != -1 && editar_indice != -1)
                 {
-                    Usuario us = lista_usuario[posicion];
-                    con.inicioConnection();
+                    Usuario us = lista_usuario[posicion];                 
                     if (us.Estado == "Activo")
                     {
                         aler.label2.Text = "¿Deseas desactivar este usuario?\nTen en cuenta que la siguiente sesión no se\npodrá acceder al sistema este usuario.";
@@ -503,8 +502,10 @@ namespace ParkingStorage_System
                         result = aler.ShowDialog();
                         if (result == DialogResult.OK)
                         {
+                            con.inicioConnection();
                             us.Id = Convert.ToString(users.obternerID(us.NombreUsuario.ToString()));
                             users.baja(us.Id, false);
+                            con.cerrarConnection();
                             info.label2.Text = "Usuario Desactivado Correctamente";
                             info.pictureBox2.Image = Properties.Resources.check;
                             result = info.ShowDialog();
@@ -527,8 +528,10 @@ namespace ParkingStorage_System
                         result = aler.ShowDialog();
                         if (result == DialogResult.OK)
                         {
+                            con.inicioConnection();
                             us.Id = Convert.ToString(users.obternerID(us.NombreUsuario.ToString()));
                             users.baja(us.Id, true);
+                            con.cerrarConnection();
                             info.label2.Text = "Usuario Activado Correctamente";
                             info.pictureBox2.Image = Properties.Resources.check;
                             result = info.ShowDialog();
@@ -543,8 +546,7 @@ namespace ParkingStorage_System
                             editar_indice = -1;
                             posicion = -1;
                         }
-                    }
-                    con.cerrarConnection();
+                    }                
                 }
                 else
                 {
