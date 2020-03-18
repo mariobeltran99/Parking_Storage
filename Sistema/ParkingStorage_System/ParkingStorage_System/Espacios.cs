@@ -425,10 +425,10 @@ namespace ParkingStorage_System
                 }
             }     
         }
-
         private void conteos_Tick(object sender, EventArgs e)
         {
             cargarcombos();
-        }
+            actualizarTabla();
+        }   
     }
 }

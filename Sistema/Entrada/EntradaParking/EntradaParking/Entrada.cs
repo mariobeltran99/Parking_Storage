@@ -140,7 +140,7 @@ namespace EntradaParking
                 Bitmap img = new Bitmap(videoSourcePlayer1.GetCurrentVideoFrame());
                 //UTILIZAR LA LIBRERIA Y LEER EL CÓDIGO
                 BarcodeReader br = new BarcodeReader() { AutoRotate = true };
-                Result resultados = br.Decode(img); ;
+                Result resultados = br.Decode(img); 
                 //QUITAR LA IMAGEN DE MEMORIA
                 img.Dispose();
                 //OBTENER LAS LECTURAS CUANDO SE LEA ALGO
@@ -163,47 +163,57 @@ namespace EntradaParking
                         else
                         {
                             int iddem = tic.ObtenerComp2(codemp);
-                            if(iddem != 0)
+                            if (iddem != 0)
                             {
-                                //DETENER RECEPCION DE IMAGENES
-                                Clases.Tickets ticd = new Clases.Tickets();
-                                ticd.CodigoEmpleado = codemp;
-                                string idem = tic.ObtenerIDEmple(ticd.CodigoEmpleado);
-                                string tipo = cmbselect.SelectedItem.ToString();
-                                ticd.Fecha = DateTime.Now.ToString("dd/MM/yyyy");
-                                string seccion = tic.ObtenerSeccionDis(tipo);
-                                if (seccion != null)
+                                //verficiar si existe el código y esta activo
+                                int verfsi = tic.ObtenerComp3(codemp);
+                                if (verfsi == 0)
                                 {
-                                    string ids = tic.ObtenerIDEs(tipo, seccion);
-                                    string secuencia = tic.ObtenerCorrel(tipo, seccion, ids);
-                                    if (ids != null && secuencia != null)
+                                    //DETENER RECEPCION DE IMAGENES
+                                    Clases.Tickets ticd = new Clases.Tickets();
+                                    ticd.CodigoEmpleado = codemp;
+                                    string idem = tic.ObtenerIDEmple(ticd.CodigoEmpleado);
+                                    string tipo = cmbselect.SelectedItem.ToString();
+                                    ticd.Fecha = DateTime.Now.ToString("dd/MM/yyyy");
+                                    string seccion = tic.ObtenerSeccionDis(tipo);
+                                    if (seccion != null)
                                     {
-                                        ticd.HoraEntrada = DateTime.Now.ToString("HH:mm:ss");
-                                        ticd.IdEstacion = ids;
-                                        ticd.CodigoQR = tic.generarCOD(tipo, seccion);
-                                        if (tic.CrearImg(ticd.CodigoQR))
+                                        string ids = tic.ObtenerIDEs(tipo, seccion);
+                                        string secuencia = tic.ObtenerCorrel(tipo, seccion, ids);
+                                        if (ids != null && secuencia != null)
                                         {
-                                            ticd.Imagen = tic.Imgreg(ticd.CodigoQR);
-                                            tic.ocupar(ticd.IdEstacion, false);
-                                            tic.crearTicket(ticd.CodigoQR, ticd.Fecha, ticd.HoraEntrada, ticd.IdEstacion, ticd.Imagen);
-                                            ticd.Id = tic.obternerID(ticd.CodigoQR);
-                                            tic.crearDetalle(idem, Convert.ToString(ticd.Id));
-                                            TicketsRep tickets = new TicketsRep();
-                                            tickets.SetParameterValue("@num", ticd.Id);
-                                            string user = Environment.UserName.ToString();
-                                            string dir = @"C:\Users\" + user + @"\Documents\Parking_Storage\Tickets\";
-                                            if (!Directory.Exists(dir))
+                                            ticd.HoraEntrada = DateTime.Now.ToString("HH:mm:ss");
+                                            ticd.IdEstacion = ids;
+                                            ticd.CodigoQR = tic.generarCOD(tipo, seccion);
+                                            if (tic.CrearImg(ticd.CodigoQR))
                                             {
-                                                Directory.CreateDirectory(dir);
+                                                ticd.Imagen = tic.Imgreg(ticd.CodigoQR);
+                                                tic.ocupar(ticd.IdEstacion, false);
+                                                tic.crearTicket(ticd.CodigoQR, ticd.Fecha, ticd.HoraEntrada, ticd.IdEstacion, ticd.Imagen);
+                                                ticd.Id = tic.obternerID(ticd.CodigoQR);
+                                                tic.crearDetalle(idem, Convert.ToString(ticd.Id));
+                                                TicketsRep tickets = new TicketsRep();
+                                                tickets.SetParameterValue("@num", ticd.Id);
+                                                string user = Environment.UserName.ToString();
+                                                string dir = @"C:\Users\" + user + @"\Documents\Parking_Storage\Tickets\";
+                                                if (!Directory.Exists(dir))
+                                                {
+                                                    Directory.CreateDirectory(dir);
+                                                }
+                                                tickets.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, dir + ticd.CodigoQR + ".pdf");
+                                                label2.Text = "Ticket Generado Correctamente";
+                                                label3.Visible = true;
+                                                label3.Text = "Bienvenido, entre al parqueo";
+                                                timer2.Enabled = true;
                                             }
-                                            tickets.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, dir + ticd.CodigoQR + ".pdf");
-                                            label2.Text = "Ticket Generado Correctamente";
-                                            label3.Visible = true;
-                                            label3.Text = "Bienvenido, entre al parqueo";
-                                            timer2.Enabled = true;
+                                            else
+                                            {
+                                                timer2.Enabled = true;
+                                            }
                                         }
                                         else
                                         {
+                                            label1.Text = "*** Ya no hay estacionamientos disponibles ***";
                                             timer2.Enabled = true;
                                         }
                                     }
@@ -215,7 +225,7 @@ namespace EntradaParking
                                 }
                                 else
                                 {
-                                    label1.Text = "*** Ya no hay estacionamientos disponibles ***";
+                                    label1.Text = "Ya está activo un ticket con ese mismo código";
                                     timer2.Enabled = true;
                                 }
                             }
@@ -235,15 +245,13 @@ namespace EntradaParking
                 }
             }
         }
-
         private void timer2_Tick(object sender, EventArgs e)
         {
             this.progressBar1.Increment(1);
             if (progressBar1.Value == 100)
             {
                 timer2.Stop();
-                regresar();
-                cargarCombo();
+                regresar();         
             }
         }
         private void regresar()
@@ -253,6 +261,7 @@ namespace EntradaParking
             cmbselect.Visible = true;
             label1.Text = "";
             label2.Text = "Seleccione el Tipo de Estacionamiento";
+            cargarCombo();
         }
     }
 }
