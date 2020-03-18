@@ -490,5 +490,56 @@ namespace EntradaParking.Clases
                 throw;
             }
         }
+        //sacar id del estacionamiento
+        public int ObtenerIDestacion(string code)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT id_estacion FROM Ticket WHERE cod_QR = @p1 AND estado = 1";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", code);
+                lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    int dato;
+                    dato = Convert.ToInt32(lector["id_estacion"]);
+                    lector.Close();
+                    return dato;
+                }
+                else
+                {
+                    lector.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+        //poner ocupado el estacionamiento
+        public int expirar(string idx, bool activar, string horasa)
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "UPDATE Ticket SET hora_salida = @p1, estado = @p2 WHERE id = @p3";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", horasa);
+                comando.Parameters.AddWithValue("@p2", activar);
+                comando.Parameters.AddWithValue("@p3", idx);
+                return comando.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
     }
 }

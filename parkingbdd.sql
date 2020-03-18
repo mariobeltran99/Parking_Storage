@@ -98,12 +98,6 @@ alter table Carnet_trabajadores
 add constraint CK_fechas
 check (fecha_registro < fecha_vencimiento)
 go
-
-alter table Ticket
-add constraint CK_horas
-check (hora_entrada < hora_salida)
-go
-
 CREATE PROCEDURE carnet
 @numer int 
 AS
@@ -173,3 +167,7 @@ insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0
 --select * from Usuarios
 --SELECT COUNT(ti.cod_QR) as dato from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1 AND cart.cod_parqueo = 'DNE974394'
 --SELECT COUNT(cod_QR) as dato from Ticket WHERE cod_QR = 'EP61765649' AND estado = 0
+
+select * from Ticket
+--SELECT id_estacion FROM Ticket WHERE cod_QR = 'EP43407498' AND estado = 1
+--UPDATE Ticket SET hora_salida = '02:01:32', estado = 0 WHERE id = 5

@@ -22,6 +22,10 @@ namespace EntradaParking
         public Salida()
         {
             InitializeComponent();
+            iniciarCam();
+        }
+        private void iniciarCam()
+        {
             dispositivos = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             //CARGAR TODOS LOS DISPOSITIVOS AL COMBO
             foreach (FilterInfo x in dispositivos)
@@ -32,6 +36,7 @@ namespace EntradaParking
             videoSourcePlayer1.VideoSource = fuenteVideo;
             //INICIAR RECEPCION DE IMAGENES
             videoSourcePlayer1.Start();
+            videoSourcePlayer1.Visible = true;
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -48,20 +53,27 @@ namespace EntradaParking
                 if (resultados != null)
                 {
                     try
-                    {
-                        con.inicioConnection();
+                    {                   
                         string codemp = "";
                         codemp = resultados.ToString().Trim();
                         videoSourcePlayer1.SignalToStop();
                         timer1.Enabled = false;
                         videoSourcePlayer1.Visible = false;
-                        int idst = tic.ObtenerComp4(codemp);
+                        con.inicioConnection();
+                        int idst = tic.ObtenerComp4(codemp);                     
                         if (idst == 0)
                         {
                             int tsd = tic.ObtenerComp5(codemp);
                             if(tsd != 0)
-                            {
-                                
+                            {                         
+                                Clases.Tickets ti = new Clases.Tickets();
+                                ti.Id = tic.obternerID(codemp);                               
+                                ti.IdEstacion = Convert.ToString(tic.ObtenerIDestacion(codemp));
+                                ti.HoraSalida = DateTime.Now.ToString("HH:mm:ss");
+                                tic.ocupar(ti.IdEstacion, true);
+                                tic.expirar(Convert.ToString(ti.Id), false, ti.HoraSalida);
+                                label2.Text = "Ticket Aceptado";
+                                timer2.Enabled = true;
                             }
                             else
                             {
@@ -97,8 +109,8 @@ namespace EntradaParking
         {
             label1.Text = "";
             label2.Text = "Coloque el código QR en el lector, por favor";
-            videoSourcePlayer1.Visible = true;
-            timer1.Enabled = true;
+            iniciarCam();
+            timer1.Enabled = true;   
         }
     }
 }
