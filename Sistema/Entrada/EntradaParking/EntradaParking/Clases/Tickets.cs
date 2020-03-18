@@ -335,6 +335,7 @@ namespace EntradaParking.Clases
                 throw;
             }
         }
+        //si esta desactivado
         public int ObtenerComp1(string code)
         {
             SqlCommand comando = new SqlCommand();
@@ -365,6 +366,7 @@ namespace EntradaParking.Clases
                 throw;
             }
         }
+        //si esta activado
         public int ObtenerComp2(string code)
         {
             SqlCommand comando = new SqlCommand();
@@ -395,6 +397,7 @@ namespace EntradaParking.Clases
                 throw;
             }
         }
+        //verficar si el codigo se ha usado o no
         public int ObtenerComp3(string code)
         {
             SqlCommand comando = new SqlCommand();
@@ -405,6 +408,68 @@ namespace EntradaParking.Clases
             try
             {
                 comando.Parameters.AddWithValue("@p1", code);
+                lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    int dato;
+                    dato = Convert.ToInt32(lector["dato"]);
+                    lector.Close();
+                    return dato;
+                }
+                else
+                {
+                    lector.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+        //verificar si el codigo esta expirado
+        public int ObtenerComp4(string codi)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT COUNT(cod_QR) as dato from Ticket WHERE cod_QR = @p1 AND estado = 0";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", codi);
+                lector = comando.ExecuteReader();
+                if (lector.Read())
+                {
+                    int dato;
+                    dato = Convert.ToInt32(lector["dato"]);
+                    lector.Close();
+                    return dato;
+                }
+                else
+                {
+                    lector.Close();
+                    return 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
+        //verifica si el codigo esta vigente
+        public int ObtenerComp5(string codi)
+        {
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT COUNT(cod_QR) as dato from Ticket WHERE cod_QR = @p1 AND estado = 1";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", codi);
                 lector = comando.ExecuteReader();
                 if (lector.Read())
                 {

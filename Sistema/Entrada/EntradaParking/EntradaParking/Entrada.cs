@@ -29,6 +29,7 @@ namespace EntradaParking
             foreach (FilterInfo x in dispositivos)
                 cmbselectvi.Items.Add(x.Name);
             cmbselectvi.SelectedIndex = 0;
+
         }
         private void cargarCombo()
         {
