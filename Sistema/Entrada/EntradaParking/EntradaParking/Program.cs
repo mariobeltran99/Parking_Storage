@@ -16,7 +16,7 @@ namespace EntradaParking
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Entrada());
+            Application.Run(new Salida());
         }
     }
 }

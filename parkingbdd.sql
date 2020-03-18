@@ -98,12 +98,6 @@ alter table Carnet_trabajadores
 add constraint CK_fechas
 check (fecha_registro < fecha_vencimiento)
 go
-
-alter table Ticket
-add constraint CK_horas
-check (hora_entrada < hora_salida)
-go
-
 CREATE PROCEDURE carnet
 @numer int 
 AS
@@ -150,23 +144,14 @@ insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0
 insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0011P','3','3',1);
 insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0012P','3','3',1);
 --select es.id,es.correlativo, sec.nombre as 'Seccion', est.nombre as 'Tipo',es.estado as 'Estado' From Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id
-
 --select * from Carnet_trabajadores
-
-
 /*select CONCAT(nombre,' ',apellido) as nombre_completo, dui,fecha_vencimiento,cod_parqueo,tipo_trabajador,imagen_cod from Carnet_trabajadores ct where id = 1*/
 --select COUNT(nombre) as dato from Carnet_trabajadores
-
 --select COUNT(username) as dato from Usuarios
-
-
 --select COUNT(nombre) as dato from Secciones_estacion
-
 --select COUNT(correlativo) as dato from Estacion
-
 --SELECT TOP (1)  sec.nombre as 'seccion' FROM Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id WHERE est.nombre = 'CLIENTES' AND es.estado = 1
 --SELECT TOP (1)  es.correlativo FROM Estacion es INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id WHERE est.nombre = 'CLIENTES' AND es.estado = 1 AND sec.nombre = 'EDIFICIO OESTE' AND es.id = 6
-
 --select * from Estacion
 --select * from Ticket
 --select ti.img_QR, es.correlativo, sec.nombre,est.nombre from Ticket ti INNER JOIN Estacion es ON es.id = ti.id_estacion INNER JOIN Secciones_estacion sec ON es.id_seccion = sec.id INNER JOIN Tipo_estacionamiento est ON es.id_tipo_estacion = est.id where ti.id = 1
@@ -176,11 +161,13 @@ insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0
 --SELECT COUNT(cod_QR) as dato FROM Ticket
 --SELECT ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id WHERE ti.estado = 1
 --SELECT CONCAT(cart.nombre,' ',cart.apellido) as nombrecompleto,cart.cod_parqueo,ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1
-
 --SELECT ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id WHERE ty.nombre LIKE '%emple%' OR sec.nombre LIKE '%pabe%' OR ti.fecha like '' OR ti.cod_QR like ''
+--select id from Estacion where correlativo = '0012P'
+--SELECT  COUNT(ti.cod_QR) as dato from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1 AND cart.cod_parqueo = 'MBG823835'
+--select * from Usuarios
+--SELECT COUNT(ti.cod_QR) as dato from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1 AND cart.cod_parqueo = 'DNE974394'
+--SELECT COUNT(cod_QR) as dato from Ticket WHERE cod_QR = 'EP61765649' AND estado = 0
 
-select id from Estacion where correlativo = '0012P'
-SELECT  COUNT(ti.cod_QR) as dato from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1 AND cart.cod_parqueo = 'MBG823835'
-select * from Usuarios
-
-SELECT COUNT(ti.cod_QR) as dato from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1 AND cart.cod_parqueo = 'DNE974394p'
+select * from Ticket
+--SELECT id_estacion FROM Ticket WHERE cod_QR = 'EP43407498' AND estado = 1
+--UPDATE Ticket SET hora_salida = '02:01:32', estado = 0 WHERE id = 5
