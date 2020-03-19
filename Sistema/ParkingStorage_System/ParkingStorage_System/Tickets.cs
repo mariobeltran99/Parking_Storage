@@ -22,10 +22,6 @@ namespace ParkingStorage_System
         Clases.Conexion con = new Clases.Conexion();
         Clases.Ticket tick = new Clases.Ticket();
         List<Clases.Ticket> lista_all = new List<Clases.Ticket>();
-        List<Clases.Ticket> lista_vig = new List<Clases.Ticket>();
-        List<Clases.Ticket> lista_exp = new List<Clases.Ticket>();
-        List<Clases.Ticket> lista_empvig = new List<Clases.Ticket>();
-        List<Clases.Ticket> lista_empexp = new List<Clases.Ticket>();
         public Tickets()
         {
             InitializeComponent();
@@ -47,11 +43,11 @@ namespace ParkingStorage_System
                 actualizarExpirados();
             }else if(cmbfilter.SelectedIndex == 3)
             {
-                label3.Text = "Búsqueda por nombre completo, fecha, código de empleado o ticket";
+                label3.Text = "Búsqueda por fecha, código de empleado o ticket";
                 actualizarActivosEmpleados();
             }else if(cmbfilter.SelectedIndex == 4)
             {
-                label3.Text = "Búsqueda por nombre completo, fecha, código de empleado o ticket";
+                label3.Text = "Búsqueda por fecha, código de empleado o ticket";
                 actualizarExpiradosEmpleados();
             }
         }
@@ -285,6 +281,12 @@ namespace ParkingStorage_System
                 else if (cmbfilter.SelectedIndex == 2)
                 {
                     actualizarExpiradosBuscar(txtbuscar.Text);
+                }else if(cmbfilter.SelectedIndex == 3)
+                {
+                    actualizarActivosEmpleadosBuscar(txtbuscar.Text);
+                }else if(cmbfilter.SelectedIndex == 4)
+                {
+                    actualizarExpiradosEmpleadosBuscar(txtbuscar.Text);
                 }
             }       
         }
@@ -295,28 +297,42 @@ namespace ParkingStorage_System
                 con.inicioConnection();
                 dgvtickets.DataSource = null;
                 lista_all = tick.readallbuscar(busqueda);
-                dgvtickets.DataSource = lista_all;
-                dgvtickets.Columns["Id"].Visible = false;
-                dgvtickets.Columns["NombreEmpleado"].Visible = false;
-                dgvtickets.Columns["CodigoEmpleado"].Visible = false;
-                dgvtickets.Columns[3].HeaderText = "Código de Ticket";
-                dgvtickets.Columns[4].HeaderText = "Fecha";
-                dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
-                dgvtickets.Columns[6].HeaderText = "Hora de Salida";
-                dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
-                dgvtickets.Columns[8].HeaderText = "Estacionamiento";
-                dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
-                dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
-                dgvtickets.Columns[1].Width = 230;
-                dgvtickets.Columns[2].Width = 230;
-                dgvtickets.Columns[3].Width = 230;
-                dgvtickets.Columns[4].Width = 230;
-                dgvtickets.Columns[5].Width = 230;
-                dgvtickets.Columns[6].Width = 230;
-                dgvtickets.Columns[7].Width = 230;
-                dgvtickets.Columns[8].Width = 230;
-                dgvtickets.Columns[9].Width = 230;
-                dgvtickets.Columns[10].Width = 230;
+                if(lista_all == null)
+                {
+                    info.label2.Text = "No hay registros de su búsqueda";
+                    info.pictureBox2.Image = Properties.Resources.info__1_;
+                    result = info.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                    actualizarALL();
+                }
+                else
+                {
+                    dgvtickets.DataSource = lista_all;
+                    dgvtickets.Columns["Id"].Visible = false;
+                    dgvtickets.Columns["NombreEmpleado"].Visible = false;
+                    dgvtickets.Columns["CodigoEmpleado"].Visible = false;
+                    dgvtickets.Columns[3].HeaderText = "Código de Ticket";
+                    dgvtickets.Columns[4].HeaderText = "Fecha";
+                    dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
+                    dgvtickets.Columns[6].HeaderText = "Hora de Salida";
+                    dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
+                    dgvtickets.Columns[8].HeaderText = "Estacionamiento";
+                    dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
+                    dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
+                    dgvtickets.Columns[1].Width = 230;
+                    dgvtickets.Columns[2].Width = 230;
+                    dgvtickets.Columns[3].Width = 230;
+                    dgvtickets.Columns[4].Width = 230;
+                    dgvtickets.Columns[5].Width = 230;
+                    dgvtickets.Columns[6].Width = 230;
+                    dgvtickets.Columns[7].Width = 230;
+                    dgvtickets.Columns[8].Width = 230;
+                    dgvtickets.Columns[9].Width = 230;
+                    dgvtickets.Columns[10].Width = 230;
+                }          
                 con.cerrarConnection();
             }
             catch (Exception)
@@ -336,28 +352,42 @@ namespace ParkingStorage_System
                 con.inicioConnection();
                 dgvtickets.DataSource = null;
                 lista_all = tick.readactivosbuscar(busqueda);
-                dgvtickets.DataSource = lista_all;
-                dgvtickets.Columns["Id"].Visible = false;
-                dgvtickets.Columns["NombreEmpleado"].Visible = false;
-                dgvtickets.Columns["CodigoEmpleado"].Visible = false;
-                dgvtickets.Columns[3].HeaderText = "Código de Ticket";
-                dgvtickets.Columns[4].HeaderText = "Fecha";
-                dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
-                dgvtickets.Columns[6].HeaderText = "Hora de Salida";
-                dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
-                dgvtickets.Columns[8].HeaderText = "Estacionamiento";
-                dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
-                dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
-                dgvtickets.Columns[1].Width = 230;
-                dgvtickets.Columns[2].Width = 230;
-                dgvtickets.Columns[3].Width = 230;
-                dgvtickets.Columns[4].Width = 230;
-                dgvtickets.Columns[5].Width = 230;
-                dgvtickets.Columns[6].Width = 230;
-                dgvtickets.Columns[7].Width = 230;
-                dgvtickets.Columns[8].Width = 230;
-                dgvtickets.Columns[9].Width = 230;
-                dgvtickets.Columns[10].Width = 230;
+                if(lista_all == null)
+                {
+                    info.label2.Text = "No hay registros de su búsqueda";
+                    info.pictureBox2.Image = Properties.Resources.info__1_;
+                    result = info.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                    actualizarActivos();
+                }
+                else
+                {
+                    dgvtickets.DataSource = lista_all;
+                    dgvtickets.Columns["Id"].Visible = false;
+                    dgvtickets.Columns["NombreEmpleado"].Visible = false;
+                    dgvtickets.Columns["CodigoEmpleado"].Visible = false;
+                    dgvtickets.Columns[3].HeaderText = "Código de Ticket";
+                    dgvtickets.Columns[4].HeaderText = "Fecha";
+                    dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
+                    dgvtickets.Columns[6].HeaderText = "Hora de Salida";
+                    dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
+                    dgvtickets.Columns[8].HeaderText = "Estacionamiento";
+                    dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
+                    dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
+                    dgvtickets.Columns[1].Width = 230;
+                    dgvtickets.Columns[2].Width = 230;
+                    dgvtickets.Columns[3].Width = 230;
+                    dgvtickets.Columns[4].Width = 230;
+                    dgvtickets.Columns[5].Width = 230;
+                    dgvtickets.Columns[6].Width = 230;
+                    dgvtickets.Columns[7].Width = 230;
+                    dgvtickets.Columns[8].Width = 230;
+                    dgvtickets.Columns[9].Width = 230;
+                    dgvtickets.Columns[10].Width = 230;
+                }              
                 con.cerrarConnection();
             }
             catch (Exception)
@@ -377,28 +407,152 @@ namespace ParkingStorage_System
                 con.inicioConnection();
                 dgvtickets.DataSource = null;
                 lista_all = tick.readexpibuscar(busqueda);
-                dgvtickets.DataSource = lista_all;
-                dgvtickets.Columns["Id"].Visible = false;
-                dgvtickets.Columns["NombreEmpleado"].Visible = false;
-                dgvtickets.Columns["CodigoEmpleado"].Visible = false;
-                dgvtickets.Columns[3].HeaderText = "Código de Ticket";
-                dgvtickets.Columns[4].HeaderText = "Fecha";
-                dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
-                dgvtickets.Columns[6].HeaderText = "Hora de Salida";
-                dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
-                dgvtickets.Columns[8].HeaderText = "Estacionamiento";
-                dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
-                dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
-                dgvtickets.Columns[1].Width = 230;
-                dgvtickets.Columns[2].Width = 230;
-                dgvtickets.Columns[3].Width = 230;
-                dgvtickets.Columns[4].Width = 230;
-                dgvtickets.Columns[5].Width = 230;
-                dgvtickets.Columns[6].Width = 230;
-                dgvtickets.Columns[7].Width = 230;
-                dgvtickets.Columns[8].Width = 230;
-                dgvtickets.Columns[9].Width = 230;
-                dgvtickets.Columns[10].Width = 230;
+                if(lista_all == null)
+                {
+                    info.label2.Text = "No hay registros de su búsqueda";
+                    info.pictureBox2.Image = Properties.Resources.info__1_;
+                    result = info.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                    actualizarExpirados();
+                }
+                else
+                {
+                    dgvtickets.DataSource = lista_all;
+                    dgvtickets.Columns["Id"].Visible = false;
+                    dgvtickets.Columns["NombreEmpleado"].Visible = false;
+                    dgvtickets.Columns["CodigoEmpleado"].Visible = false;
+                    dgvtickets.Columns[3].HeaderText = "Código de Ticket";
+                    dgvtickets.Columns[4].HeaderText = "Fecha";
+                    dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
+                    dgvtickets.Columns[6].HeaderText = "Hora de Salida";
+                    dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
+                    dgvtickets.Columns[8].HeaderText = "Estacionamiento";
+                    dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
+                    dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
+                    dgvtickets.Columns[1].Width = 230;
+                    dgvtickets.Columns[2].Width = 230;
+                    dgvtickets.Columns[3].Width = 230;
+                    dgvtickets.Columns[4].Width = 230;
+                    dgvtickets.Columns[5].Width = 230;
+                    dgvtickets.Columns[6].Width = 230;
+                    dgvtickets.Columns[7].Width = 230;
+                    dgvtickets.Columns[8].Width = 230;
+                    dgvtickets.Columns[9].Width = 230;
+                    dgvtickets.Columns[10].Width = 230;
+                }
+                con.cerrarConnection();
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+        private void actualizarActivosEmpleadosBuscar(string busqueda)
+        {
+            try
+            {
+                con.inicioConnection();
+                dgvtickets.DataSource = null;
+                lista_all = tick.readactivosEmpbuscar(busqueda);
+                if(lista_all == null)
+                {
+                    info.label2.Text = "No hay registros de su búsqueda";
+                    info.pictureBox2.Image = Properties.Resources.info__1_;
+                    result = info.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                    actualizarActivosEmpleados();
+                }
+                else
+                {
+                    dgvtickets.DataSource = lista_all;
+                    dgvtickets.Columns["Id"].Visible = false;
+                    dgvtickets.Columns[1].HeaderText = "Nombre Completo del Empleado";
+                    dgvtickets.Columns[2].HeaderText = "Código de Carnet de Empleado";
+                    dgvtickets.Columns[3].HeaderText = "Código de Ticket";
+                    dgvtickets.Columns[4].HeaderText = "Fecha";
+                    dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
+                    dgvtickets.Columns[6].HeaderText = "Hora de Salida";
+                    dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
+                    dgvtickets.Columns[8].HeaderText = "Estacionamiento";
+                    dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
+                    dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
+                    dgvtickets.Columns[1].Width = 230;
+                    dgvtickets.Columns[2].Width = 230;
+                    dgvtickets.Columns[3].Width = 230;
+                    dgvtickets.Columns[4].Width = 230;
+                    dgvtickets.Columns[5].Width = 230;
+                    dgvtickets.Columns[6].Width = 230;
+                    dgvtickets.Columns[7].Width = 230;
+                    dgvtickets.Columns[8].Width = 230;
+                    dgvtickets.Columns[9].Width = 230;
+                    dgvtickets.Columns[10].Width = 230;
+                }  
+                con.cerrarConnection();
+            }
+            catch (Exception)
+            {
+                error.label2.Text = "Ocurrió un error en la ejecución,\nvuelva a inténtarlo más tarde";
+                result = error.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+        private void actualizarExpiradosEmpleadosBuscar(string busqueda)
+        {
+            try
+            {
+                con.inicioConnection();
+                dgvtickets.DataSource = null;
+                lista_all = tick.readexpiEmpbuscar(busqueda);
+                if(lista_all == null)
+                {
+                    info.label2.Text = "No hay registros de su búsqueda";
+                    info.pictureBox2.Image = Properties.Resources.info__1_;
+                    result = info.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+
+                    }
+                    actualizarExpiradosEmpleados();
+                }
+                else
+                {
+                    dgvtickets.DataSource = lista_all;
+                    dgvtickets.Columns["Id"].Visible = false;
+                    dgvtickets.Columns[1].HeaderText = "Nombre Completo del Empleado";
+                    dgvtickets.Columns[2].HeaderText = "Código de Carnet de Empleado";
+                    dgvtickets.Columns[3].HeaderText = "Código de Ticket";
+                    dgvtickets.Columns[4].HeaderText = "Fecha";
+                    dgvtickets.Columns[5].HeaderText = "Hora de Entrada";
+                    dgvtickets.Columns[6].HeaderText = "Hora de Salida";
+                    dgvtickets.Columns[7].HeaderText = "Estado de Ticket";
+                    dgvtickets.Columns[8].HeaderText = "Estacionamiento";
+                    dgvtickets.Columns[9].HeaderText = "Tipo de Estacionamiento";
+                    dgvtickets.Columns[10].HeaderText = "Sección de Estacionamiento";
+                    dgvtickets.Columns[1].Width = 230;
+                    dgvtickets.Columns[2].Width = 230;
+                    dgvtickets.Columns[3].Width = 230;
+                    dgvtickets.Columns[4].Width = 230;
+                    dgvtickets.Columns[5].Width = 230;
+                    dgvtickets.Columns[6].Width = 230;
+                    dgvtickets.Columns[7].Width = 230;
+                    dgvtickets.Columns[8].Width = 230;
+                    dgvtickets.Columns[9].Width = 230;
+                    dgvtickets.Columns[10].Width = 230;
+                }    
                 con.cerrarConnection();
             }
             catch (Exception)
@@ -424,6 +578,12 @@ namespace ParkingStorage_System
                 }else if(cmbfilter.SelectedIndex == 2)
                 {
                     actualizarExpirados();
+                }else if(cmbfilter.SelectedIndex == 3)
+                {
+                    actualizarActivosEmpleados();
+                }else if(cmbfilter.SelectedIndex == 4)
+                {
+                    actualizarExpiradosEmpleados();
                 }
             }
         }
