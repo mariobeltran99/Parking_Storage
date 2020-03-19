@@ -570,6 +570,7 @@ namespace ParkingStorage_System.Clases
             comando.Connection = Clases.Conexion.connecSQL;
             try
             {
+                comando.Parameters.AddWithValue("@p1", dato);
                 lector = comando.ExecuteReader();
                 while (lector.Read())
                 {

@@ -171,3 +171,5 @@ insert into Estacion (correlativo,id_seccion,id_tipo_estacion,estado) values ('0
 select * from Ticket
 --SELECT id_estacion FROM Ticket WHERE cod_QR = 'EP43407498' AND estado = 1
 --UPDATE Ticket SET hora_salida = '02:01:32', estado = 0 WHERE id = 5
+
+SELECT CONCAT(cart.nombre,' ',cart.apellido) as nombrecompleto,cart.cod_parqueo,ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 0 AND ti.cod_QR LIKE '' OR ti.fecha LIKE '17/03/2020' OR cart.cod_parqueo LIKE ''
