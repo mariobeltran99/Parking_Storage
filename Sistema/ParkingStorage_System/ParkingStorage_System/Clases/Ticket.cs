@@ -501,6 +501,121 @@ namespace ParkingStorage_System.Clases
                 throw;
             }
         }
+        //buscar tickets activos de empleados
+        public List<Clases.Ticket> readactivosEmpbuscar(string dato)
+        {
+            List<Clases.Ticket> lista = new List<Clases.Ticket>();
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT CONCAT(cart.nombre,' ',cart.apellido) as nombrecompleto,cart.cod_parqueo,ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 1 AND ti.cod_QR LIKE '%' + @p1 + '%' OR ti.fecha LIKE '%' + @p1 + '%' OR cart.cod_parqueo LIKE '%' + @p1 + '%'";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                comando.Parameters.AddWithValue("@p1", dato);
+                lector = comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Clases.Ticket aux = new Clases.Ticket();
+                    aux.nombreEmpleado = lector["nombrecompleto"].ToString();
+                    aux.codigoEmpleado = lector["cod_parqueo"].ToString();
+                    aux.codigoQR = lector["cod_QR"].ToString();
+                    aux.fecha = lector["fecha"].ToString();
+                    aux.horaEntrada = lector["hora_entrada"].ToString();
+                    if (lector["hora_salida"].ToString() == "")
+                    {
+                        aux.horaSalida = "N/A";
+                    }
+                    else
+                    {
+                        aux.horaSalida = lector["hora_salida"].ToString();
+                    }
+                    if (lector["estado"].ToString() == "True")
+                    {
+                        aux.estado = "Vigente";
+                    }
+                    else
+                    {
+                        aux.estado = "Expirado";
+                    }
+                    aux.correlativo = lector["correlativo"].ToString();
+                    aux.tipo = lector["tipo"].ToString();
+                    aux.seccion = lector["seccion"].ToString();
+                    lista.Add(aux);       
+                }
+                lector.Close();
+                if(lista.Count == 0)
+                {
+                   return null;
+                }
+                else
+                {
+                    return lista;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+        }
+        //buscar tickets expirados de empleados
+        public List<Clases.Ticket> readexpiEmpbuscar(string dato)
+        {
+            List<Clases.Ticket> lista = new List<Clases.Ticket>();
+            SqlCommand comando = new SqlCommand();
+            SqlDataReader lector;
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = "SELECT CONCAT(cart.nombre,' ',cart.apellido) as nombrecompleto,cart.cod_parqueo,ti.cod_QR ,ti.fecha, ti.hora_entrada,ti.hora_salida,ti.estado, est.correlativo, ty.nombre as tipo, sec.nombre as seccion from Ticket ti INNER JOIN Estacion est ON ti.id_estacion = est.id INNER JOIN Tipo_estacionamiento ty ON est.id_tipo_estacion = ty.id INNER JOIN Secciones_estacion sec ON est.id_seccion = sec.id INNER JOIN Detalle_ticket_trabajador det ON ti.id = det.id_ticket INNER JOIN Carnet_trabajadores cart ON det.id_trabajador = cart.id WHERE ti.estado = 0 AND ti.cod_QR LIKE '%' + @p1 + '%' OR ti.fecha LIKE '%' + @p1 + '%' OR cart.cod_parqueo LIKE '%' + @p1 + '%'";
+            comando.Connection = Clases.Conexion.connecSQL;
+            try
+            {
+                lector = comando.ExecuteReader();
+                while (lector.Read())
+                {
+                    Clases.Ticket aux = new Clases.Ticket();
+                    aux.nombreEmpleado = lector["nombrecompleto"].ToString();
+                    aux.codigoEmpleado = lector["cod_parqueo"].ToString();
+                    aux.codigoQR = lector["cod_QR"].ToString();
+                    aux.fecha = lector["fecha"].ToString();
+                    aux.horaEntrada = lector["hora_entrada"].ToString();
+                    if (lector["hora_salida"].ToString() == "")
+                    {
+                        aux.horaSalida = "N/A";
+                    }
+                    else
+                    {
+                        aux.horaSalida = lector["hora_salida"].ToString();
+                    }
+                    if (lector["estado"].ToString() == "True")
+                    {
+                        aux.estado = "Vigente";
+                    }
+                    else
+                    {
+                        aux.estado = "Expirado";
+                    }
+                    aux.correlativo = lector["correlativo"].ToString();
+                    aux.tipo = lector["tipo"].ToString();
+                    aux.seccion = lector["seccion"].ToString();
+                    lista.Add(aux);
+                }
+                lector.Close();
+                if(lista.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return lista;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+                throw;
+            }
+        }
     }
 
 }
