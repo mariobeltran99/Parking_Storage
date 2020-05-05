@@ -37,7 +37,6 @@
             this.menu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.closesesion = new System.Windows.Forms.Button();
-            this.seepark = new System.Windows.Forms.Button();
             this.ticket = new System.Windows.Forms.Button();
             this.types = new System.Windows.Forms.Button();
             this.zone = new System.Windows.Forms.Button();
@@ -116,7 +115,6 @@
             this.menu.BackColor = System.Drawing.Color.MidnightBlue;
             this.menu.Controls.Add(this.panel1);
             this.menu.Controls.Add(this.closesesion);
-            this.menu.Controls.Add(this.seepark);
             this.menu.Controls.Add(this.ticket);
             this.menu.Controls.Add(this.types);
             this.menu.Controls.Add(this.zone);
@@ -158,25 +156,6 @@
             this.closesesion.Text = "Cerrar Sesión";
             this.closesesion.UseVisualStyleBackColor = false;
             this.closesesion.Click += new System.EventHandler(this.closesesion_Click);
-            // 
-            // seepark
-            // 
-            this.seepark.BackColor = System.Drawing.Color.Transparent;
-            this.seepark.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.seepark.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.seepark.FlatAppearance.BorderSize = 0;
-            this.seepark.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
-            this.seepark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.seepark.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seepark.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.seepark.Image = global::ParkingStorage_System.Properties.Resources.cctv;
-            this.seepark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.seepark.Location = new System.Drawing.Point(0, 401);
-            this.seepark.Name = "seepark";
-            this.seepark.Size = new System.Drawing.Size(244, 35);
-            this.seepark.TabIndex = 8;
-            this.seepark.Text = "Ver Parqueo";
-            this.seepark.UseVisualStyleBackColor = false;
             // 
             // ticket
             // 
@@ -390,7 +369,6 @@
         private System.Windows.Forms.Button zone;
         private System.Windows.Forms.Button types;
         private System.Windows.Forms.Button ticket;
-        private System.Windows.Forms.Button seepark;
         private System.Windows.Forms.Button closesesion;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelcontenedor;
